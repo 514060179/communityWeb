@@ -1,0 +1,123 @@
+<div>
+    <div>
+        <div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <span>
+                        <span><vc:i18n name="盘点名称" namespace="printAssetInventoryInStock"></vc:i18n></span>：{{printAssetInventoryInStockInfo.conditions.name}}
+                    </span>
+                </div>
+                <div class="col-sm-3">
+                    <span>
+                        <span><vc:i18n name="盘点人" namespace="printAssetInventoryInStock"></vc:i18n></span>：{{printAssetInventoryInStockInfo.conditions.staffName}}
+                    </span>
+                </div>
+                <div class="col-sm-3">
+                    <span>
+                        <span><vc:i18n name="选择仓库" namespace="printAssetInventoryInStock"></vc:i18n></span>：{{printAssetInventoryInStockInfo.conditions.shName}}
+                    </span>
+                </div>
+                <div class="col-sm-3">
+                    <span>
+                        <span><vc:i18n name="盘点日期" namespace="printAssetInventoryInStock"></vc:i18n></span>：{{printAssetInventoryInStockInfo.conditions.invTime}}
+                    </span>
+                </div>
+                <!--<div class="col-sm-2">
+                    <span>
+                        <span><vc:i18n name="盘点说明" namespace="printAssetInventoryInStock"></vc:i18n></span>：{{printAssetInventoryInStockInfo.conditions.remark}}
+                    </span>
+                </div>-->
+            </div>
+            <table class="table table-bordered margin-top">
+                <thead>
+                <tr>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="仓库名称" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="物品类型" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="物品名称" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="物品规格" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="物品编码" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="是否是固定物品" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <!--<th scope="col" class="text-center">
+                        {{printAssetInventoryInStockInfo.conditions.applyType == '10000' ||
+                        printAssetInventoryInStockInfo.conditions.applyType == '30000' ? '被调仓库' : '退还人'}}
+                    </th>-->
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="批次价格" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="原有库存" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="盘点后数量" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <th scope="col" class="text-center">
+                        <span><vc:i18n name="备注" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in printAssetInventoryInStockInfo.storehouses">
+                    <td class="text-center">{{item.shName}}</td>
+                    <td class="text-center">
+                        {{item.parentRstName ? item.parentRstName : '-'}} > {{item.rstName ? item.rstName : '-'}}
+                    </td>
+                    <td class="text-center">{{item.resName}}</td>
+                    <td class="text-center">{{item.specName ? item.specName : '-'}}</td>
+                    <td class="text-center">{{item.resCode}}</td>
+                    <td class="text-center">{{item.isFixedName}}</td>
+                    <td class="text-center">{{item.timesPrice}}</td>
+                    <td class="text-center">{{item.originalStock}}{{item.unitCodeName}}</td>
+                    <td class="text-center">{{item.quantity}}{{item.unitCodeName}}</td>
+                    <td class="text-center">{{item.remark}}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-center">
+                        <span><vc:i18n name="备注" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </th>
+                    <td colspan="9" style="text-align:center">{{printAssetInventoryInStockInfo.conditions.remark}}</td>
+                </tr>
+                <tr height="60px">
+                    <td colspan="2" class="text-center " style="vertical-align:middle;">
+                        <span><vc:i18n name="仓库管理员签字" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </td>
+                    <td colspan="2"></td>
+                    <td class="text-center " style="vertical-align:middle;">
+                        <span><vc:i18n name="时间" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </td>
+                    <td colspan="5"></td>
+                </tr>
+                <tr height="60px">
+                    <td colspan="2" class="text-center" style="vertical-align:middle;">
+                        <span><vc:i18n name="调拨人员签字" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </td>
+                    <td colspan="2"></td>
+                    <td class="text-center " style="vertical-align:middle;">
+                        <span><vc:i18n name="时间" namespace="printAssetInventoryInStock"></vc:i18n></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="print-btn">
+            <button class="btn btn-primary float-right" type="button" v-on:click="_printAssetInventoryInStockDiv()">
+                <i class="fa fa-check"></i>&nbsp;打印
+            </button>
+            <button type="button" class="btn btn-warning float-right" style="margin-right:20px;"
+                    v-on:click="_closePage()">
+                <span><vc:i18n name="取消" namespace="printAssetInventoryInStock"></vc:i18n></span>
+            </button>
+        </div>
+    </div>
+</div>

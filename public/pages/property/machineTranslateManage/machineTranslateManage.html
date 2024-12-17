@@ -1,0 +1,122 @@
+<div class="animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="查询条件" namespace="machineTranslateManage"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+                        <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
+                            v-on:click="_moreCondition()">
+                            {{machineTranslateManageInfo.moreCondition == true?'隐藏':'更多'}}
+                        </button>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <select class="custom-select" v-model="machineTranslateManageInfo.conditions.typeCd">
+                                <option selected value="">{{vc.i18n('请选择对象类型','machineTranslateManage')}}</option>
+                                <option v-for="(item,index) in machineTranslateManageInfo.typeCds" :key="index"
+                                    :value="item.statusCd">{{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入对象ID','machineTranslateManage')"
+                                    v-model="machineTranslateManageInfo.conditions.objId" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入对象名称','machineTranslateManage')"
+                                    v-model="machineTranslateManageInfo.conditions.objName" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary btn-sm"
+                                v-on:click="_queryMachineTranslateMethod()">
+                                <vc:i18n name="查询" namespace="machineTranslateManage"></vc:i18n>
+                            </button>
+                            <button type="button" class="btn btn-info btn-sm"
+                                v-on:click="_resetMachineTranslateMethod()">
+                                <vc:i18n name="重置" namespace="machineTranslateManage"></vc:i18n>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="物联网同步" namespace="machineTranslateManage"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <vc:i18n name="对象ID" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="对象类型" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="对象名称" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="指令" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="状态" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                                <th class="text-center" width="80px">
+                                    <vc:i18n name="说明" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="同步时间" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="操作" namespace="machineTranslateManage"></vc:i18n>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="machineTranslate in machineTranslateManageInfo.machineTranslates">
+                                <td class="text-center">{{machineTranslate.objId}}</td>
+                                <td class="text-center">{{machineTranslate.typeCdName}}</td>
+                                <td class="text-center">{{machineTranslate.objName}}</td>
+                                <td class="text-center">{{machineTranslate.machineCmdName}}</td>
+                                <td class="text-center">{{machineTranslate.stateName}}</td>
+                                <td class="text-center">{{machineTranslate.remark}}</td>
+                                <td class="text-center">{{machineTranslate.updateTime}}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" v-if="machineTranslate.state != '20000'">
+                                        <button class="btn-white btn btn-xs"
+                                            v-on:click="_openEditMachineTranslateModel(machineTranslate)">
+                                            <vc:i18n name="重新同步" namespace="machineTranslateManage"></vc:i18n>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 分页 -->
+                    <vc:create path="frame/pagination"></vc:create>
+                </div>
+            </div>
+        </div>
+    </div>
+    <vc:create path="property/addMachineTranslate" callBackListener="" callBackFunction=""></vc:create>
+    <vc:create path="property/editMachineTranslate"></vc:create>
+</div>

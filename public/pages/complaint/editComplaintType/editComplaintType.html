@@ -1,0 +1,73 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h5>
+            <vc:i18n name="修改类型" namespace="editComplaintType"></vc:i18n>
+        </h5>
+        <div class="ibox-tools" style="top:10px;"></div>
+    </div>
+    <div class="ibox-content">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">
+                <vc:i18n name='类型名称' namespace='editComplaintType'></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <input v-model="editComplaintTypeInfo.typeName" type="text"
+                    :placeholder="vc.i18n('必填，请填写类型名称','editComplaintType')" class="form-control">
+            </div>
+            <label class="col-sm-2 col-form-label  text-right">
+                <vc:i18n name='通知方式' namespace='editComplaintType'></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <select class="custom-select" v-model="editComplaintTypeInfo.notifyWay">
+                    <option selected disabled value="">
+                        {{vc.i18n('必填，请选择通知方式','editComplaintType')}}
+                    </option>
+                    <option value="SMS">{{vc.i18n('短信','editComplaintType')}}</option>
+                    <option value="WECHAT">{{vc.i18n('微信','editComplaintType')}}</option>
+                    <option value="WORK_LICENSE">{{vc.i18n('微信+员工工牌','editComplaintType')}}</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group row  text-right">
+            <label class="col-sm-2 col-form-label">
+                <vc:i18n name='评价回复' namespace='editComplaintType'></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <select class="custom-select" v-model="editComplaintTypeInfo.appraiseReply">
+                    <option selected disabled value="">
+                        {{vc.i18n('必填，请选择评价回复','editComplaintType')}}
+                    </option>
+                    <option value="Y">{{vc.i18n('自动回复','editComplaintType')}}</option>
+                    <option value="N">{{vc.i18n('人工回复','editComplaintType')}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label  text-right">
+                <vc:i18n name='备注' namespace='editComplaintType'></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <textarea v-model="editComplaintTypeInfo.remark" :placeholder="vc.i18n('选填，请填写备注','editComplaintType')"
+                    class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">
+                <vc:i18n name="选择员工" namespace="editComplaintType"></vc:i18n>
+            </label>
+            <div class="col-sm-10">
+                <vc:create path="property/selectStaffs"></vc:create>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <button class="btn btn-primary float-right" type="button" v-on:click="saveComplaintTypeInfo()">
+                <i class="fa fa-check"></i>&nbsp;保存
+            </button>
+            <button type="button" class="btn btn-warning float-right" style="margin-right:20px;"
+                v-on:click="vc.goBack()" data-dismiss="modal">
+                <i class="fa fa-close"></i>&nbsp;返回
+            </button>
+        </div>
+    </div>
+</div>

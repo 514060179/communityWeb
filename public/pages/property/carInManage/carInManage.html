@@ -1,0 +1,150 @@
+<div class="animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-md-1 padding-r-0">
+            <div class=" border-radius ">
+                <div class="margin-xs-r  treeview ">
+                    <ul class="list-group text-center border-radius">
+                        <li class="list-group-item node-orgTree " v-for="(item,index) in carInManageInfo.parkingAreas"
+                            :key="index" @click="_swatchParkingArea(item)"
+                            :class="{'vc-node-selected':carInManageInfo.conditions.paNum == item.num}">
+                            {{item.num}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="查询条件" namespace="carInManage"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入车牌号','carInManage')"
+                                    v-model="carInManageInfo.conditions.carNum" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 ">
+                            <select class="custom-select" v-model="carInManageInfo.conditions.state">
+                                <option value="">{{vc.i18n('请选择车辆状态','carInManage')}}</option>
+                                <option value="100300">{{vc.i18n('进场状态','carInManage')}}</option>
+                                <option value="100400">{{vc.i18n('支付完成','carInManage')}}</option>
+                                <option value="100500">{{vc.i18n('离场状态','carInManage')}}</option>
+                                <option value="100600">{{vc.i18n('支付超时重新支付','carInManage')}}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 ">
+                            <select class="custom-select" v-model="carInManageInfo.conditions.carType">
+                                <option value="">{{vc.i18n('请选择车牌类型','carInManage')}}</option>
+                                <option value="T">{{vc.i18n('临时车','carInManage')}}</option>
+                                <option value="S">{{vc.i18n('出售车辆','carInManage')}}</option>
+                                <option value="H">{{vc.i18n('月租车','carInManage')}}</option>
+                                <option value="W">{{vc.i18n('白名单','carInManage')}}</option>
+                                <option value="B">{{vc.i18n('黑名单','carInManage')}}</option>
+                                <option value="I">{{vc.i18n('内部车','carInManage')}}</option>
+                                <option value="NM">{{vc.i18n('免费车','carInManage')}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入进场开始时间','carInManage')"
+                                    v-model="carInManageInfo.conditions.startTime" class="form-control carInStartTime">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入进场结束时间','carInManage')"
+                                    v-model="carInManageInfo.conditions.endTime" class="form-control carInEndTime">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary btn-sm" v-on:click="_queryCarInoutMethod()">
+                                <vc:i18n name="查询" namespace="carInManage"></vc:i18n>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm" v-on:click="_resetCarInoutMethod()">
+                                <vc:i18n name="重置" namespace="carInManage"></vc:i18n>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="在场车辆" namespace="carInManage"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;"></div>
+                </div>
+                <div class="ibox-content">
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <vc:i18n name="进出场ID" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="车辆状态" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="车牌号" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="停车场" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="计费规则" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="车牌类型" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="进场时间" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="在场时间" namespace="carInManage"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="停车费用" namespace="carInManage"></vc:i18n>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="carIn in carInManageInfo.carIns">
+                                <td class="text-center">{{carIn.ciId}}</td>
+                                <td class="text-center">{{carIn.stateName}}</td>
+                                <td class="text-center">{{carIn.carNum}}
+                                </td>
+                                <td class="text-center">{{carIn.paNum}}</td>
+                                <td class="text-center">{{carIn.feeName}}</td>
+                                <td class="text-center">{{carIn.carTypeName}}</td>
+                                <td class="text-center">{{carIn.inTime}}</td>
+                                <td class="text-center">{{carIn.hours}}
+                                    <span>
+                                        <vc:i18n name="小时" namespace="carInManage"></vc:i18n>
+                                    </span>{{carIn.min}}
+                                    <span>
+                                        <vc:i18n name="分" namespace="carInManage"></vc:i18n>
+                                    </span>
+                                </td>
+                                <td class="text-center" v-if="carIn.carType != '1001'">
+                                    {{carIn.payCharge}}
+                                </td>
+                                <td class="text-center" v-else>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 分页 -->
+                    <vc:create path="frame/pagination"></vc:create>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

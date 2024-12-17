@@ -1,0 +1,65 @@
+<div class="margin-top">
+    <div class="">
+        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        <vc:i18n name="用户名称" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                    <th data-hide="phone" class="text-center">
+                        <vc:i18n name="评价内容" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                    <th data-hide="phone" class="text-center">
+                        <vc:i18n name="评价得分" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                    <th data-hide="phone" class="text-center">
+                        <vc:i18n name="评价状态" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                    <th data-hide="phone" class="text-center">
+                        <vc:i18n name="评价时间" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                    <th data-hide="phone" class="text-center">
+                        <vc:i18n name="回复人" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                    <th data-hide="phone" class="text-center">
+                        <vc:i18n name="回复内容" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                    <th data-hide="phone" class="text-center">
+                        <vc:i18n name="操作" namespace="complaintDetailAppraise"></vc:i18n>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="appraise in complaintDetailAppraiseInfo.appraises">
+                    <td class="text-center">
+                        {{appraise.createUserName}}
+                    </td>
+                    <td class="text-center">
+                        {{appraise.context}}
+                    </td>
+                    <td class="text-center">
+                        {{appraise.score}}
+                    </td>
+                    <td class="text-center">
+                        {{appraise.state == 'W'?'待回复':'已回复'}}
+                    </td>
+                    <td class="text-center">
+                        {{appraise.createTime}}
+                    </td>
+                    <td class="text-center">
+                        {{appraise.replyUserName}}
+                    </td>
+                    <td class="text-center">
+                        {{appraise.replyContext}}
+                    </td>
+                    <td class="text-center">
+                        <button class="btn-white btn btn-xs" v-if="appraise.state == 'W'" v-on:click="_openReplyComplaintAppraiseModel(appraise)">
+                            <vc:i18n name="回复" namespace="complaint"></vc:i18n>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <vc:create path="complaint/replyComplaintAppraise"></vc:create>
+</div>

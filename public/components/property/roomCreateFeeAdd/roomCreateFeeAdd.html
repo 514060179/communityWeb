@@ -1,0 +1,124 @@
+<div id="roomCreateFeeAddModel" class="modal fade" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h3 class="m-t-none m-b ">
+                    <vc:i18n name="创建费用" namespace="roomCreateFeeAdd"></vc:i18n>
+                </h3>
+                <div class="ibox-content">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="房屋" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <input v-model.trim="roomCreateFeeAddInfo.locationTypeCdName" disabled="disabled"
+                                   type="text" :placeholder="vc.i18n('必填，请填写收费范围','roomCreateFeeAdd')"
+                                   class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="费用类型" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" v-model="roomCreateFeeAddInfo.feeTypeCd"
+                                    @change="_changeFeeTypeCdX(roomCreateFeeAddInfo.feeTypeCd)">
+                                <option selected disabled value="">
+                                    {{vc.i18n('必填，请选择费用类型','roomCreateFeeAdd')}}
+                                </option>
+                                <!--item.statusCd !='888800010008' &&-->
+                                <option v-for="(item,index) in roomCreateFeeAddInfo.feeTypeCds" :key="index"
+                                        v-bind:value="item.statusCd" v-if="item.statusCd !='888800010017'">
+                                    {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" v-if="roomCreateFeeAddInfo.feeTypeCd">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="收费项目" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="custom-select" v-model="roomCreateFeeAddInfo.configId"
+                                    @change="_roomCreateFeeAddIfOnceFee(roomCreateFeeAddInfo.configId)">
+                                <option selected disabled value="">
+                                    {{vc.i18n('必填，请选择收费项目','roomCreateFeeAdd')}}
+                                </option>
+                                <option v-for="(item,index) in roomCreateFeeAddInfo.feeConfigs" :key="index"
+                                        v-bind:value="item.configId">{{item.feeName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" v-if="roomCreateFeeAddInfo.computingFormula == '4004'">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="收费金额" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <input v-model.trim="roomCreateFeeAddInfo.amount" type="text"
+                                   :placeholder="vc.i18n('必填，请填写收费金额','roomCreateFeeAdd')" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="计费起始时间" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <input v-model="roomCreateFeeAddInfo.startTime" type="text"
+                                   :placeholder="vc.i18n('必填，请填写计费起始时间','roomCreateFeeAdd')"
+                                   class="form-control roomCreateFeeStartTime">
+                        </div>
+                    </div>
+                    <!-- 显示条件：1.不是押金 roomCreateFeeAddInfo.feeTypeCd != '888800010006' && 2.不是其他费用 3.不是周期性费用 -->
+                    <div class="form-group row" v-show=" roomCreateFeeAddInfo.feeFlag != '1003006'">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="计费结束时间" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <input v-model="roomCreateFeeAddInfo.endTime" type="text"
+                                   :placeholder="vc.i18n('必填，请填写计费结束时间','roomCreateFeeAdd')"
+                                   class="form-control roomCreateFeeEndTime">
+                        </div>
+                    </div>
+                    <div class="form-group row" v-show="roomCreateFeeAddInfo.computingFormula == '1102'">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="递增周期" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <input v-model.trim="roomCreateFeeAddInfo.rateCycle" type="text"
+                                   :placeholder="vc.i18n('必填，请填写递增周期,请填写月份','roomCreateFeeAdd')" class="form-control ">
+                        </div>
+                    </div>
+                    <div class="form-group row" v-show="roomCreateFeeAddInfo.computingFormula == '1102'">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="计费递增率" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <input v-model.trim="roomCreateFeeAddInfo.rate" type="text"
+                                   :placeholder="vc.i18n('必填，请填写递增率','roomCreateFeeAdd')" class="form-control ">
+                        </div>
+                    </div>
+                    <div class="form-group row" v-show="roomCreateFeeAddInfo.computingFormula == '1102'">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="递增开始时间" namespace="roomCreateFeeAdd"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <input v-model="roomCreateFeeAddInfo.rateStartTime" type="text"
+                                   :placeholder="vc.i18n('必填，请填写递增开始时间','roomCreateFeeAdd')"
+                                   class="form-control addRoomRateStartTime">
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <button class="btn btn-primary float-right" type="button" v-on:click="saveRoomCreateFeeInfo()">
+                            <i class="fa fa-check"></i>&nbsp;提交
+                        </button>
+                        <button type="button" class="btn btn-warning float-right" style="margin-right:20px;"
+                                data-dismiss="modal">
+                            <i class="fa fa-times"></i>&nbsp;取消
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

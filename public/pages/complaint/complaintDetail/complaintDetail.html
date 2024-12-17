@@ -1,0 +1,125 @@
+<div class="white-bg padding-lg padding-top border-radius">
+    <div class="flex justify-between">
+        <div class="text-title">投诉详情</div>
+        <div>
+            <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
+                    v-on:click="vc.goBack()">
+                返回
+            </button>
+        </div>
+    </div>
+    <!-- 业主信息 -->
+    <div class="margin-top">
+        <div class="row" style="min-height: 160px;">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                    <vc:i18n name="订单编号：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">{{complaintDetailInfo.complaintId}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                <vc:i18n name="类型：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">{{complaintDetailInfo.typeName}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                <vc:i18n name="房屋：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">
+                                {{complaintDetailInfo.roomName}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                <vc:i18n name="联系人：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">{{complaintDetailInfo.complaintName}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                <vc:i18n name="联系电话：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">{{complaintDetailInfo.tel}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                <vc:i18n name="状态：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">{{complaintDetailInfo.stateName}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                <vc:i18n name="创建时间：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">{{complaintDetailInfo.createTime}}</label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="col-form-label">
+                                <vc:i18n name="投诉内容：" namespace="complaintDetailInfo"></vc:i18n>
+                            </label>
+                            <label class="">{{complaintDetailInfo.context}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vc-line-primary margin-top"></div>
+    <div class="margin-top-sm">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" v-bind:class="{active:complaintDetailInfo._currentTab == 'complaintDetailEvent'}"
+                   v-on:click="changeTab('complaintDetailEvent')">
+                    <vc:i18n name="工单流转" namespace="complaintDetail"></vc:i18n>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" v-bind:class="{active:complaintDetailInfo._currentTab == 'complaintDetailAppraise'}"
+                   v-on:click="changeTab('complaintDetailAppraise')">
+                    <vc:i18n name="工单评价" namespace="complaintDetail"></vc:i18n>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" v-bind:class="{active:complaintDetailInfo._currentTab == 'complaintDetailType'}"
+                   v-on:click="changeTab('complaintDetailType')">
+                    <vc:i18n name="工单类型" namespace="complaintDetail"></vc:i18n>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div v-if="complaintDetailInfo._currentTab == 'complaintDetailEvent'">
+        <vc:create path="complaint/complaintDetailEvent"></vc:create>
+    </div>
+    <div v-if="complaintDetailInfo._currentTab == 'complaintDetailAppraise'">
+        <vc:create path="complaint/complaintDetailAppraise"></vc:create>
+    </div>
+    
+    <div v-if="complaintDetailInfo._currentTab == 'complaintDetailType'">
+        <vc:create path="complaint/complaintDetailType"></vc:create>
+    </div>
+    
+    
+   
+</div>

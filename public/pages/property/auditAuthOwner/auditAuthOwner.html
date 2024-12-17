@@ -1,0 +1,151 @@
+<div class="animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-md-1 padding-r-0">
+            <div class=" border-radius ">
+                <div class="margin-xs-r  treeview ">
+                    <ul class="list-group text-center border-radius">
+                        <li class="list-group-item node-orgTree " v-for="(item,index) in auditAuthOwnerInfo.states"
+                            :key="index" @click="_swatchState(item)"
+                            :class="{'vc-node-selected':auditAuthOwnerInfo.conditions.state == item.statusCd}">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="查询条件" namespace="auditAuthOwner"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入关联业主名称','auditAuthOwner')"
+                                    v-model="auditAuthOwnerInfo.conditions.appUserName" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入关联业主身份证','auditAuthOwner')"
+                                    v-model="auditAuthOwnerInfo.conditions.idCard" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入关联业主手机号','auditAuthOwner')"
+                                    v-model="auditAuthOwnerInfo.conditions.link" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary btn-sm"
+                                v-on:click="_queryAuditAuthOwnerMethod()">
+                                <vc:i18n name="查询" namespace="auditAuthOwner"></vc:i18n>
+                            </button>
+                            <button type="button" class="btn btn-info btn-sm" v-on:click="_resetAuditAuthOwnerMethod()">
+                                <vc:i18n name="重置" namespace="auditAuthOwner"></vc:i18n>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="业主房产认证" namespace="auditAuthOwner"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;"></div>
+                </div>
+                <div class="ibox-content">
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <vc:i18n name="小区名称" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="业主" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="手机号" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="房屋" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="人员类型" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="身份证" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                               
+                                <th class="text-center">
+                                    <vc:i18n name="状态" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="审核说明" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="申请时间" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="手机端类型" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="操作" namespace="auditAuthOwner"></vc:i18n>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="appUser in auditAuthOwnerInfo.appUsers">
+                                <td class="text-center">{{appUser.communityName}}</td>
+                                <td class="text-center">
+                                    <div>{{appUser.appUserName}}</div>
+                                    <div v-if="appUser.ownerId">({{appUser.ownerId}})</div>
+                                </td>
+                                <td class="text-center">{{appUser.link}}</td>
+                                <td class="text-center">{{appUser.roomName || '-'}}</td>
+                                <td class="text-center">{{appUser.ownerTypeCdName || '-'}}</td>
+                                <td class="text-center">{{appUser.idCard || '-'}}</td>
+                                <td class="text-center">{{appUser.stateName}}</td>
+                                <td class="text-center">{{appUser.remark || '-'}}</td>
+                                <td class="text-center">{{appUser.createTime}}</td>
+                                <td class="text-center">{{appUser.appTypeName}}</td>
+                                <td class="text-center">
+                                    <div class="btn-group" v-if="appUser.state == '10000'">
+                                        <button class="btn-white btn btn-xs"
+                                            v-on:click="_openAuditAuthOwnerModel(appUser)">
+                                            <vc:i18n name="审核"></vc:i18n>
+                                        </button>
+                                    </div>
+                                    <button class="btn-white btn btn-xs"
+                                        v-on:click="_deleteAppUserBindingOwnerModel(appUser)">
+                                        <vc:i18n name="删除" namespace="auditAuthOwner"></vc:i18n>
+                                    </button>
+                                    <button class="btn-white btn btn-xs" v-on:click="_resetUserPwdModel(appUser)">
+                                        <vc:i18n name="重置密码" namespace="auditAuthOwner"></vc:i18n>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 分页 -->
+                    <vc:create path="frame/pagination"></vc:create>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <vc:create path="common/audit" callBackListener="auditAuthOwner" callBackFunction="auditMessage">
+    </vc:create>
+    <vc:create path="property/deleteAppUserBindingOwner"></vc:create>
+    <vc:create path="frame/resetStaffPwd"></vc:create>
+</div>

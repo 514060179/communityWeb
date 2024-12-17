@@ -1,0 +1,79 @@
+
+
+<div class="margin-top">
+    <div class="row margin-top-lg">
+
+    </div>
+    <div class="margin-top">
+        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        <vc:i18n name='人脸' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='编号' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='设备名称' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='设备编码' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='用户名称' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='开门方式' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='手机号' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='用户身份证' namespace='accessControlInout'></vc:i18n>
+                    </th>
+
+                    <th class="text-center">
+                        <vc:i18n name='相似度' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='开门状态' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='开门时间' namespace='accessControlInout'></vc:i18n>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="inout in ownerDetailAccessControlRecordInfo.inouts">
+                    <td class="text-center" style="white-space: nowrap;">
+                        <img style="width: 60px; height: 60px;" class="border-radius" v-if="inout.facePath" v-bind:src="inout.facePath" v-on:click="_viewOwnerFace(inout.facePath)" />
+                        <img style="width: 60px; height: 60px;" class="border-radius" v-else src="/img/noPhoto.jpg" />
+                    </td>
+                    <td class="text-center">{{inout.inoutId}}</td>
+                    <td class="text-center">{{inout.machineName}}</td>
+                    <td class="text-center">{{inout.machineCode}}</td>
+                    <td class="text-center">{{inout.name}}</td>
+                    <td class="text-center">{{inout.openTypeCd == '1000'?'人脸':'其他'}}</td>
+                    <td class="text-center">{{inout.tel || '-'}}</td>
+                    <td class="text-center">{{inout.idCard || '-'}}</td>
+                    <td class="text-center">{{inout.similar}}</td>
+                    <td class="text-center">{{inout.state == 'C'?'开门成功':'开门失败'}}</td>
+                    <td class="text-center">{{inout.createTime}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- 分页 -->
+        <div class="row">
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-8">
+                <vc:create namespace="ownerDetailAccessControlRecord" path="frame/paginationPlus"></vc:create>
+            </div>
+        </div>
+    </div>
+    <vc:create path="common/viewImage"></vc:create>
+
+
+</div>

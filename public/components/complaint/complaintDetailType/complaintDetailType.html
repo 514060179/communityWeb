@@ -1,0 +1,36 @@
+<div class="margin-top">
+    <div class="">
+        <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        <vc:i18n name='类型名称' namespace='complaintDetailType'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='通知方式' namespace='complaintDetailType'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='评价回复' namespace='complaintDetailType'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='处理人' namespace='complaintDetailType'></vc:i18n>
+                    </th>
+                    <th class="text-center">
+                        <vc:i18n name='创建时间' namespace='complaintDetailType'></vc:i18n>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="complaintType in complaintDetailTypeInfo.complaintTypes">
+                    <td class="text-center">{{complaintType.typeName}}</td>
+                    <td class="text-center">{{complaintType.notifyWay == 'SMS'?'短信':'微信'}}</td>
+                    <td class="text-center">{{complaintType.appraiseReply == 'Y'?'自动回复':'人工回复'}}</td>
+                    <td class="text-center">
+                        <span v-for="(item,index) in complaintType.staffs" :key="index">{{item.staffName}}</br></span>
+                    </td>
+                    <td class="text-center">{{complaintType.createTime}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

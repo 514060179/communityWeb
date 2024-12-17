@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>
+                    <vc:i18n name="修改巡楼信息" namespace="editPatrolBuilding"></vc:i18n>
+                </h5>
+                <div class="ibox-tools" style="top:10px;">
+                    <button type="button" class="btn btn-primary btn-sm" v-on:click="_goBack()">
+                        <i class="fa fa-times"></i>返回
+                    </button>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <vc:i18n name='标题' namespace='editPatrolBuilding'></vc:i18n>
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" :placeholder="vc.i18n('必填，请填写标题','editPatrolBuilding')"
+                               v-model.trim="editPatrolBuildingInfo.title">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <vc:i18n name='员工名称' namespace='editPatrolBuilding'></vc:i18n>
+                    </label>
+                    <div class="col-sm-7">
+                        <input type="text" class="form-control" :placeholder="vc.i18n('必填，请选择员工','editPatrolBuilding')"
+                               disabled v-model="editPatrolBuildingInfo.staffName">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-primary " type="button" v-on:click="chooseStaff()">
+                            <i class="fa fa-search"></i>选择
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <span><vc:i18n name="楼栋" namespace="editPatrolBuilding"></vc:i18n></span>
+                    </label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" v-model="editPatrolBuildingInfo.floorId">
+                            <option selected value="-1">
+                                {{vc.i18n('选填，请选择楼栋','editPatrolBuilding')}}
+                            </option>
+                            <option v-for="(item,index) in editPatrolBuildingInfo.floors"
+                                    :key="index" v-bind:value="item.floorId">
+                                {{item.floorNum}}{{vc.i18n('号楼','editPatrolBuilding')}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <vc:i18n name='有无异常' namespace='editPatrolBuilding'></vc:i18n>
+                    </label>
+                    <div class="col-sm-8">
+                        <select class="custom-select" v-model="editPatrolBuildingInfo.state">
+                            <option selected value="" disabled>{{vc.i18n('必填，请选择有无异常','editPatrolBuilding')}}</option>
+                            <option value="0">无</option>
+                            <option value="1">有</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <vc:i18n name='巡楼内容' namespace='editPatrolBuilding'></vc:i18n>
+                    </label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control"
+                               :placeholder="vc.i18n('必填，请填写巡楼内容','editPatrolBuilding')"
+                               v-model.trim="editPatrolBuildingInfo.remark">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <span><vc:i18n name="巡楼图片" namespace="editPatrolBuilding"></vc:i18n></span>
+                    </label>
+                    <div class="content-img col-sm-10">
+                        <vc:create path="frame/uploadImageUrl" callBackListener="editPatrolBuilding"
+                                   callBackFunction="notifyUploadImage" imageCount="5"
+                                   namespace="editPatrolBuilding">
+                        </vc:create>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-warning " style="margin-right:20px;" @click="_goBack()">
+                        <i class="fa fa-close"></i>
+                        <span><vc:i18n name="返回"></vc:i18n></span>
+                    </button>
+                    <button class="btn btn-primary" type="button" v-on:click="savePatrolBuildingInfo()">
+                        <i class="fa fa-check"></i>&nbsp;提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <vc:create path="property/selectStaff"></vc:create>
+</div>

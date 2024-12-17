@@ -1,0 +1,207 @@
+<div class="animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="查询条件" namespace="parkingFeeLedger"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <select class="form-control-md form-control input-s-sm inline" v-model="parkingFeeLedgerInfo.conditions.communityId" @change="_changCommunity()">
+                                <option disabled selected value="">{{vc.i18n('请选择小区','parkingFeeLedger')}}</option>
+                                <option v-for="(item,index) in parkingFeeLedgerInfo.communitys" :key="index"
+                                        v-bind:value="item.communityId">
+                                    {{item.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input size="16" type="text" :placeholder="vc.i18n('请选择缴费开始时间','parkingFeeLedger')"
+                                    v-model="parkingFeeLedgerInfo.conditions.startTime"
+                                    class="form-control form_datetime  start_time">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input size="16" type="text" :placeholder="vc.i18n('请选择缴费结束时间','parkingFeeLedger')"
+                                    v-model="parkingFeeLedgerInfo.conditions.endTime"
+                                    class="form-control form_datetime  end_time">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <input size="16" type="text" :placeholder="vc.i18n('请填写车位 停车场-停车位','parkingFeeLedger')"
+                                v-model="parkingFeeLedgerInfo.conditions.parkingName" class="form-control">
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary btn-md" v-on:click="_queryPayFeeMethod()">
+                                <vc:i18n name="查询" namespace="parkingFeeLedger"></vc:i18n>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="车位费台账" namespace="parkingFeeLedger"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+                        <!-- <button type="button" class="btn btn-primary btn-sm" v-on:click="_exportExcel()">
+                            <i class="fa fa-plus"></i>
+                            <span>
+                                <vc:i18n name="导出" namespace="parkingFeeLedger"></vc:i18n>
+                            </span>
+                        </button> -->
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="hc-table-div" :style="{'width':_computeTableDivWidth()}">
+                        <table class="table table-bordered" data-page-size="15">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="物业公司" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="小区名称" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="业主名称" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="性别" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="电话号码" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="车位编号" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="交付时间" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="车位状态" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="月车位费" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" rowspan="2">
+                                        <vc:i18n name="最后缴费时间" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" colspan="6">
+                                        <vc:i18n name="当期车位费" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center" colspan="6" v-for="month in 12">
+                                       {{new Date().getFullYear()}}年{{month}}月
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">
+                                        <vc:i18n name="年累饱和应收总金额" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center">
+                                        <vc:i18n name="实收总金额" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center">
+                                        <vc:i18n name="减免总金额" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center">
+                                        <vc:i18n name="欠费总金额" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center">
+                                        <vc:i18n name="收费率" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>
+                                    <th class="text-center">
+                                        <vc:i18n name="欠费原因" namespace="parkingFeeLedger"></vc:i18n>
+                                    </th>					
+                                    <template v-for="month in 12">
+                                        <th class="text-center">
+                                            账单编号
+                                        </th>
+                                        <th class="text-center">
+                                            应收金额
+                                        </th>
+                                        <th class="text-center">
+                                            实收金额
+                                        </th>
+                                        <th class="text-center">
+                                           减免金额
+                                        </th>
+                                        <th class="text-center">
+                                            欠费金额
+                                        </th>
+                                        <th class="text-center">
+                                            缴费状态
+                                        </th>
+                                    </template>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="payFee in parkingFeeLedgerInfo.payFees">
+                                    <td class="text-center">{{payFee.storeName}}</td>
+                                    <td class="text-center">{{payFee.communityName}}</td>
+                                    <td class="text-center">{{payFee.ownerName}}</td>
+                                    <td class="text-center">{{payFee.sex==0?'女':'男'}}</td>
+                                    <td class="text-center">{{payFee.link}}</td>
+                                    <td class="text-center">{{payFee.parkingName}}</td>
+                                    <td class="text-center">{{payFee.bingTime}}</td>
+                                    <td class="text-center">{{payFee.state}}</td>
+                                    <td class="text-center">{{payFee.squarePrice || '-'}}</td>
+                                    <td class="text-center">{{payFee.squarePrice || '-'}}</td>
+                                    <td class="text-center">{{payFee.receivableAmount || 0}}</td>
+                                    <td class="text-center">{{payFee.receivedAmount || 0}}</td>
+                                    <td class="text-center" v-if="payFee.oweAmount != 0">{{payFee.receivableAmount-payFee.receivedAmount || '0'}}</td>
+                                    <td class="text-center" v-else>0</td>
+                                    <td class="text-center">{{payFee.oweAmount}}</td>
+                                    <td class="text-center" v-if="payFee.oweAmount != 0">{{payFee.receivedAmount/(payFee.receivableAmount-(payFee.receivableAmount-payFee.receivedAmount)) * 100 || '0'}}%</td>
+                                    <td class="text-center" v-else>{{(payFee.receivedAmount/(payFee.receivableAmount) * 100).toFixed(2) || '0'}}%</td>
+                                    <td class="text-center">无</td>
+                                    <template v-for="month in 12">
+                                        <th class="text-center">
+                                            {{_getPayFeeDetailCode(payFee,month)}}
+                                        </th>
+                                        <th class="text-center">
+                                            {{_getReceivableAmount(payFee,month)}}
+                                        </th>
+                                        <th class="text-center">
+                                            {{_getReceivedAmount(payFee,month)}}
+                                        </th>
+                                        <th class="text-center">
+                                            {{_getDiscountAmount(payFee,month)}}
+                                        </th>
+                                        <th class="text-center">
+                                            {{_getOweFeeAmount(payFee,month)}}
+                                        </th>
+                                        <th class="text-center">
+                                            无
+                                        </th>
+                                    </template>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- 分页 -->
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-8 text-center">
+                            <vc:create path="frame/pagination"></vc:create>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

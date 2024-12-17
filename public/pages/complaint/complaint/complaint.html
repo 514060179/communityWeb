@@ -1,0 +1,175 @@
+<div class="animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-md-1 padding-r-0">
+            <div class=" border-radius ">
+                <div class="margin-xs-r  treeview ">
+                    <ul class="list-group text-center border-radius">
+                        <li class="list-group-item node-orgTree " v-for="(item,index) in complaintInfo.states"
+                            :key="index" @click="swatchComplaintState(item)"
+                            :class="{'vc-node-selected':complaintInfo.conditions.state == item.statusCd}">
+                            {{item.name}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="查询条件" namespace="complaint"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <select class="custom-select" v-model="complaintInfo.conditions.typeCd">
+                                <option selected value="">{{vc.i18n('请选择类型','complaint')}}</option>
+                                <option v-for="item in complaintInfo.complaintTypes" :value="item.typeCd">{{item.typeName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('楼栋-单元-房屋 如1-1-1','complaint')"
+                                    v-model="complaintInfo.conditions.roomName" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入联系人','complaint')"
+                                    v-model="complaintInfo.conditions.complaintName" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入联系电话','complaint')"
+                                    v-model="complaintInfo.conditions.tel" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入工单编号','complaint')"
+                                    v-model="complaintInfo.conditions.complaintId" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary btn-sm" v-on:click="_queryComplaintMethod()">
+                                <vc:i18n name="查询" namespace="complaint"></vc:i18n>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input v-model="complaintInfo.conditions.startTime" type="text"
+                                    :placeholder="vc.i18n('请选择开始时间','complaint')" class="form-control start_time">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input v-model="complaintInfo.conditions.endTime" type="text"
+                                    :placeholder="vc.i18n('请选择结束时间','complaint')" class="form-control end_time">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="投诉建议" namespace="complaint"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+                        <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddComplaintModal()">
+                            <i class="fa fa-plus"></i>{{vc.i18n('投诉','complaint')}}
+                        </button>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <vc:i18n name="订单编号" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="类型" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="房屋" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="联系人" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="联系电话" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="状态" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="处理人" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="创建时间" namespace="complaint"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="操作" namespace="complaint"></vc:i18n>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="complaint in complaintInfo.complaints">
+                                <td class="text-center">{{complaint.complaintId}}</td>
+                                <td class="text-center">{{complaint.typeName}}</td>
+                                <td class="text-center">{{complaint.roomName}}</td>
+                                <td class="text-center">{{complaint.complaintName}}</td>
+                                <td class="text-center">{{complaint.tel}}</td>
+                                <td class="text-center">{{complaint.stateName}}</td>
+                                <td class="text-center" >
+                                    <span v-for="(item,index) in complaint.staffs" :key="index">{{item.staffName}}</br></span>
+                                </td>
+                                <td class="text-center">{{complaint.createTime}}</td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <button class="btn-white btn btn-xs"
+                                            v-on:click="_openComplaintDetailModel(complaint)">
+                                            <vc:i18n name="详情" namespace="complaint"></vc:i18n>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button class="btn-white btn btn-xs"
+                                            v-on:click="_openEditComplaintModel(complaint)">
+                                            <vc:i18n name="修改" namespace="complaint"></vc:i18n>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group">
+                                        <button class="btn-white btn btn-xs"
+                                            v-on:click="_openDeleteComplaintModel(complaint)">
+                                            <vc:i18n name="删除" namespace="complaint"></vc:i18n>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 分页 -->
+                    <div class="row margin-top-xs">
+                        <div class="col-sm-9">
+
+                        </div>
+                        <div class="col-sm-3 float-right">
+                            <vc:create path="frame/pagination"></vc:create>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <vc:create path="common/viewImage"></vc:create>
+    <vc:create path="common/editComplaint"></vc:create>
+    <vc:create path="common/deleteComplaint"></vc:create>
+    <vc:create path="common/complaintDetail"></vc:create>
+</div>

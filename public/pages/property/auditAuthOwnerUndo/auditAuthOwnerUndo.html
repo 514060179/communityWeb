@@ -1,0 +1,172 @@
+<div>
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>
+                <vc:i18n name="认证审核" namespace="auditAuthOwnerUndo"></vc:i18n>
+            </h5>
+            <div class="ibox-tools" style="top:10px;">
+                <button type="button" class="btn btn-primary btn-sm" v-on:click="vc.goBack()">
+                    <vc:i18n name="返回" namespace="auditAuthOwnerUndo"></vc:i18n>
+                </button>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row" v-if="auditAuthOwnerUndoInfo.room">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="房屋编号：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.room.roomName}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="房屋面积：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.room.builtUpArea}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="房屋类型：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.room.roomSubTypeName}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="房屋状态：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.room.stateName}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="业主：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.room.ownerName}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="业主电话：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.room.link}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="认证人员：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.appUserName}}</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label class="col-form-label">
+                            <vc:i18n name="业主电话：" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </label>
+                        <label class="">{{auditAuthOwnerUndoInfo.link}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>
+                <vc:i18n name="房屋人员" namespace="auditAuthOwnerUndo"></vc:i18n>
+            </h5>
+            <div class="ibox-tools" style="top:10px;">
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-center">
+                            <vc:i18n name="业主人脸" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </th>
+                        <th scope="col" class="text-center">
+                            <vc:i18n name="姓名" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </th>
+                        <th scope="col" class="text-center">
+                            <vc:i18n name="联系方式" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </th>
+                        <th scope="col" class="text-center">
+                            <vc:i18n name="家庭住址" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </th>
+                        <th scope="col" class="text-center">
+                            <vc:i18n name="身份证" namespace="auditAuthOwnerUndo"></vc:i18n>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(owner,index) in auditAuthOwnerUndoInfo.owners">
+                        <td scope="row" class="text-center">
+                            <img style="width: 60px; height: 60px;" class="border-radius" v-if="owner.url"
+                                v-bind:src="owner.url" v-on:click="_viewOwnerFace(owner.url)" />
+                            <img style="width: 60px; height: 60px;" class="border-radius" v-else
+                                src="/img/noPhoto.jpg" />
+                        </td>
+                        <td scope="row" class="text-center">{{owner.name}}</td>
+                        <td class="text-center">{{owner.link}}</td>
+                        <td class="text-center">{{owner.address || '-'}}</td>
+                        <td class="text-center">{{owner.idCard || '-'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>
+                <vc:i18n name="审核" namespace="auditAuthOwnerUndo"></vc:i18n>
+            </h5>
+            <div class="ibox-tools" style="top:10px;">
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <vc:i18n name="动作" namespace="auditAuthOwnerUndo"></vc:i18n>
+                    </label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" v-model="auditAuthOwnerUndoInfo.audit.state">
+                            <option selected disabled value="">{{vc.i18n('请审核','audit')}}</option>
+                            <option value="1100">{{vc.i18n('同意','audit')}}</option>
+                            <option value="1200">{{vc.i18n('拒绝','audit')}}</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                        <vc:i18n name="审核说明" namespace="auditAuthOwnerUndo"></vc:i18n>
+                    </label>
+                    <div class="col-sm-10">
+                        <textarea :placeholder="vc.i18n('必填，请填写工单说明','auditAuthOwnerUndo')" class="form-control"
+                            v-model="auditAuthOwnerUndoInfo.audit.remark">
+                                </textarea>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <button class="btn btn-primary float-right" type="button" v-on:click="_auditSubmit()">
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

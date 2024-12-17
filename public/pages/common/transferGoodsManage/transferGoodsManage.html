@@ -1,0 +1,150 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="受赠人" namespace="transferGoodsManageInfo"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+                        <button type="button" class="btn btn-primary btn-sm" v-on:click="vc.goBack()">
+                            <i class="fa fa-close"></i>
+                            <vc:i18n name="返回" namespace="transferGoodsManageInfo"></vc:i18n>
+                        </button>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="受赠人" namespace="transferGoodsManageInfo"></vc:i18n>
+                        </label>
+                        <div class="col-sm-2">
+                            <input :placeholder="vc.i18n('必填，请填写联系人','transferGoodsManageInfo')" class="form-control"
+                                   v-model.trim="transferGoodsManageInfo.endUserInfo.staffName"/>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-primary " type="button" v-on:click="chooseEndUser()">
+                                <i class="fa fa-search"></i> 选择受赠人
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">
+                            <vc:i18n name="转赠说明" namespace="transferGoodsManageInfo"></vc:i18n>
+                        </label>
+                        <div class="col-sm-10">
+                            <textarea :placeholder="vc.i18n('必填，请填写转赠说明','transferGoodsManageInfo')" class="form-control"
+                                      v-model.trim="transferGoodsManageInfo.description">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 选择物品 -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        <span><vc:i18n name="物品信息" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+                        <button type="button" class="btn btn-primary btn-sm"
+                                style="margin-right:10px;" v-on:click="_openSelectResourceStaffInfoModel()">
+                            <i class="fa fa-search"></i>
+                            <span><vc:i18n name="选择物品" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <thead>
+                        <tr>
+                            <th class="text-center">
+                                <span><vc:i18n name="物品名称" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="物品编码" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="物品类型" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="是否是固定物品" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="物品库存" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="物品最小计量总数" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="转赠数量" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="备注" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                            <th class="text-center">
+                                <span><vc:i18n name="操作" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="resourceStore in transferGoodsManageInfo.resourceStores">
+                            <td class="text-center" style="vertical-align: inherit;">{{resourceStore.resName}}</td>
+                            <td class="text-center" style="vertical-align: inherit;">{{resourceStore.resCode}}</td>
+                            <td class="text-center" style="vertical-align: inherit;">
+                                {{resourceStore.parentRstName ? resourceStore.parentRstName : '-'}} >
+                                {{resourceStore.rstName ? resourceStore.rstName : '-'}}
+                            </td>
+                            <td class="text-center" style="vertical-align: inherit;">{{resourceStore.isFixedName}}</td>
+                            <td class="text-center" style="vertical-align: inherit;">
+                                {{resourceStore.stock}}{{resourceStore.unitCodeName}}
+                            </td>
+                            <td class="text-center" style="vertical-align: inherit;">
+                                {{resourceStore.miniStock}}{{resourceStore.miniUnitCodeName}}
+                            </td>
+                            <td class="text-center" style="vertical-align: inherit;">
+                                <input v-model="resourceStore.giveQuantity" type="number"
+                                       :placeholder="vc.i18n('必填，请填写数量','transferGoodsManageInfo')"
+                                       class="form-control" style="width: 70%;display:inline; margin: auto">&nbsp;&nbsp;{{resourceStore.miniUnitCodeName}}
+                            </td>
+                            <td class="text-center" style="vertical-align: inherit;">
+                                <input v-model="resourceStore.purchaseRemark" type="text" class="form-control">
+                            </td>
+                            <td class="text-center" style="vertical-align: inherit;">
+                                <button type="button" class="btn btn-danger btn-sm" style="margin-right:10px;"
+                                        v-on:click="_removeSelectResourceStoreItem(resourceStore.resId)">
+                                    <i class="fa fa-times"></i>
+                                    <span><vc:i18n name="移除" namespace="transferGoodsManageInfo"></vc:i18n></span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="9">
+                                <ul class="pagination float-right"></ul>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <vc:create path="common/chooseResourceStaff" emitChooseResourceStore="transferGoodsManageInfo"
+                       emitLoadData="viewResourceStoreInfo">
+            </vc:create>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-2 " style="margin-bottom:10px; text-align:right">
+            <button type="button" class="btn btn-primary" style="margin-left:10px;" v-on:click="_finishStep()">
+                <vc:i18n name="提交" namespace="transferGoodsManageInfoStep"></vc:i18n>
+            </button>
+        </div>
+    </div>
+    <vc:create path="property/selectStaff"></vc:create>
+</div>

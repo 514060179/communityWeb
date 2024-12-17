@@ -1,0 +1,125 @@
+<div class="animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-md-1 padding-r-0">
+            <div class=" border-radius ">
+                <div class="margin-xs-r  treeview ">
+                    <ul class="list-group text-center border-radius">
+                        <li class="list-group-item node-orgTree "
+                            v-for="(item,index) in tempCarPaymentInfo.parkingAreas" :key="index"
+                            @click="_swatchParkingArea(item)"
+                            :class="{'vc-node-selected':tempCarPaymentInfo.conditions.paId == item.paId}">
+                            {{item.num}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="查询条件" namespace="tempCarPayment"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;">
+
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入车牌号','tempCarPayment')"
+                                    v-model="tempCarPaymentInfo.conditions.carNum" class=" form-control">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 ">
+                            <select class="custom-select" v-model="tempCarPaymentInfo.conditions.state">
+                                <option value="">{{vc.i18n('请选择车辆状态','tempCarPayment')}}</option>
+                                <option value="100300">{{vc.i18n('进场状态','tempCarPayment')}}</option>
+                                <option value="100400">{{vc.i18n('支付完成','tempCarPayment')}}</option>
+                                <option value="100500">{{vc.i18n('离场状态','tempCarPayment')}}</option>
+                                <option value="100600">{{vc.i18n('支付超时重新支付','tempCarPayment')}}</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入进场开始时间','tempCarPayment')"
+                                    v-model="tempCarPaymentInfo.conditions.startTime"
+                                    class="form-control carInStartTime">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请输入进场结束时间','tempCarPayment')"
+                                    v-model="tempCarPaymentInfo.conditions.endTime" class="form-control carInEndTime">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary btn-sm" v-on:click="_queryCarInoutMethod()">
+                                <vc:i18n name="查询" namespace="tempCarPayment"></vc:i18n>
+                            </button>
+                            <button type="button" class="btn btn-primary btn-sm" v-on:click="_resetCarInoutMethod()">
+                                <vc:i18n name="重置" namespace="tempCarPayment"></vc:i18n>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>
+                        <vc:i18n name="在场车辆" namespace="tempCarPayment"></vc:i18n>
+                    </h5>
+                    <div class="ibox-tools" style="top:10px;"></div>
+                </div>
+                <div class="ibox-content">
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <thead>
+                            <tr>
+                                <th class="text-center">
+                                    <vc:i18n name="进出场编号" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="车辆状态" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="车牌号" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="进场时间" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="收费类型" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="应收金额" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="实收金额" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                                <th class="text-center">
+                                    <vc:i18n name="支付时间" namespace="tempCarPayment"></vc:i18n>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="carIn in tempCarPaymentInfo.payments">
+                                <td class="text-center">{{carIn.inoutId}}</td>
+                                <td class="text-center">{{carIn.carInout == '3306'?'进场':'出场'}}</td>
+                                <td class="text-center">{{carIn.carNum}}</td>
+                                <td class="text-center">{{carIn.inTime}}</td>
+                                <td class="text-center">{{carIn.payTypeName}}</td>
+                                <td class="text-center">{{carIn.payCharge}}</td>
+                                <td class="text-center">{{carIn.realCharge}}</td>
+                                <td class="text-center">{{carIn.createTime}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- 分页 -->
+                    <vc:create path="frame/pagination"></vc:create>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

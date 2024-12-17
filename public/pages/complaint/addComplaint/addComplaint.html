@@ -1,0 +1,71 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h5>
+            <vc:i18n name="登记投诉" namespace="addComplaint"></vc:i18n>
+        </h5>
+        <div class="ibox-tools" style="top:10px;">
+
+        </div>
+    </div>
+    <div class="ibox-content">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label  text-right">
+                <vc:i18n name="类型" namespace="addComplaint"></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <select class="custom-select" v-model="addComplaintInfo.typeCd">
+                    <option selected disabled value="">{{vc.i18n('必填，请选择类型','addComplaint')}}</option>
+                    <option v-for="item in addComplaintInfo.complaintTypes" :value="item.typeCd">{{item.typeName}}
+                    </option>
+                </select>
+            </div>
+            <label class="col-sm-2 col-form-label text-right">
+                <vc:i18n name="房屋" namespace="addComplaint"></vc:i18n>
+            </label>
+            <div class="col-sm-3">
+                <input v-model="addComplaintInfo.roomName" type="text" disabled
+                    :placeholder="vc.i18n('必填，请选择房屋','addComplaint')" class="form-control">
+            </div>
+            <div class="col-sm-1">
+                <button class="btn btn-primary" type="button" v-on:click="_selectComplaintRoom()">
+                    登记
+                </button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label text-right">
+                <vc:i18n name="联系人" namespace="addComplaint"></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <input v-model="addComplaintInfo.complaintName" type="text"
+                    :placeholder="vc.i18n('必填，请填写联系人','addComplaint')" class="form-control">
+            </div>
+            <label class="col-sm-2 col-form-label text-right">
+                <vc:i18n name="联系电话" namespace="addComplaint"></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <input v-model="addComplaintInfo.tel" type="text" :placeholder="vc.i18n('必填，请填写联系电话','addComplaint')"
+                    class="form-control">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label  text-right">
+                <vc:i18n name="内容" namespace="addComplaint"></vc:i18n>
+            </label>
+            <div class="col-sm-4">
+                <textarea :placeholder="vc.i18n('必填，请填写内容','addComplaint')" class="form-control"
+                    v-model="addComplaintInfo.context"></textarea>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <button class="btn btn-primary float-right" type="button" v-on:click="_saveComplaint()">
+                登记
+            </button>
+            <button type="button" class="btn btn-warning float-right" style="margin-right:20px;"
+                v-on:click="vc.goBack()" data-dismiss="modal">
+                返回
+            </button>
+        </div>
+
+    </div>
+</div>

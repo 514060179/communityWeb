@@ -1,0 +1,158 @@
+<div>
+    <div class="row">
+        <div class="col-md-1 padding-r-0">
+            <div class=" border-radius ">
+                <div class="margin-xs-r  treeview ">
+                    <ul class="list-group text-center border-radius">
+                        <li class="list-group-item node-orgTree " v-for="(item,index) in accessControlInoutInfo.openTypeCds" :key="index" @click="swatchOpenTypeCd(item)" :class="{'vc-node-selected':accessControlInoutInfo.conditions.openTypeCd == item.openTypeCd}">
+                            {{item.openTypeName}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5><span><vc:i18n name="查询条件"></vc:i18n></span></h5>
+                            <div class="ibox-tools" style="top:10px;">
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <select class="form-control form-control  inline" v-model="accessControlInoutInfo.conditions.machineId">
+                                            <option selected value="">请选择门禁</option>
+                                            <option :value="item.machineId" v-for="(item,index) in  accessControlInoutInfo.accessControls">{{item.machineName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" :placeholder="vc.i18n('请填写用户名称','accessControlInout')" v-model="accessControlInoutInfo.conditions.name" class=" form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" :placeholder="vc.i18n('请填写手机号','accessControlInout')" v-model="accessControlInoutInfo.conditions.tel" class=" form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <select class="form-control form-control  inline" v-model="accessControlInoutInfo.conditions.state">
+                                            <option selected value="">请选择开门状态</option>
+                                            <option value="C">开门成功</option>
+                                            <option value="F">开门失败</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <button type="button" class="btn btn-primary btn-sm" v-on:click="_queryAccessControlInoutMethod()">
+                                            <vc:i18n name="查询"></vc:i18n>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" :placeholder="vc.i18n('请输入开始时间','accessControlInout')"
+                                            v-model="accessControlInoutInfo.conditions.queryStartTime"
+                                            class=" form-control queryStartTime">
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <input type="text" :placeholder="vc.i18n('请输入结束时间','accessControlInout')"
+                                            v-model="accessControlInoutInfo.conditions.queryEndTime"
+                                            class=" form-control queryEndTime">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-title">
+                            <h5>
+                                <vc:i18n name="进出记录" namespace="accessControlInout"></vc:i18n>
+                            </h5>
+                            <div class="ibox-tools" style="top:10px;">
+
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+
+                            <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <vc:i18n name='人脸' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='编号' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='设备名称' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='设备编码' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='用户名称' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='开门方式' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='手机号' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='用户身份证' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+
+                                        <th class="text-center">
+                                            <vc:i18n name='相似度' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='开门状态' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                        <th class="text-center">
+                                            <vc:i18n name='开门时间' namespace='accessControlInout'></vc:i18n>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="accessControlInout in accessControlInoutInfo.accessControlInouts">
+                                        <td class="text-center" style="white-space: nowrap;">
+                                            <img style="width: 60px; height: 60px;" class="border-radius" v-if="accessControlInout.facePath" v-bind:src="accessControlInout.facePath" v-on:click="_viewOwnerFace(accessControlInout.facePath)" />
+                                            <img style="width: 60px; height: 60px;" class="border-radius" v-else src="/img/noPhoto.jpg" />
+                                        </td>
+                                        <td class="text-center">{{accessControlInout.inoutId}}</td>
+                                        <td class="text-center">{{accessControlInout.machineName}}</td>
+                                        <td class="text-center">{{accessControlInout.machineCode}}</td>
+                                        <td class="text-center">{{accessControlInout.name}}</td>
+                                        <td class="text-center">{{accessControlInout.openTypeCd == '1000'?'人脸':'其他'}}</td>
+                                        <td class="text-center">{{accessControlInout.tel || '-'}}</td>
+                                        <td class="text-center">{{accessControlInout.idCard || '-'}}</td>
+                                        <td class="text-center">{{accessControlInout.similar}}</td>
+                                        <td class="text-center">{{accessControlInout.state == 'C'?'开门成功':'开门失败'}}</td>
+                                        <td class="text-center">{{accessControlInout.createTime}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- 分页 -->
+                            <vc:create path="frame/pagination"></vc:create>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

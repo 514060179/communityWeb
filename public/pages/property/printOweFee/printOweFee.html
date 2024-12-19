@@ -1,8 +1,10 @@
+<script src="/vcCore/vc-lang.js"></script>
+
 <div>
     <div>
         <div>
             <div class=" text-center">
-                <h1>{{printPayFeeInfo.printName}}缴费通知单</h1>
+                <h1>{{printPayFeeInfo.printName}}<vc:i18n name="缴费通知单" namespace="printOweFee"></vc:i18n></h1>
                 <h3></h3>
             </div>
             <div class="row margin-top" style="color:#000;font-size:14px">
@@ -53,7 +55,7 @@
                         <td class="text-center" v-else> {{vc.dateFormat(item.endTime)}}<span>
                             <vc:i18n name="至" namespace="printOweFee"></vc:i18n></span> {{_getDeadlineTime(item)}}
                         </td>
-                        <td class="text-center"><span><vc:i18n name="元" namespace="printOweFee"></vc:i18n></span></td>
+                        <td class="text-center"><span><vc:i18n name="MOP" namespace="printOweFee"></vc:i18n></span></td>
                         <td class="text-center" v-if="item.preDegrees">{{(item.curDegrees-item.preDegrees).toFixed(2)}}</td>
                         <td class="text-center" v-else>{{printPayFeeInfo.builtUpArea}}</td>
                         <td class="text-center" v-if="item.preDegrees && item.mwPrice > 0">{{item.mwPrice}}</td>
@@ -61,7 +63,7 @@
                         <td class="text-center">{{item.feeTotalPrice}}</td>
                     </tr>
                     <tr>
-                        <td colspan="1" class="text-center "><span><vc:i18n name="大写人民币" namespace="printOweFee"></vc:i18n></span>（元）</td>
+                        <td colspan="1" class="text-center "><span><vc:i18n name="澳门币" namespace="printOweFee"></vc:i18n></span>（MOP）</td>
                         <td colspan="4" class="text-center ">{{vc.changeNumMoneyToChinese(printPayFeeInfo.feePrices)}}
                         </td>
                         <td colspan="4" class="text-center ">{{printPayFeeInfo.feePrices}}</td>

@@ -5,7 +5,7 @@
                 <div class="margin-xs-r  treeview ">
                     <ul class="list-group text-center border-radius">
                         <li class="list-group-item node-orgTree " v-for="(item,index) in accessControlInoutInfo.openTypeCds" :key="index" @click="swatchOpenTypeCd(item)" :class="{'vc-node-selected':accessControlInoutInfo.conditions.openTypeCd == item.openTypeCd}">
-                            {{item.openTypeName}}
+                            {{vc.i18n(item.openTypeName,'accessControlInout')}}
                         </li>
                     </ul>
                 </div>
@@ -25,7 +25,7 @@
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <select class="form-control form-control  inline" v-model="accessControlInoutInfo.conditions.machineId">
-                                            <option selected value="">请选择门禁</option>
+                                            <option selected value="">{{vc.i18n('请选择门禁','accessControlInout')}}</option>
                                             <option :value="item.machineId" v-for="(item,index) in  accessControlInoutInfo.accessControls">{{item.machineName}}</option>
                                         </select>
                                     </div>
@@ -43,9 +43,9 @@
                                 <div class="col-sm-2">
                                     <div class="form-group">
                                         <select class="form-control form-control  inline" v-model="accessControlInoutInfo.conditions.state">
-                                            <option selected value="">请选择开门状态</option>
-                                            <option value="C">开门成功</option>
-                                            <option value="F">开门失败</option>
+                                            <option selected value="">{{vc.i18n('请选择开门状态','accessControlInout')}}</option>
+                                            <option value="C">{{vc.i18n('开门成功','accessControlInout')}}</option>
+                                            <option value="F">{{vc.i18n('开门失败','accessControlInout')}}</option>
                                         </select>
                                     </div>
                                 </div>

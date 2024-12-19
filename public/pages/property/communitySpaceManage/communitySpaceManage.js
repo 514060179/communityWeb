@@ -23,6 +23,7 @@
             }
         },
         _initMethod: function () {
+            $that.communitySpaceManageInfo.conditions.venueId = '';
             $that._listCommunityVenues();
             vc.component._listCommunitySpaces(DEFAULT_PAGE, DEFAULT_ROWS);
         },
@@ -46,6 +47,7 @@
                 };
                 param.params.spaceId = param.params.spaceId.trim();
                 param.params.name = param.params.name.trim();
+                param.params.venueId = '';
                 //发送get请求
                 vc.http.apiGet('/communitySpace.listCommunitySpace',
                     param,
@@ -74,25 +76,25 @@
                     }
                 };
                 //发送get请求
-                vc.http.apiGet('/communityVenue.listCommunityVenue',
-                    param,
-                    function (json, res) {
-                        let _communityVenue = JSON.parse(json);
-                        $that.communitySpaceManageInfo.venues = _communityVenue.data;
-                        if (_communityVenue.data && _communityVenue.data.length > 0) {
-                            $that.swatchVenue(_communityVenue.data[0]);
-                        }
-                    },
-                    function (errInfo, error) {
-                        console.log('请求失败处理');
-                    }
-                );
+                // vc.http.apiGet('/communityVenue.listCommunityVenue',
+                //     param,
+                //     function (json, res) {
+                //         let _communityVenue = JSON.parse(json);
+                //         $that.communitySpaceManageInfo.venues = _communityVenue.data;
+                //         if (_communityVenue.data && _communityVenue.data.length > 0) {
+                //             $that.swatchVenue(_communityVenue.data[0]);
+                //         }
+                //     },
+                //     function (errInfo, error) {
+                //         console.log('请求失败处理');
+                //     }
+                // );
             },
             _openAddCommunitySpaceModal: function () {
-                if (!$that.communitySpaceManageInfo.conditions.venueId) {
-                    vc.toast('未选择场馆');
-                    return;
-                }
+                // if (!$that.communitySpaceManageInfo.conditions.venueId) {
+                //     vc.toast('未选择场馆');
+                //     return;
+                // }
                 vc.emit('addCommunitySpace', 'openAddCommunitySpaceModal', {
                     venueId: $that.communitySpaceManageInfo.conditions.venueId
                 });
@@ -121,19 +123,19 @@
                 vc.emit('addCommunityVenue', 'openAddCommunityVenueModal', {});
             },
             _openEditCommunityVenueModel: function (_communityVenue) {
-                if (!$that.communitySpaceManageInfo.conditions.venueId) {
-                    vc.toast('未选择场馆');
-                    return;
-                }
+                // if (!$that.communitySpaceManageInfo.conditions.venueId) {
+                //     vc.toast('未选择场馆');
+                //     return;
+                // }
                 vc.emit('editCommunityVenue', 'openEditCommunityVenueModal', {
                     venueId: $that.communitySpaceManageInfo.conditions.venueId
                 });
             },
             _openDeleteCommunityVenueModel: function (_communityVenue) {
-                if (!$that.communitySpaceManageInfo.conditions.venueId) {
-                    vc.toast('未选择场馆');
-                    return;
-                }
+                // if (!$that.communitySpaceManageInfo.conditions.venueId) {
+                //     vc.toast('未选择场馆');
+                //     return;
+                // }
                 vc.emit('deleteCommunityVenue', 'openDeleteCommunityVenueModal', {
                     venueId: $that.communitySpaceManageInfo.conditions.venueId
                 });

@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{reportPayFeeDepositInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{reportPayFeeDepositInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -32,10 +32,10 @@
                             <div class="form-group">
                                 <select class="form-control-md form-control input-s-sm inline"
                                         v-model="reportPayFeeDepositInfo.conditions.unitId">
-                                    <option selected value="">{{vc.i18n('请选择单元','reportPayFeeDeposit')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择座','reportPayFeeDeposit')}}</option>
                                     <option v-for="(unit,index) in reportPayFeeDepositInfo.roomUnits" :key="index"
                                             v-bind:value="unit.unitId">
-                                        {{unit.unitNum}}{{vc.i18n('单元','reportPayFeeDeposit')}}
+                                        {{unit.unitNum}}{{vc.i18n('座','reportPayFeeDeposit')}}
                                     </option>
                                 </select>
                             </div>
@@ -236,51 +236,51 @@
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="未收费" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.unpaidfeeAmount}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="未收费" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.unpaidfeeAmounts}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="已收费" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.paidfeeAmount}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="已收费" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.paidfeeAmounts}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="已退费" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.refundedAmount}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="已退费" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.refundedAmounts}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="退费中" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.refundInProgressAmount}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="退费中" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.refundInProgressAmounts}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="退费失败" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.refundFailedAmount}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="退费失败" namespace="reportPayFeeDeposit"></vc:i18n></span>: {{reportPayFeeDepositInfo.sumTotal.refundFailedAmounts}}
-                                <span><vc:i18n name="元" namespace="reportPayFeeDeposit"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPayFeeDeposit"></vc:i18n></span>
                             </div>
                         </span>
                     </div>

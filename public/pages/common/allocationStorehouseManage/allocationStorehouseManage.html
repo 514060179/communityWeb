@@ -8,7 +8,7 @@
                             v-for="(item,index) in allocationStorehouseManageInfo.states" :key="index"
                             @click="swatchState(item)"
                             :class="{'vc-node-selected':allocationStorehouseManageInfo.conditions.state == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'allocationStorehouseManage')}}
                         </li>
                     </ul>
                 </div>
@@ -40,7 +40,7 @@
                                             {{vc.i18n('请选择类型','allocationStorehouseManage')}}
                                         </option>
                                         <option v-for="(item,index) in allocationStorehouseManageInfo.applyTypes"
-                                                :key="index" :value="item.statusCd">{{item.name}}
+                                                :key="index" :value="item.statusCd">{{vc.i18n(item.name, 'allocationStorehouseManage')}}
                                         </option>
                                     </select>
                                 </div>

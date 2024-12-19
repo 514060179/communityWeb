@@ -9,9 +9,11 @@
                 <div class="role-context ">{{couponRuleInfo.curCouponRule.remark}}</div>
                 <div class="line-x margin-top"></div>
                 <div class="role-menu flex justify-start">
-                    <div class="item margin-right" :class="{'active':couponRuleInfo.tabName == 'couponRuleCpps'}"  @click="_changeCouponRuleTab('couponRuleCpps')">优惠券
+                    <div class="item margin-right" :class="{'active':couponRuleInfo.tabName == 'couponRuleCpps'}"  @click="_changeCouponRuleTab('couponRuleCpps')">
+                        {{vc.i18n('优惠券','couponRule')}}
                     </div>
-                    <div class="item margin-right" :class="{'active':couponRuleInfo.tabName == 'couponRuleFee'}"  @click="_changeCouponRuleTab('couponRuleFee')">缴费赠送
+                    <div class="item margin-right" :class="{'active':couponRuleInfo.tabName == 'couponRuleFee'}"  @click="_changeCouponRuleTab('couponRuleFee')">
+                         {{vc.i18n('缴费赠送','couponRule')}}
                     </div>
                 </div>
                 <div v-if="couponRuleInfo.tabName == 'couponRuleCpps' ">

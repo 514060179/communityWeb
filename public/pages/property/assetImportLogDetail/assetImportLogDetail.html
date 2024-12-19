@@ -54,7 +54,8 @@
                                         </td>
                                         <td class="text-center">{{log.createTime}}</td>
                                         <td class="text-center" v-if="log.state == 'W'">待导入</td>
-                                        <td class="text-center" v-else-if="log.state == 'C'">成功</td>
+                                        <td class="text-center"
+                                            v-else-if="log.state === 'C' || log.message === '导入成功'">成功</td>
                                         <td class="text-center" v-else>失败</td>
                                         <td class="text-center">
                                             <div class="textAuto" style="max-width: 200px;">

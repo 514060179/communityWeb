@@ -18,10 +18,10 @@
                         </div>
                         <div class="col-sm-2">
                             <select class="custom-select" v-model="resourceAuditFlowInfo.conditions.auditType">
-                                <option selected value="">请选择流程类型</option>
-                                <option value="10001">采购流程</option>
-                                <option value="10002">领用流程</option>
-                                <option value="10003">调拨流程</option>
+                                <option selected value="">{{vc.i18n('请选择流程类型','resourceAuditFlow')}}</option>
+                                <option value="10001">{{vc.i18n('采购流程','resourceAuditFlow')}}</option>
+                                <option value="10002">{{vc.i18n('领用流程','resourceAuditFlow')}}</option>
+                                <option value="10003">{{vc.i18n('调拨流程','resourceAuditFlow')}}</option>
                             </select>
                         </div>
                         <div class="col-sm-2">
@@ -79,7 +79,7 @@
                                 <vc:i18n name='备注' namespace='resourceAuditFlow'></vc:i18n>
                             </th>
                             <th class="text-center">
-                                <vc:i18n name='操作' namespace='resourceAuditFlow'></vc:i18n>
+                                <vc:i18n name='操作' ></vc:i18n>
                             </th>
                         </tr>
                         </thead>

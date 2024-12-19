@@ -34,23 +34,23 @@
                         </div>
                         <div class="col-sm-2">
                             <select class="custom-select" v-model="carInoutManageInfo.conditions.state">
-                                <option selected value="">{{vc.i18n('请选择车辆状态','carInoutManage')}}</option>
-                                <option value="100300">{{vc.i18n('进场状态','carInoutManage')}}</option>
-                                <option value="100400">{{vc.i18n('支付完成','carInoutManage')}}</option>
-                                <option value="100500">{{vc.i18n('离场状态','carInoutManage')}}</option>
-                                <option value="100600">{{vc.i18n('支付超时重新支付','carInoutManage')}}</option>
+<!--                                <option selected value="">{{vc.i18n('请选择车辆状态','carInoutManage')}}</option>-->
+<!--                                <option value="100300">{{vc.i18n('进场状态','carInoutManage')}}</option>-->
+<!--                                <option value="100400">{{vc.i18n('支付完成','carInoutManage')}}</option>-->
+                                <option selected value="100500">{{vc.i18n('离场状态','carInoutManage')}}</option>
+<!--                                <option value="100600">{{vc.i18n('支付超时重新支付','carInoutManage')}}</option>-->
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <select class="custom-select" v-model="carInoutManageInfo.conditions.carType">
-                                <option selected value="">{{vc.i18n('请选择车牌类型','carInoutManage')}}</option>
-                                <option value="T">{{vc.i18n('临时车','carInoutManage')}}</option>
-                                <option value="S">{{vc.i18n('出售车辆','carInoutManage')}}</option>
-                                <option value="H">{{vc.i18n('月租车','carInoutManage')}}</option>
-                                <option value="W">{{vc.i18n('白名单','carInoutManage')}}</option>
-                                <option value="B">{{vc.i18n('黑名单','carInoutManage')}}</option>
-                                <option value="I">{{vc.i18n('内部车','carInoutManage')}}</option>
-                                <option value="NM">{{vc.i18n('免费车','carInoutManage')}}</option>
+<!--                                <option selected value="">{{vc.i18n('请选择车牌类型','carInoutManage')}}</option>-->
+<!--                                <option value="T">{{vc.i18n('临时车','carInoutManage')}}</option>-->
+<!--                                <option value="S">{{vc.i18n('出售车辆','carInoutManage')}}</option>-->
+                                <option selected value="H">{{vc.i18n('月租车','carInoutManage')}}</option>
+<!--                                <option value="W">{{vc.i18n('白名单','carInoutManage')}}</option>-->
+<!--                                <option value="B">{{vc.i18n('黑名单','carInoutManage')}}</option>-->
+<!--                                <option value="I">{{vc.i18n('内部车','carInoutManage')}}</option>-->
+<!--                                <option value="NM">{{vc.i18n('免费车','carInoutManage')}}</option>-->
                             </select>
                         </div>
                         <div class="col-sm-2">
@@ -106,9 +106,9 @@
                                 <th class="text-center">
                                     <vc:i18n name="停车场" namespace="carInoutManage"></vc:i18n>
                                 </th>
-                                <th class="text-center">
-                                    <vc:i18n name="计费规则" namespace="carInoutManage"></vc:i18n>
-                                </th>
+<!--                                <th class="text-center">-->
+<!--                                    <vc:i18n name="计费规则" namespace="carInoutManage"></vc:i18n>-->
+<!--                                </th>-->
                                 <th class="text-center">
                                     <vc:i18n name="车牌类型" namespace="carInoutManage"></vc:i18n>
                                 </th>
@@ -121,9 +121,9 @@
                                 <th class="text-center">
                                     <vc:i18n name="停车时间" namespace="carInoutManage"></vc:i18n>
                                 </th>
-                                <th class="text-center">
-                                    <vc:i18n name="收费金额" namespace="carInoutManage"></vc:i18n>
-                                </th>
+<!--                                <th class="text-center">-->
+<!--                                    <vc:i18n name="收费金额" namespace="carInoutManage"></vc:i18n>-->
+<!--                                </th>-->
                                 <th class="text-center">
                                     <vc:i18n name="说明" namespace="carInoutManage"></vc:i18n>
                                 </th>
@@ -138,19 +138,20 @@
                                         src="/img/noPhoto.jpg" />
                                 </td>
                                 <td class="text-center">{{carIn.inoutId}}</td>
-                                <td class="text-center">{{carIn.carInout == '3306'?'进场':'出场'}}({{carIn.stateName}})
+                                <td class="text-center">{{carIn.carInout == '3306'?'进场':'出场'}}({{carIn.areaNum}})
                                 </td>
                                 <td class="text-center">{{carIn.carNum}}
                                 </td>
-                                <td class="text-center">{{carIn.paNum}}</td>
-                                <td class="text-center">
-                                    {{carIn.feeName}}
-                                </td>
+                                <td class="text-center">{{carIn.areaNum}}</td>
+<!--                                <td class="text-center">-->
+<!--                                    {{carIn.feeName}}-->
+<!--                                </td>-->
                                 <td class="text-center">{{carIn.carTypeName}}</td>
                                 <td class="text-center">{{carIn.inTime}}</td>
                                 <td class="text-center" v-if="carIn.carInout != '3307'">-</td>
                                 <td class="text-center" v-else>{{carIn.outTime}}</td>
-                                <td class="text-center">{{carIn.hours}}
+                                <td class="text-center" v-if="carIn.carInout != '3307'">-</td>
+                                <td class="text-center" v-else>{{carIn.hours}}
                                     <span>
                                         <vc:i18n name="小时" namespace="carInoutManage"></vc:i18n>
                                     </span>{{carIn.min}}
@@ -158,20 +159,23 @@
                                         <vc:i18n name="分" namespace="carInoutManage"></vc:i18n>
                                     </span>
                                 </td>
-                                <td class="text-center" v-if="carIn.carType != 'T'">-</td>
+<!--                                <td class="text-center" v-if="carIn.carType != 'T'">-</td>-->
                                 <!-- <td class="text-center" v-else-if="carIn.carInout != '3307">{{carIn.payCharge}}</td> -->
                                 <!-- <td class="text-center" v-else>{{carIn.realCharge}}</td> -->
-                                <td class="text-center" v-else>{{carIn.payCharge}}
-                                    <span
-                                        v-if="carIn.inState == '100300' || carIn.inState == '100400' ||  carIn.inState == '100600'">
-                                        (<a href="javascript:void(0)" @click="_carInoutTempCarPayFee(carIn)">出场</a>)
-                                    </span>
-                                </td>
+                                <!-- update by fengtianying start-->
+<!--                                <td class="text-center" v-else>{{carIn.payCharge}}-->
+<!--                                    <span-->
+<!--                                        v-if="carIn.inState == '100300' || carIn.inState == '100400' ||  carIn.inState == '100600'">-->
+<!--                                        (<a href="javascript:void(0)" @click="_carInoutTempCarPayFee(carIn)">出场</a>)-->
+<!--                                    </span>-->
+<!--                                </td>-->
+                                <!-- update by fengtianying end-->
                                 <td class="text-center">{{carIn.remark}}</td>
                         </tbody>
                     </table>
                     <!-- 分页 -->
                     <vc:create path="frame/pagination"></vc:create>
+                    <vc:create path="common/viewImage"></vc:create>
                 </div>
             </div>
         </div>

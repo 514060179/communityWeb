@@ -1,0 +1,112 @@
+<div id="searchAccessCardModel" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="searchAccessCardModelLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="searchAccessCardModelLabel">
+                    <span><vc:i18n name="选择门禁卡" namespace="searchAccessCard"></vc:i18n></span>
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox ">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <input :placeholder="vc.i18n('输入卡面卡号','searchAccessCard')" type="text"
+                                           v-model="searchAccessCardInfo.faceCardNumber"
+                                           class="form-control form-control-sm">
+                                </div>
+                                <div class="col-sm-5">
+                                    <input :placeholder="vc.i18n('输入卡芯卡号','searchAccessCard')" type="text"
+                                           v-model="searchAccessCardInfo.cardNumber"
+                                           class="form-control form-control-sm">
+                                </div>
+                                <div class="col-sm-2 -align-right">
+                                    <button type="button" class="btn btn-sm btn-primary"
+                                            v-on:click="searchAccessCards()">
+                                        <span><vc:i18n name="查询" namespace="searchAccessCard"></vc:i18n></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive" style="margin-top:15px">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <input type="checkbox" class="i-checks" @click="checkAll($event)">
+                                        </th>
+                                        <th class="text-center">
+                                            <span><vc:i18n name="编号" namespace="searchAccessCard"></vc:i18n></span>
+                                        </th>
+                                        <th class="text-center">
+                                            <label @click="sortByField('face_card_number')">
+                                                <span><vc:i18n name="卡面卡号" namespace="searchAccessCard"></vc:i18n></span>
+                                                <i class="fa fa-sort"></i>
+                                            </label>
+                                        </th>
+                                        <th class="text-center">
+                                            <label @click="sortByField('card_number')">
+                                                <span><vc:i18n name="卡芯卡号" namespace="searchAccessCard"></vc:i18n></span>
+                                                <i class="fa fa-sort"></i>
+                                            </label>
+                                        </th>
+                                        <th class="text-center">
+                                            <span><vc:i18n name="备注" namespace="searchAccessCard"></vc:i18n></span>
+                                        </th>
+                                        <th class="text-center">
+                                            <span><vc:i18n name="操作" namespace="searchAccessCard"></vc:i18n></span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="card in searchAccessCardInfo.accessCards">
+                                        <td class="text-center">
+                                            <input type="checkbox" class="i-checks checkItem"
+                                                   v-bind:value="card.cardNumber"
+                                                   v-model="searchAccessCardInfo.selectedCards">
+                                        </td>
+                                        <td class="text-center">
+                                            {{card.cardId}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{card.faceCardNumber}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{card.cardNumber}}
+                                        </td>
+                                        <td class="text-center">
+                                            {{card.remark}}
+                                        </td>
+                                        <td class="text-center">
+                                            <button class="btn btn-primary btn-xs" v-on:click="chooseAccessCard(card)">
+                                                <span><vc:i18n name="选择" namespace="searchAccessCard"></vc:i18n></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <vc:create namespace="searchAccessCard" path="frame/paginationPlus"></vc:create>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <button class="btn btn-primary float-right" type="button"
+                            v-on:click="_confirmChoose()">
+                        <i class="fa fa-check"></i>&nbsp;保存
+                    </button>
+                    <button type="button" class="btn btn-warning float-right" style="margin-right:20px;"
+                            data-dismiss="modal">
+                        <span><vc:i18n name="取消" namespace="searchAccessCard"></vc:i18n></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

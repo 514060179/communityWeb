@@ -24,10 +24,12 @@
                     roomId: '',
                     roomName: '',
                     memberName: '',
-                    memberLink: ''
+                    memberLink: '',
                 },
                 currentPage: DEFAULT_PAGE,
-                listColumns: []
+                listColumns: [],
+                selectMemberIds: [],
+                selectAll: false
             }
         },
         _initMethod: function () {
@@ -46,6 +48,8 @@
             });
             vc.on('pagination', 'page_event', function (_currentPage) {
                 $that.listOwnerInfo.currentPage = _currentPage;
+                $that.listOwnerInfo.selectAll = false;
+                $that.listOwnerInfo.selectMemberIds = [];
                 $that._listOwnerData(_currentPage, DEFAULT_ROWS);
             });
             vc.on('listOwner', 'chooseRoom', function (_room) {
@@ -72,6 +76,57 @@
             });
         },
         methods: {
+            _listOwnerSelectChange: function () {
+                if ($that.listOwnerInfo.selectMemberIds.length === $that.listOwnerInfo.owners.length) {
+                    let list = $that.listOwnerInfo.owners.map((v) => v.memberId).sort()
+                    let selectList = $that.listOwnerInfo.selectMemberIds.sort()
+                    $that.listOwnerInfo.selectAll = !list.some((v, i) => v !== selectList[i])
+                } else {
+                    $that.listOwnerInfo.selectAll = false
+                }
+            },
+            // 选中全部
+            _listOwnerSelectAllChange: function () {
+                if ($that.listOwnerInfo.selectAll) {
+                    $that.listOwnerInfo.selectMemberIds = $that.listOwnerInfo.owners.map((v) => v.memberId)
+                } else {
+                    $that.listOwnerInfo.selectMemberIds = []
+                }
+            },
+            // 导出
+            _exportListOwner: function (type) {
+                vc.component.listOwnerInfo.conditions.communityId = vc.getCurrentCommunity().communityId;
+                vc.component.listOwnerInfo.conditions.pagePath = 'listOwnerExport';
+                let ids = vc.component.listOwnerInfo.selectMemberIds.join(',');
+                // 全选则传空列表
+                if (type === 'all') {
+                    ids = null;
+                } else {
+                    if (!vc.component.listOwnerInfo.selectMemberIds.length) {
+                        vc.toast("请选择要导出的业主");
+                        return
+                    }
+                }
+
+                let param = {
+                    params: Object.assign({}, vc.component.listOwnerInfo.conditions, { ids })
+                };
+                //发送get请求
+                vc.http.apiGet(
+                    '/export.exportData',
+                    param,
+                    function (json, res) {
+                        let _json = JSON.parse(json);
+                        vc.toast(_json.msg);
+                        if (_json.code == 0) {
+                            vc.jumpToPage('/#/pages/property/downloadTempFile?tab=下载中心')
+                        }
+                    },
+                    function (errInfo, error) {
+                        console.log('请求失败处理');
+                    }
+                );
+            },
             _listOwnerData: function (_page, _row) {
                 $that.listOwnerInfo.conditions.page = _page;
                 $that.listOwnerInfo.conditions.row = _row;
@@ -110,6 +165,9 @@
                 vc.emit('addOwner', 'openAddOwnerModal', -1);
                 $that.listOwnerInfo.moreCondition = false;
             },
+            _openImportOwnerInfo: function () {
+                vc.emit('importOwnerInfo', 'openImportOwnerInfoModal', {})
+            },
             _openDelOwnerModel: function (_owner) { // 打开删除对话框
                 vc.emit('deleteOwner', 'openOwnerModel', _owner);
                 $that.listOwnerInfo.moreCondition = false;
@@ -144,6 +202,9 @@
             },
             _openOwnerDetailModel: function (_owner) {
                 vc.jumpToPage("/#/pages/owner/ownerDetail?ownerId=" + _owner.ownerId + "&ownerName=" + _owner.name + "&needBack=true");
+            },
+            _openOwnerAccessControlModel: function (_owner) {
+                vc.jumpToPage("/#/pages/accessControl/accessControlPerson?ownerId=" + _owner.ownerId + "&ownerName=" + _owner.name + "&needBack=true");
             },
             _openDeleteOwnerRoom: function (_owner) {
                 vc.jumpToPage("/#/pages/property/deleteOwnerRoom?ownerId=" + _owner.ownerId);

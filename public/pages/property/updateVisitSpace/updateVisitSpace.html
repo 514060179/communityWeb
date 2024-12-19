@@ -94,7 +94,7 @@
                         <select class="custom-select" v-model="updateVisitSpaceInfo.reasonType">
                             <option selected disabled value="">{{vc.i18n('必填，请选择事由类型','updateVisitSpace')}}</option>
                             <option v-for="(item,index) in updateVisitSpaceInfo.reasonTypes" :key="index"
-                                    :value="item.statusCd">{{item.name}}
+                                    :value="item.statusCd">{{vc.i18n(item.name, 'updateVisitSpace')}}
                             </option>
                         </select>
                     </div>

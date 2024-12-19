@@ -18,8 +18,13 @@
                 value: '',
                 ownerId: '',
                 ownerName: '',
+                areaNum: '',
                 psId: '',
                 psName: '',
+                payType: undefined,
+                balanceMoney: '',
+                feeConfigs: [],
+                configId: undefined,        //收费专享 A B C
                 carTypes: [
                     {
                         key: '9901',
@@ -34,6 +39,11 @@
                         value: '货车'
                     }
                 ]
+            },
+            hireParkingAreaInfo: {
+                num: '',
+                typeCd: '',
+                paId: '',
             }
         },
         _initMethod: function () {
@@ -52,6 +62,7 @@
                 $that.hireParkingSpaceInfo.endTime = _value;
             });
             $that._loadCarAttrSpec();
+            $that.listFeeConfigs();
         },
         _initEvent: function () {
             vc.on('hireParkingSpace', 'chooseOwner', function (_owner) {
@@ -62,8 +73,36 @@
                 vc.copyObject(_parkingSpace, vc.component.hireParkingSpaceInfo);
                 $that.hireParkingSpaceInfo.psName = _parkingSpace.areaNum + "-" + _parkingSpace.num;
             });
+            vc.on('hireParkingSpace', 'chooseParkingArea', function (_parkingArea) {
+
+                vc.copyObject(_parkingArea, vc.component.hireParkingAreaInfo);
+                $that.hireParkingSpaceInfo.areaNum = _parkingArea.num;
+            });
+
         },
         methods: {
+            //选择不同的
+            listFeeConfigs: function(_feeTypeCd) {
+                var param = {
+                    params: {
+                        page: 1,
+                        row: 20,
+                        communityId: vc.getCurrentCommunity().communityId,
+                        feeTypeCd: "888800010008",  //TODO 停车费类型 暂时写死
+                        isDefault: 'F',
+                        valid: '1'
+                    }
+                };
+                //发送get请求
+                vc.http.apiGet('/feeConfig.listFeeConfigs', param,
+                    function(json, res) {
+                        var _feeConfigManageInfo = JSON.parse(json);
+                        vc.component.hireParkingSpaceInfo.feeConfigs = _feeConfigManageInfo.feeConfigs;
+                    },
+                    function(errInfo, error) {
+                        console.log('请求失败处理');
+                    });
+            },
             addCarValidate: function () {
                 return vc.validate.validate({
                     hireParkingSpaceInfo: vc.component.hireParkingSpaceInfo
@@ -131,6 +170,9 @@
             },
             openSearchParkingSpaceModel() {
                 vc.emit('searchParkingSpace', 'openSearchParkingSpaceModel', {});
+            },
+            openSearchParkingAreaModel() {
+                vc.emit('searchParkingArea', 'openSearchParkingAreaModel', {});
             },
             _changeLeaseType: function () {
                 $that.hireParkingSpaceInfo.startTime = '';

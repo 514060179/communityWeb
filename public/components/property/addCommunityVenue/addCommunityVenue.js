@@ -14,7 +14,6 @@
             }
         },
         _initMethod: function () {
-            //addSpaceStartTime
             vc.initHourMinute('addVenueStartTime', function (_value) {
                 $that.addCommunityVenueInfo.startTime = _value;
             });

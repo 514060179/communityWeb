@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <!--<button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{shopsInfo.moreCondition == true ? '隐藏' : '更多'}}
+                            {{shopsInfo.moreCondition == true ? vc.i18n('隐藏' ):vc.i18n('更多' )}}
                         </button>-->
                     </div>
                 </div>
@@ -137,11 +137,11 @@
                             </td>
                             <td class="text-center">
                                 {{shops.builtUpArea}}
-                                <span><vc:i18n name="平方米" namespace="shops"></vc:i18n></span>
+                                <span><vc:i18n name="尺" namespace="shops"></vc:i18n></span>
                             </td>
                             <td class="text-center">
                                 {{shops.roomArea}}
-                                <span><vc:i18n name="平方米" namespace="shops"></vc:i18n></span>
+                                <span><vc:i18n name="尺" namespace="shops"></vc:i18n></span>
                             </td>
                             <td class="text-center">
                                 {{shops.startTime}}

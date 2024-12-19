@@ -17,7 +17,7 @@
                                 <option disabled selected value="">{{vc.i18n('请选择小区','parkingFeeLedger')}}</option>
                                 <option v-for="(item,index) in parkingFeeLedgerInfo.communitys" :key="index"
                                         v-bind:value="item.communityId">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'parkingFeeLedger')}}
                                 </option>
                             </select>
                         </div>

@@ -35,54 +35,67 @@
                 return vc.validate.validate({
                     addStaffInfo: vc.component.addStaffInfo
                 }, {
-                    'addStaffInfo.username': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "员工名称不能为空"
-                    },
+                    'addStaffInfo.username': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "员工名称不能为空"
+                        },
                         {
                             limit: "maxin",
-                            param: "2,10",
-                            errInfo: "员工名称长度必须在2位至10位"
-                        },
+                            param: "2,100",
+                            errInfo: "员工名称长度必须在2位至100位"
+                        }
                     ],
-                    'addStaffInfo.sex': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "员工性别不能为空"
-                    }],
-                    'addStaffInfo.relCd': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "员工岗位不能为空"
-                    },
+                    'addStaffInfo.sex': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "员工性别不能为空"
+                        }
+                    ],
+                    'addStaffInfo.relCd': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "员工岗位不能为空"
+                        },
                         {
                             limit: "num",
                             param: "",
                             errInfo: "员工岗位错误"
-                        },
+                        }
                     ],
-                    'addStaffInfo.tel': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "联系方式不能为空"
-                    }],
-                    'addStaffInfo.address': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "家庭住址不能为空"
-                    },
+                    'addStaffInfo.tel': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "联系方式不能为空"
+                        },
+                        {
+                            limit: "phone",
+                            param: "",
+                            errInfo: "不是有效的手机号"
+                        }
+                    ],
+                    'addStaffInfo.address': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "家庭住址不能为空"
+                        },
                         {
                             limit: "maxLength",
                             param: "200",
                             errInfo: "家庭住址不能超过200位"
-                        },
+                        }
                     ],
-                    'addStaffInfo.orgId': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "关联组织不能为空"
-                    }
+                    'addStaffInfo.orgId': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "关联组织不能为空"
+                        }
                     ]
                 });
             },

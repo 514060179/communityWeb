@@ -66,7 +66,7 @@
                                     <vc:i18n name="停车场类型" namespace="parkingAreaManage"></vc:i18n>
                                 </th>
                                 <th v-for="(item,index) in parkingAreaManageInfo.listColumns" class="text-center">
-                                    {{item.specName}}
+                                    {{vc.i18n(item.specName,'parkingAreaManage')}}
                                 </th>
                                 <th class="text-center">
                                     <vc:i18n name="备注" namespace="parkingAreaManage"></vc:i18n>
@@ -90,7 +90,7 @@
                                     {{vc.i18n('地下停车场','parkingAreaManage')}}
                                 </td>
                                 <td v-for="item in parkingArea.listValues" class="text-center">
-                                    {{item}}
+                                    {{vc.i18n(item,'parkingAreaManage')}}
                                 </td>
                                 <td class="text-center">
                                     {{parkingArea.remark}}

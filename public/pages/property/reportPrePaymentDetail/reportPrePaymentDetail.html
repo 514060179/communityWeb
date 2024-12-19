@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{reportPrePaymentDetailInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{reportPrePaymentDetailInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -154,10 +154,10 @@
                             <div class="form-group">
                                 <select class="form-control-md form-control input-s-sm inline"
                                         v-model="reportPrePaymentDetailInfo.conditions.unitId">
-                                    <option selected value="">{{vc.i18n('请选择单元','reportPrePaymentDetail')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择座','reportPrePaymentDetail')}}</option>
                                     <option v-for="(unit,index) in reportPrePaymentDetailInfo.roomUnits" :key="index"
                                             v-bind:value="unit.unitId">
-                                        {{unit.unitNum}}{{vc.i18n('单元','reportPrePaymentDetail')}}
+                                        {{unit.unitNum}}{{vc.i18n('座','reportPrePaymentDetail')}}
                                     </option>
                                 </select>
                             </div>
@@ -235,37 +235,37 @@
                                 <span><vc:i18n name="缴费时间" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="应缴金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="应缴金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="应收金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="应收金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="实收金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="实收金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="欠费金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="欠费金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="优惠金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="优惠金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="减免金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="减免金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="赠送金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="赠送金额" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="滞纳金" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="滞纳金" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="空置房打折" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="空置房打折" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="空置房减免" namespace="reportPrePaymentDetail"></vc:i18n></span>(元)
+                                <span><vc:i18n name="空置房减免" namespace="reportPrePaymentDetail"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="面积" namespace="reportPrePaymentDetail"></vc:i18n></span>(平方米)
+                                <span><vc:i18n name="面积" namespace="reportPrePaymentDetail"></vc:i18n></span>(尺)
                             </th>
                         </tr>
                         </thead>
@@ -324,101 +324,101 @@
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="应缴" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalPayableAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="应缴" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allPayableAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="应收" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalReceivableAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="应收" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allReceivableAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="实收" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="实收" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalOweAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allOweAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="优惠" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalPreferentialAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="优惠" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allPreferentialAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="减免" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalDeductionAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="减免" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allDeductionAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="赠送" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalGiftAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="赠送" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allGiftAmount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="滞纳金" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalLateFee}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="滞纳金" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allLateFee}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="空置房打折" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalVacantHousingDiscount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="空置房打折" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allVacantHousingDiscount}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="空置房减免" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.totalVacantHousingReduction}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="空置房减免" namespace="reportPrePaymentDetail"></vc:i18n></span>: {{reportPrePaymentDetailInfo.allVacantHousingReduction}}
-                                <span><vc:i18n name="元" namespace="reportPrePaymentDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportPrePaymentDetail"></vc:i18n></span>
                             </div>
                         </span>
                     </div>

@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{meterMachineManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{meterMachineManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <input type="text" :placeholder="vc.i18n('请填写房屋编号 楼栋-单元-房屋','meterMachineManage')"
+                                <input type="text" :placeholder="vc.i18n('请填写房屋编号 楼栋-座-房屋','meterMachineManage')"
                                     v-model="meterMachineManageInfo.conditions.roomNameLike" class=" form-control">
                             </div>
                         </div>

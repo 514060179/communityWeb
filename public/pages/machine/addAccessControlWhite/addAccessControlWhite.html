@@ -20,7 +20,7 @@
             <select class="custom-select" v-model="addAccessControlWhiteInfo.personType">
               <option selected value="">请选择人员类型</option>
               <option :value="item.statusCd" v-for="(item,index) in addAccessControlWhiteInfo.personTypes">
-                {{item.name}}
+                {{vc.i18n(item.name, 'addAccessControlWhite')}}
               </option>
             </select>
           </div>

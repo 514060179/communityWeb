@@ -17,7 +17,7 @@
                                 <option disabled selected value="">{{vc.i18n('请选择小区','propertyFeeLedger')}}</option>
                                 <option v-for="(item,index) in propertyFeeLedgerInfo.communitys" :key="index"
                                         v-bind:value="item.communityId">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'propertyFeeLedger')}}
                                 </option>
                             </select>
                         </div>
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="col-sm-2">
-                            <input size="16" type="text" :placeholder="vc.i18n('请填写房号 楼栋-单元-房号','propertyFeeLedger')"
+                            <input size="16" type="text" :placeholder="vc.i18n('请填写房号 楼栋-座-房号','propertyFeeLedger')"
                                 v-model="propertyFeeLedgerInfo.conditions.roomName" class="form-control">
                         </div>
                         <div class="col-sm-2">
@@ -134,22 +134,31 @@
                                     </th>					
                                     <template v-for="month in 12">
                                         <th class="text-center">
-                                            账单编号
+                                            {{vc.i18n('账单编号', 'propertyFeeLedger')}}
+                                            <vc:i18n name="账单编号" namespace="propertyFeeLedger"></vc:i18n>
                                         </th>
                                         <th class="text-center">
-                                            应收金额
+                                            {{vc.i18n('应收金额', 'propertyFeeLedger')}}
+                                            <vc:i18n name="应收金额" namespace="propertyFeeLedger"></vc:i18n>
+
                                         </th>
                                         <th class="text-center">
-                                            实收金额
+                                            {{vc.i18n('实收金额', 'propertyFeeLedger')}}
+                                            <vc:i18n name="实收金额" namespace="propertyFeeLedger"></vc:i18n>
+
                                         </th>
                                         <th class="text-center">
-                                           减免金额
+                                            {{vc.i18n('减免金额', 'propertyFeeLedger')}}
+                                            <vc:i18n name="减免金额" namespace="propertyFeeLedger"></vc:i18n>
+
                                         </th>
                                         <th class="text-center">
-                                            欠费金额
+                                            <vc:i18n name="欠费金额" namespace="propertyFeeLedger"></vc:i18n>
+
+                                            {{vc.i18n('欠费金额', 'propertyFeeLedger')}}
                                         </th>
                                         <th class="text-center">
-                                            缴费状态
+                                            {{vc.i18n('缴费状态', 'propertyFeeLedger')}}
                                         </th>
                                     </template>
                                 </tr>

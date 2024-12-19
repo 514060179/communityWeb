@@ -158,7 +158,7 @@
                             let _menuItem = {
                                 id: 'u_' + _units[_pIndex].unitId,
                                 unitId: _units[_pIndex].unitId,
-                                text: _units[_pIndex].unitNum + "单元",
+                                text: _units[_pIndex].unitNum + "座",
                                 icon: "/img/unit.png"
                             };
                             _children.push(_menuItem);

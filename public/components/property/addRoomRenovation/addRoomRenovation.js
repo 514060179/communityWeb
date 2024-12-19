@@ -303,7 +303,7 @@
                     param.params.unitNum = _allNums[1].trim();
                     param.params.roomNum = _allNums[2].trim();
                 } else {
-                    vc.toast('房屋填写格式错误，请填写 楼栋-单元-房屋格式')
+                    vc.toast('房屋填写格式错误，请填写 楼栋-座-房屋格式')
                     return;
                 }
                 //发送get请求

@@ -2,24 +2,24 @@
     <div class="row margin-top-lg">
         <div class="col-lg-3 padding-right-xs padding-left-xl">
             <div class="form-group">
-                <input type="text" :placeholder="vc.i18n('请输入编号','printerRuleMachine')"
+                <input type="text" :placeholder="vc.i18n('请输入编号','printerRule')"
                        v-model.trim="printerRuleMachineInfo.conditions.prmId" class=" form-control">
             </div>
         </div>
         <div class="col-lg-3 padding-right-xs padding-left-xl">
             <div class="form-group">
-                <input type="text" :placeholder="vc.i18n('请输入打印机名称','printerRuleMachine')"
+                <input type="text" :placeholder="vc.i18n('请输入打印机名称','printerRule')"
                        v-model.trim="printerRuleMachineInfo.conditions.machineName" class=" form-control">
             </div>
         </div>
         <div class="col-lg-3 padding-right-xs padding-right-xl " style="margin-top:5px">
             <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                     v-on:click="_queryPrinterRuleMachineMethod()">
-                <i class="fa fa-search"></i>查询
+                <i class="fa fa-search"></i>{{vc.i18n('查询','printerRule')}}
             </button>
             <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                     v-on:click="_resetPrinterRuleMachineMethod()">
-                <i class="fa fa-repeat"></i>重置
+                <i class="fa fa-repeat"></i>{{vc.i18n('重置','printerRule')}}
             </button>
             <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                     v-on:click="_openAddPrinterRuleMachineModal()">
@@ -33,13 +33,13 @@
             <thead>
             <tr>
                 <th class="text-center">
-                    <span><vc:i18n name='编号' namespace='printerRuleMachineManage'></vc:i18n></span>
+                    <span><vc:i18n name='编号' namespace='printerRule'></vc:i18n></span>
                 </th>
                 <th class="text-center">
-                    <span><vc:i18n name='打印机名称' namespace='printerRuleMachineManage'></vc:i18n></span>
+                    <span><vc:i18n name='打印机名称' namespace='printerRule'></vc:i18n></span>
                 </th>
                 <th class="text-center">
-                    <span><vc:i18n name='打印数量' namespace='printerRuleMachineManage'></vc:i18n></span>
+                    <span><vc:i18n name='打印数量' namespace='printerRule'></vc:i18n></span>
                 </th>
                 <th class="text-center">
                     <span><vc:i18n name='操作'></vc:i18n></span>

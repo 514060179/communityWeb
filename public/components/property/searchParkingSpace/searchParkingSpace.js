@@ -20,7 +20,7 @@
             }
         },
         _initMethod: function () {
-            $that._listSearchParkingAreas();
+            $that._listSearchParkingSpaceAreas();
         },
         _initEvent: function () {
             vc.on('searchParkingSpace', 'openSearchParkingSpaceModel', function (_param) {
@@ -84,6 +84,7 @@
             },
             _refreshSearchParkingSpaceData: function () {
                 vc.component.searchParkingSpaceInfo.num = "";
+                vc.component.searchParkingSpaceInfo.areaNum = $that.hireParkingSpaceInfo.areaNum;
             },
             _viewParkingSpaceState: function (state) {
                 if (state == 'F') {
@@ -96,7 +97,7 @@
                     return "未知";
                 }
             },
-            _listSearchParkingAreas: function () {
+            _listSearchParkingSpaceAreas: function () {
                 let param = {
                     params: {
                         page: 1,

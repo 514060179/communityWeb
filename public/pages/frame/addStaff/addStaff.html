@@ -12,11 +12,11 @@
                     <div class="col-sm-6">
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label text-center">
-                                <span><vc:i18n name="员工名称" namespace="addStaff"></vc:i18n></span>(2-10位)
+                                <span><vc:i18n name="员工名称" namespace="addStaff"></vc:i18n></span>(2-100位)
                             </label>
                             <div class="col-sm-10">
                                 <input v-model="addStaffInfo.username" type="text"
-                                       :placeholder="vc.i18n('必填，请填写员工名称（2-10位）','addStaff')" class="form-control">
+                                       :placeholder="vc.i18n('必填，请填写员工名称（2-100位）','addStaff')" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -27,7 +27,7 @@
                                 <select class="custom-select" v-model="addStaffInfo.relCd">
                                     <option selected disabled value="">{{vc.i18n('必填，请选择岗位','addStaff')}}</option>
                                     <option v-for="(item,index) in addStaffInfo.relCds" :key="index"
-                                            v-bind:value="item.statusCd">{{item.name}}
+                                            v-bind:value="item.statusCd">{{vc.i18n(item.name, 'addStaff')}}
                                     </option>
                                 </select>
                             </div>
@@ -38,8 +38,7 @@
                             </label>
                             <div class="col-sm-10">
                                 <input v-model="addStaffInfo.tel" type="text"
-                                       :placeholder="vc.i18n('必填，请填写手机','addStaff')" class="form-control"
-                                       maxlength="11">
+                                       :placeholder="vc.i18n('必填，请填写手机','addStaff')" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">

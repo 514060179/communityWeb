@@ -5,7 +5,7 @@
                 <ul class="list-group text-center">
                     <li class="list-group-item node-orgTree " v-for="(item,index) in commonReportInfo.reportCustoms"
                         :class="{'vc-node-selected':commonReportInfo.switchValue==item.customId}" @click="swatch(item)">
-                        {{item.title}}
+                        {{vc.i18n(item.title, 'commonReport')}}
                     </li>
                 </ul>
             </div>

@@ -10,7 +10,7 @@
             simplifyAcceptanceInfo: {
                 searchType: '1',
                 searchValue: '',
-                searchPlaceholder: '请输入房屋编号 楼栋-单元-房屋 如1-1-1',
+                searchPlaceholder: '请输入房屋编号 楼栋-座-房屋 如1-1-1',
                 ownerPhoto: '',
                 _currentTab: 'simplifyRoomFee',
                 roomId: '',
@@ -56,7 +56,7 @@
             vc.on('simplifyAcceptance', 'chooseRoom', function (_room) {
                 vc.copyObject(_room, $that.simplifyAcceptanceInfo);
                 $that.simplifyAcceptanceInfo.roomRemark = _room.remark;
-                $that.simplifyAcceptanceInfo.roomName = _room.floorNum + '栋' + _room.unitNum + '单元' + _room.roomNum;
+                $that.simplifyAcceptanceInfo.roomName = _room.floorNum + '栋' + _room.unitNum + '座' + _room.roomNum;
                 vc.emit('simplifyRoomFee', 'switch', $that.simplifyAcceptanceInfo)
             });
             vc.on('simplifyAcceptance', 'notifyOwner', function (_owner) {
@@ -70,7 +70,7 @@
             vc.on('simplifyAcceptance', 'selectRoom', function (_param) {
                 $that.simplifyAcceptanceInfo.searchType = '1';
                 $that.simplifyAcceptanceInfo.searchValue = _param.roomName;
-                $that.simplifyAcceptanceInfo.searchPlaceholder = "请输入房屋编号 楼栋-单元-房屋 如1-1-1";
+                $that.simplifyAcceptanceInfo.searchPlaceholder = "请输入房屋编号 楼栋-座-房屋 如1-1-1";
                 $that._doSearch();
             });
             vc.on('simplifyAcceptance', 'doSearch', function (_tab) {
@@ -84,7 +84,7 @@
             _changeSearchType: function () {
                 switch ($that.simplifyAcceptanceInfo.searchType) {
                     case '1':
-                        $that.simplifyAcceptanceInfo.searchPlaceholder = '请输入房屋编号 楼栋-单元-房屋 如1-1-1';
+                        $that.simplifyAcceptanceInfo.searchPlaceholder = '请输入房屋编号 楼栋-座-房屋 如1-1-1';
                         $that.simplifyAcceptanceInfo.searchValue = "";
                         break;
                     case '2':
@@ -122,7 +122,7 @@
                         $that.simplifyAcceptanceInfo.searchPlaceholder = '请输入合同号';
                         break;
                     default:
-                        $that.simplifyAcceptanceInfo.searchPlaceholder = '请输入房屋编号 楼栋-单元-房屋 如1-1-1';
+                        $that.simplifyAcceptanceInfo.searchPlaceholder = '请输入房屋编号 楼栋-座-房屋 如1-1-1';
                         $that.simplifyAcceptanceInfo.searchValue = "";
                 }
             },
@@ -163,7 +163,7 @@
                         }
                         vc.copyObject(_rooms[0], $that.simplifyAcceptanceInfo);
                         $that.simplifyAcceptanceInfo.roomRemark = _rooms[0].remark;
-                        $that.simplifyAcceptanceInfo.roomName = _rooms[0].floorNum + '栋' + _rooms[0].unitNum + '单元' + _rooms[0].roomNum + '室';
+                        $that.simplifyAcceptanceInfo.roomName = _rooms[0].floorNum + '栋' + _rooms[0].unitNum + '座' + _rooms[0].roomNum + '室';
                         vc.emit('simplifyRoomFee', 'switch', $that.simplifyAcceptanceInfo);
                     },
                     function (errInfo, error) {

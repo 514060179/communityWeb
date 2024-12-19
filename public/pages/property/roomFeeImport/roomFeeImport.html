@@ -21,7 +21,7 @@
                                 <option selected value="">{{vc.i18n('必填，请选择费用类型','roomFeeImport')}}</option>
                                 <option v-for="(item,index) in roomFeeImport.feeTypeCds" :key="index"
                                         v-bind:value="item.statusCd" v-if="item.statusCd !='888800010008'">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'roomFeeImport')}}
                                 </option>
                             </select>
                         </div>

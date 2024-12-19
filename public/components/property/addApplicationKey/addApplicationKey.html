@@ -120,7 +120,7 @@
                                     <option value="1001">{{vc.i18n('西大门','addApplicationKey')}}</option>
                                     <option value="1002">{{vc.i18n('北大门','addApplicationKey')}}</option>
                                     <option value="1003">{{vc.i18n('南大门','addApplicationKey')}}</option>
-                                    <option value="2000">{{vc.i18n('单元门','addApplicationKey')}}</option>
+                                    <option value="2000">{{vc.i18n('座门','addApplicationKey')}}</option>
                                     <option value="3000">{{vc.i18n('房屋门','addApplicationKey')}}</option>
                                 </select>
                             </div>
@@ -139,7 +139,7 @@
                         <div class="form-group row"
                              v-show="addApplicationKeyInfo.locationTypeCd == '2000' || addApplicationKeyInfo.locationTypeCd == '3000'">
                             <label class="col-sm-2 col-form-label">
-                                <span><vc:i18n name="归属单元" namespace="addApplicationKey"></vc:i18n></span>
+                                <span><vc:i18n name="归属座" namespace="addApplicationKey"></vc:i18n></span>
                             </label>
                             <div class="col-sm-10">
                                 <vc:create path="property/unitSelect2" parentModal="addApplicationKeyModel"

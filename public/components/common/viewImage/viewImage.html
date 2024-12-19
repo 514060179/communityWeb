@@ -1,9 +1,21 @@
-<div id="viewImage" v-show="viewImageInfo.showImage">
-    <div style="position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background-color: #fff;">
-        <img v-bind:src="viewImageInfo.url" v-bind:width="viewImageInfo.imgWidth"
-             v-bind:height="viewImageInfo.imgHeight" onerror="this.src='/img/noPhoto.jpg';"/>
-        <span v-on:click="_closeImage()" class="fa fa-remove "
-              style="position: absolute;right: 20px;top: 20px;font-size: 20px;color:red"></span>
+<!-- <div id="viewImage" v-show="viewImageInfo.showImage">
+    <div style="position: fixed; left:50%; top:200px; transform:translate(-50%, -200px);">
+        <div class="animated pulse vc-border-view">
+            <img style="border-radius: 10px;" v-bind:src="viewImageInfo.url"
+                v-bind:width="viewImageInfo.imgWidth" v-bind:height="viewImageInfo.imgHeight"
+                onerror="this.src='/img/noPhoto.jpg';" />
+            <span v-on:click="_closeImage()" class="fa fa-remove"
+                style="position: absolute; right: 20px; top: 20px; font-size: 20px; color:#999"></span>
+        </div>
     </div>
-    <!--style="position:fixed;z-index:3000;left:50%;top:50%;transform:translate(-50%,-50%);background-color: #fff;"-->
+</div> -->
+
+<div id="viewImage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="vc-border-view">
+            <img style="border-radius: 10px;" v-bind:src="viewImageInfo.url" v-bind:width="viewImageInfo.imgWidth"
+                v-bind:height="viewImageInfo.imgHeight" onerror="this.src='/img/noPhoto.jpg';" />
+        </div>
+    </div>
 </div>

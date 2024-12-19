@@ -36,17 +36,17 @@
                     'editUnitInfo.unitNum': [{
                         limit: "required",
                         param: "",
-                        errInfo: "单元编号不能为空"
+                        errInfo: "座编号不能为空"
                     }],
                     'editUnitInfo.layerCount': [{
                         limit: "required",
                         param: "",
-                        errInfo: "单元楼层高度不能为空"
+                        errInfo: "座楼层高度不能为空"
                     },
                         {
                             limit: "num",
                             param: "",
-                            errInfo: "单元楼层高度必须为数字"
+                            errInfo: "座楼层高度必须为数字"
                         }
                     ],
                     'editUnitInfo.unitArea': [{
@@ -63,7 +63,7 @@
                     'editUnitInfo.lift': [{
                         limit: "required",
                         param: "",
-                        errInfo: "必须选择单元是否电梯"
+                        errInfo: "必须选择座是否电梯"
                     }],
                     'editUnitInfo.remark': [{
                         limit: "maxLength",
@@ -78,7 +78,7 @@
                     return;
                 }
                 if (vc.component.addUnitInfo.unitNum == '0') {
-                    vc.toast("0单元为商铺特有，不允许修改");
+                    vc.toast("0座为商铺特有，不允许修改");
                     return;
                 }
                 vc.http.apiPost(

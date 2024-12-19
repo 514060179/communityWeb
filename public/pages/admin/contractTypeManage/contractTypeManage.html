@@ -20,7 +20,7 @@
                             <select class="custom-select" v-model="contractTypeManageInfo.conditions.audit">
                                 <option selected value="">{{vc.i18n('请选择审核','contractTypeManage')}}</option>
                                 <option v-for="(item,index) in contractTypeManageInfo.audits" :key="index"
-                                        :value="item.statusCd">{{item.name}}
+                                        :value="item.statusCd">{{vc.i18n(item.name, 'contractTypeManage')}}
                                 </option>
                             </select>
                         </div>

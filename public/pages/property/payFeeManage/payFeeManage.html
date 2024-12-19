@@ -14,7 +14,7 @@
                             <select class="custom-select" v-model="payFeeManageInfo.conditions.payObjType">
                                 <option selected value="">{{vc.i18n('请选择收费对象','payFeeManage')}}</option>
                                 <option v-for="(item,index) in payFeeManageInfo.payObjTypes" :key="index"
-                                        v-bind:value="item.statusCd">{{item.name}}
+                                        v-bind:value="item.statusCd">{{vc.i18n(item.name, 'payFeeManage')}}
                                 </option>
                             </select>
                         </div>
@@ -40,7 +40,7 @@
                             <select class="custom-select" v-model="payFeeManageInfo.conditions.primeRate">
                                 <option selected value="">{{vc.i18n('请选择支付方式','payFeeManage')}}</option>
                                 <option v-for="(item,index) in payFeeManageInfo.primeRates" :key="index"
-                                        v-bind:value="item.statusCd">{{item.name}}
+                                        v-bind:value="item.statusCd">{{vc.i18n(item.name, 'payFeeManage')}}
                                 </option>
                             </select>
                         </div>
@@ -62,7 +62,7 @@
                                     v-model="payFeeManageInfo.conditions.communityId" @change="_changCommunity()">
                                 <option disabled selected value="">{{vc.i18n('请选择小区','reportFeeSummary')}}</option>
                                 <option v-for="(item,index) in payFeeManageInfo.communitys" :key="index"
-                                        v-bind:value="item.communityId">{{item.name}}
+                                        v-bind:value="item.communityId">{{vc.i18n(item.name, 'reportFeeSummary')}}
                                 </option>
                             </select>
                         </div>
@@ -110,10 +110,10 @@
                                 <vc:i18n name="付费周期(单位:月)" namespace="payFeeManage"></vc:i18n>
                             </th>
                             <th class="text-center">
-                                <vc:i18n name="应付金额(单位:元)" namespace="payFeeManage"></vc:i18n>
+                                <vc:i18n name="应付金额(单位:MOP)" namespace="payFeeManage"></vc:i18n>
                             </th>
                             <th class="text-center">
-                                <vc:i18n name="实付金额(单位:元)" namespace="payFeeManage"></vc:i18n>
+                                <vc:i18n name="实付金额(单位:MOP)" namespace="payFeeManage"></vc:i18n>
                             </th>
                             <th class="text-center">
                                 <vc:i18n name="操作人" namespace="payFeeManage"></vc:i18n>
@@ -161,7 +161,7 @@
                                     <vc:i18n name="小计应收" namespace="payFeeManage"></vc:i18n>
                                 </span>: {{payFeeManageInfo.totalReceivableAmount}}
                                 <span>
-                                    <vc:i18n name="元" namespace="payFeeManage"></vc:i18n>
+                                    <vc:i18n name="MOP" namespace="payFeeManage"></vc:i18n>
                                 </span>
                             </span>
                             <span class="margin-left">
@@ -169,7 +169,7 @@
                                     <vc:i18n name="小计实收" namespace="payFeeManage"></vc:i18n>
                                 </span>: {{payFeeManageInfo.totalReceivedAmount}}
                                 <span>
-                                    <vc:i18n name="元" namespace="payFeeManage"></vc:i18n>
+                                    <vc:i18n name="MOP" namespace="payFeeManage"></vc:i18n>
                                 </span>
                             </span>
                         </div>
@@ -184,7 +184,7 @@
                                     <vc:i18n name="大计应收" namespace="payFeeManage"></vc:i18n>
                                 </span>: {{payFeeManageInfo.allReceivableAmount}}
                                 <span>
-                                    <vc:i18n name="元" namespace="payFeeManage"></vc:i18n>
+                                    <vc:i18n name="MOP" namespace="payFeeManage"></vc:i18n>
                                 </span>
                             </span>
                             <span class="margin-left">
@@ -192,7 +192,7 @@
                                     <vc:i18n name="大计实收" namespace="payFeeManage"></vc:i18n>
                                 </span>: {{payFeeManageInfo.allReceivedAmount}}
                                 <span>
-                                    <vc:i18n name="元" namespace="payFeeManage"></vc:i18n>
+                                    <vc:i18n name="MOP" namespace="payFeeManage"></vc:i18n>
                                 </span>
                             </span>
                         </div>

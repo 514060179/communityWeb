@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <!-- <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                  v-on:click="_moreCondition()">
-                                 {{tempCarInoutFeeManageInfo.moreCondition == true ? '隐藏' : '更多'}}
+                                 {{tempCarInoutFeeManageInfo.moreCondition == true ? vc.i18n('隐藏' ):vc.i18n('更多' )}}
                          </button>-->
                     </div>
                 </div>
@@ -88,10 +88,10 @@
                                 <span><vc:i18n name="车牌号" namespace="tempCarInoutFeeManage"></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="应付金额" namespace="tempCarInoutFeeManage"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="应付金额" namespace="tempCarInoutFeeManage"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="实付金额" namespace="tempCarInoutFeeManage"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="实付金额" namespace="tempCarInoutFeeManage"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
                                 <span><vc:i18n name="开始时间" namespace="tempCarInoutFeeManage"></vc:i18n></span>
@@ -114,10 +114,10 @@
                             <td class="text-center">{{payFee.inoutId}}</td>
                             <td class="text-center">{{payFee.carNum}}</td>
                             <td class="text-center">{{payFee.receivableAmount}}
-                                <span><vc:i18n name="元" namespace="tempCarInoutFeeManage"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="tempCarInoutFeeManage"></vc:i18n></span>
                             </td>
                             <td class="text-center">{{payFee.receivedAmount}}
-                                <span><vc:i18n name="元" namespace="tempCarInoutFeeManage"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="tempCarInoutFeeManage"></vc:i18n></span>
                             </td>
                             <td class="text-center">{{payFee.startTime}}</td>
                             <td class="text-center">{{payFee.endTime}}</td>

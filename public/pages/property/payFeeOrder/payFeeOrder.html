@@ -176,7 +176,7 @@
                                         <option v-for="(item,index) in payFeeOrderInfo.primeRates" :key="index"
                                                 v-if="item.statusCd != '5' && item.statusCd != '6'"
                                                 :value="item.statusCd">
-                                            {{item.name}}
+                                            {{vc.i18n(item.name, 'payFeeOrder')}}
                                         </option>
                                     </select>
                                 </div>

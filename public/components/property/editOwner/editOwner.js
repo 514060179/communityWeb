@@ -25,6 +25,7 @@
                 videoPlaying: true,
                 mediaStreamTrack: null,
                 flag: '',
+                areaCode: '',
                 attrs: []
             }
         },
@@ -80,6 +81,13 @@
                             limit: "required",
                             param: "",
                             errInfo: "性别不能为空"
+                        }
+                    ],
+                    'editOwnerInfo.areaCode': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "区号不能为空"
                         }
                     ],
                     'editOwnerInfo.link': [
@@ -156,6 +164,7 @@
                     ownerPhoto: '',
                     ownerPhotoUrl: '',
                     idCard: '',
+                    areaCode: '',
                     videoPlaying: true,
                     mediaStreamTrack: null,
                     attrs: _attrs

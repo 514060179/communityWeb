@@ -3,16 +3,16 @@
         <div class="col-md-2 " style="padding-right:0px;height: 95%; overflow-x: hidden; overflow-y: scroll;">
             <div>
                 <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddResourceStoreTypeModal(1)">
-                    添加一级
+                    {{vc.i18n('添加一级', 'resourceStoreManage')}}
                 </button>
                 <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddResourceStoreTypeModal(2)">
-                    添加二级
+                    {{vc.i18n('添加二级', 'resourceStoreManage')}}
                 </button>
                 <button type="button" class="btn btn-primary btn-sm" v-on:click="_openEditResourceStoreTypeModel()">
-                    修改
+                    {{vc.i18n('修改', 'resourceStoreManage')}}
                 </button>
                 <button type="button" class="btn btn-primary btn-sm" v-on:click="_openDeleteResourceStoreTypeModel()">
-                    删除
+                    {{vc.i18n('删除', 'resourceStoreManage')}}
                 </button>
             </div>
             <vc:create path="resource/resourceStoreTypeTree" callBackListener="resourceStoreManage"></vc:create>
@@ -76,7 +76,7 @@
                                                 {{vc.i18n('请选择物品是否固定','resourceStoreManage')}}
                                             </option>
                                             <option v-for="(item,index) in resourceStoreManageInfo.isFixeds"
-                                                    :value="item.statusCd">{{item.name}}
+                                                    :value="item.statusCd">{{vc.i18n(item.name, 'resourceStoreManage')}}
                                             </option>
                                         </select>
                                     </div>
@@ -274,7 +274,7 @@
                                                 <vc:i18n name="物品总价：" namespace="resourceStoreManage"></vc:i18n>
                                             </span>{{resourceStoreManageInfo.subTotalPrice}}
                                             <span>
-                                                <vc:i18n name="元" namespace="resourceStoreManage"></vc:i18n>
+                                                <vc:i18n name="MOP" namespace="resourceStoreManage"></vc:i18n>
                                             </span>
                                         </span>
                                     </span>
@@ -290,7 +290,7 @@
                                                 <vc:i18n name="物品总价" namespace="resourceStoreManage"></vc:i18n>
                                             </span>：{{resourceStoreManageInfo.highTotalPrice}}
                                             <span>
-                                                <vc:i18n name="元" namespace="resourceStoreManage"></vc:i18n>
+                                                <vc:i18n name="MOP" namespace="resourceStoreManage"></vc:i18n>
                                             </span>
                                         </span>
                                     </span>

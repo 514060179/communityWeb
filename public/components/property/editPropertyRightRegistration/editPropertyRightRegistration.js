@@ -145,7 +145,7 @@
                         vc.toast(errInfo);
                     });
             },
-            //查询单元
+            //查询座
             queryUnit: function () {
                 var param = {
                     params: {

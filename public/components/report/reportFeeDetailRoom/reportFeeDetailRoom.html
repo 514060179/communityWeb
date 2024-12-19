@@ -6,12 +6,12 @@
                     <ul class="list-group text-center border-radius">
                         <li class="list-group-item node-orgTree " @click="swatchFloor('')"
                             :class="{'vc-node-selected':reportFeeDetailRoomInfo.floorId == ''}">
-                            全部
+                            {{vc.i18n('全部', 'reportFeeDetail')}}
                         </li>
                         <li class="list-group-item node-orgTree " v-for="(item,index) in reportFeeDetailRoomInfo.floors"
                             :key="index" @click="swatchFloor(item.floorId)"
                             :class="{'vc-node-selected':reportFeeDetailRoomInfo.floorId == item.floorId}">
-                            {{item.floorName}}
+                            {{vc.i18n(item.floorName, 'reportFeeDetail')}}
                         </li>
                     </ul>
                 </div>
@@ -29,20 +29,20 @@
                     <thead>
                     <tr>
                         <th class="text-center">
-                            <vc:i18n name="房屋" namespace="reportFeeDetailRoom"></vc:i18n>
+                            <vc:i18n name="房屋" namespace="reportFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="业主" namespace="reportFeeDetailRoom"></vc:i18n>
+                            <vc:i18n name="业主" namespace="reportFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="欠费" namespace="reportFeeDetailRoom"></vc:i18n>
+                            <vc:i18n name="欠费" namespace="reportFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="实收" namespace="reportFeeDetailRoom"></vc:i18n>
+                            <vc:i18n name="实收" namespace="reportFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center" colspan="2" v-for="(item,index) in reportFeeDetailRoomInfo.feeTypeCds">
-                            {{item.name}}</br>
-                            欠费/实收
+                            {{vc.i18n(item.name, 'reportFeeDetail')}}</br>
+                            <vc:i18n name="欠费/实收" namespace="reportFeeDetail"></vc:i18n>
                         </th>
                     </tr>
                     </thead>

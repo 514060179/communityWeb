@@ -92,6 +92,11 @@
                             param: "12",
                             errInfo: "当天最大预约次数不能超过12"
                         },
+                        {
+                            limit: "min",
+                            param: "1",
+                            errInfo: "预约次数不能小于1"
+                        }
                     ],
                     'addReserveParamsInfo.hoursMaxQuantity': [
                         {
@@ -104,6 +109,11 @@
                             param: "12",
                             errInfo: "同一次预约数量不能超过12"
                         },
+                        {
+                            limit: "min",
+                            param: "1",
+                            errInfo: "预约数量不能小于1"
+                        }
                     ],
 
                 });

@@ -29,7 +29,7 @@
                 payOnline: 'Y',
                 scale: '1',
                 decimalPlace: '2',
-                units: '元',
+                units: 'MOP',
                 prepaymentPeriod: '1'
             }
         },
@@ -358,7 +358,7 @@
                     payOnline: 'Y',
                     scale: '1',
                     decimalPlace: '2',
-                    units: '元',
+                    units: 'MOP',
                     prepaymentPeriod: '1'
                 };
             },

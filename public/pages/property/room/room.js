@@ -27,7 +27,8 @@
                     section: '',
                     roomType: '1010301',
                     roomSubType: '',
-                    flag: ''
+                    flag: '',
+                    link: ''
                 },
                 currentPage: DEFAULT_PAGE,
                 listColumns: [],
@@ -90,10 +91,10 @@
                 };
                 let _allNum = $that.roomInfo.conditions.roomId;
                 let _allNums = _allNum.split('-')
-                if (_allNums.length == 3) {
+                if (_allNums.length === 3) {
                     param.params.floorNum = _allNums[0].trim();
                     param.params.unitNum = _allNums[1].trim();
-                    param.params.roomNum = _allNums[2].trim();
+                    param.params.roomNumLike = _allNums[2].trim();
                     param.params.roomId = '';
                     param.params.unitId = '';
                     param.params.floorId = '';
@@ -104,6 +105,20 @@
                     for (let _numIndex = 3; _numIndex < _allNums.length; _numIndex++) {
                         param.params.roomNum += ('-' + _allNums[_numIndex].trim());
                     }
+                    param.params.roomId = '';
+                    param.params.unitId = '';
+                    param.params.floorId = '';
+                } else if (_allNums.length === 2) {
+                    param.params.floorNum = _allNums[0].trim();
+                    param.params.unitNum = _allNums[1].trim();
+                    param.params.roomNum = '';
+                    param.params.roomId = '';
+                    param.params.unitId = '';
+                    param.params.floorId = '';
+                } else if (_allNums.length === 1) {
+                    param.params.floorNum = _allNums[0].trim();
+                    param.params.unitNum = '';
+                    param.params.roomNum = '';
                     param.params.roomId = '';
                     param.params.unitId = '';
                     param.params.floorId = '';
@@ -295,7 +310,7 @@
             },
             _openUpdateRoomUnitModal: function () {
                 if (!$that.roomInfo.conditions.unitId) {
-                    vc.toast('请先选择单元');
+                    vc.toast('请先选择座');
                     return;
                 }
                 $that.loadUnits($that.roomInfo.conditions.unitId, function (_unit) {
@@ -304,7 +319,7 @@
             },
             _openDeleteRoomUnitModal: function () {
                 if (!$that.roomInfo.conditions.unitId) {
-                    vc.toast('请先选择单元');
+                    vc.toast('请先选择座');
                     return;
                 }
                 $that.loadUnits($that.roomInfo.conditions.unitId, function (_unit) {
@@ -329,7 +344,7 @@
                 vc.saveData('simplifyAcceptanceSearch', {
                     searchType: '1',
                     searchValue: _room.floorNum + "-" + _room.unitNum + "-" + _room.roomNum,
-                    searchPlaceholder: '请输入房屋编号 楼栋-单元-房屋 如1-1-1',
+                    searchPlaceholder: '请输入房屋编号 楼栋-座-房屋 如1-1-1',
                 })
                 vc.jumpToPage('/#/pages/property/simplifyAcceptance?tab=业务受理');
             },

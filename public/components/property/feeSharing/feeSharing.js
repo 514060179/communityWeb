@@ -151,7 +151,7 @@
                 }
                 let _objId = $that.feeSharingInfo.objId;
                 if (_objId == '' || _objId == '-1') {
-                    vc.toast("请选择公摊楼栋或者单元");
+                    vc.toast("请选择公摊楼栋或者座");
                     return;
                 }
                 $that.feeSharingInfo.communityId = vc.getCurrentCommunity().communityId;

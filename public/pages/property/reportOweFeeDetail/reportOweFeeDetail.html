@@ -27,10 +27,10 @@
                             <div class="form-group">
                                 <select class="form-control-md form-control input-s-sm inline"
                                         v-model="reportOweFeeDetailInfo.conditions.unitId">
-                                    <option selected value="">{{vc.i18n('请选择单元','reportOweFeeDetail')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择座','reportOweFeeDetail')}}</option>
                                     <option v-for="(unit,index) in reportOweFeeDetailInfo.roomUnits" :key="index"
                                             v-bind:value="unit.unitId">
-                                        {{unit.unitNum}}{{vc.i18n('单元','reportOweFeeDetail')}}
+                                        {{unit.unitNum}}{{vc.i18n('座','reportOweFeeDetail')}}
                                     </option>
                                 </select>
                             </div>
@@ -164,11 +164,11 @@
                         <span class="col-md-2">
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportOweFeeDetail"></vc:i18n></span>: {{reportOweFeeDetailInfo.totalPreferentialAmount}}
-                                <span><vc:i18n name="元" namespace="reportOweFeeDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportOweFeeDetail"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportOweFeeDetail"></vc:i18n></span>: {{reportOweFeeDetailInfo.allOweAmount}}
-                                <span><vc:i18n name="元" namespace="reportOweFeeDetail"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportOweFeeDetail"></vc:i18n></span>
                             </div>
                         </span>
                     </div>

@@ -8,7 +8,7 @@
                         <li class="list-group-item node-orgTree " v-for="(item,index) in orderManageInfo.apps"
                             :key="index" @click="swatchApp(item)"
                             :class="{'vc-node-selected':orderManageInfo.conditions.appId == item.appId}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'orderManage')}}
                         </li>
                     </ul>
                 </div>
@@ -36,26 +36,26 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <input type="text" placeholder="外部编号"
+                                        <input type="text" :placeholder="vc.i18n('外部编号','orderManage')"
                                             v-model="orderManageInfo.conditions.extTransactionId" class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <input type="text" placeholder="业务编号" v-model="orderManageInfo.conditions.bId"
+                                        <input type="text" :placeholder="vc.i18n('业务编号','orderManage')" v-model="orderManageInfo.conditions.bId"
                                             class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <input type="text" placeholder="受理开始时间"
+                                        <input type="text" :placeholder="vc.i18n('受理开始时间','orderManage')"
                                             v-model="orderManageInfo.conditions.startTime"
                                             class=" form-control startTime">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <input type="text" placeholder="受理结束时间"
+                                        <input type="text" :placeholder="vc.i18n('受理结束时间','orderManage')"
                                             v-model="orderManageInfo.conditions.endTime" class=" form-control endTime">
                                     </div>
                                 </div>
@@ -73,13 +73,13 @@
 
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <input type="text" placeholder="操作人"
+                                        <input type="text" :placeholder="vc.i18n('操作人','orderManage')"
                                             v-model="orderManageInfo.conditions.staffNameLike" class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="form-group">
-                                        <input type="text" placeholder="业务名称"
+                                        <input type="text" :placeholder="vc.i18n('业务名称','orderManage')"
                                             v-model="orderManageInfo.conditions.businessTypeNameLike" class=" form-control">
                                     </div>
                                 </div>

@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{allocationUserStorehouseManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{allocationUserStorehouseManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                     </option>
                                     <option v-for="(item,index) in allocationUserStorehouseManageInfo.resourceStoreTypes"
                                             :key="index" v-bind:value="item.rstId">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, 'allocationUserStorehouseManage')}}
                                     </option>
                                 </select>
                             </div>
@@ -78,7 +78,7 @@
                                         {{vc.i18n('请选择二级分类','allocationUserStorehouseManage')}}
                                     </option>
                                     <option v-for="(item,index) in allocationUserStorehouseManageInfo.resourceStoreSonTypes"
-                                            :key="index" v-bind:value="item.rstId">{{item.name}}
+                                            :key="index" v-bind:value="item.rstId">{{vc.i18n(item.name, 'allocationUserStorehouseManage')}}
                                     </option>
                                 </select>
                             </div>

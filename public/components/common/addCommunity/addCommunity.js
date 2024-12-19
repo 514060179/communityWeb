@@ -61,18 +61,18 @@
                             errInfo: "小区地址不能大于200个字符"
                         }
                     ],
-                    'addCommunityInfo.nearbyLandmarks': [
-                        {
-                            limit: "required",
-                            param: "",
-                            errInfo: "附近地标不能为空"
-                        },
-                        {
-                            limit: "maxLength",
-                            param: "50",
-                            errInfo: "小区附近地标不能大于50个字符"
-                        }
-                    ],
+                    // 'addCommunityInfo.nearbyLandmarks': [
+                    //     {
+                    //         limit: "required",
+                    //         param: "",
+                    //         errInfo: "附近地标不能为空"
+                    //     },
+                    //     {
+                    //         limit: "maxLength",
+                    //         param: "50",
+                    //         errInfo: "小区附近地标不能大于50个字符"
+                    //     }
+                    // ],
                     'addCommunityInfo.cityCode': [
                         {
                             limit: "required",

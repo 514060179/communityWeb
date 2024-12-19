@@ -39,21 +39,42 @@ let opts = {
 
 }
 
-// todo 测试环境 测试使用，生产环境请用nginx代理
-app.use('/callComponent', proxy('http://192.168.100.108:8088', opts));
-app.use('/app', proxy('http://192.168.100.108:8088', opts));
+// todo 测试环境 测试使用，生产环境请用nginx带来
+app.use('/callComponent', proxy('http://127.0.0.1:8008', opts));
+app.use('/app', proxy('http://127.0.0.1:8008', opts));
 app.use('/ws', createProxyMiddleware({
-    target: 'http://192.168.100.108:8008',
+    target: 'http://127.0.0.1:8008',
     changeOrigin: true,
     ws: true
 }));
 
 
+// todo 本机 开发用，生产环境请用nginx带来
+// http://192.168.8.213:8008
+// app.use('/ws', createProxyMiddleware({
+//     target: 'https://artery.newlandgo.com',
+//     changeOrigin: true,
+//     // 如果目标是HTTPS，则设置为true
+//     secure: true
+// }));
+//
+// app.use('/callComponent', createProxyMiddleware({
+//     target: 'https://artery.newlandgo.com',
+//     changeOrigin: true,
+//     // 如果目标是HTTPS，则设置为true
+//     secure: true
+// }));
+//
+// app.use('/app', createProxyMiddleware({
+//     target: 'https://artery.newlandgo.com',
+//     changeOrigin: true,
+//     // 如果目标是HTTPS，则设置为true
+//     secure: true
+// }));
 
-// todo 本机 开发用，生产环境请用nginx代理
-// app.use('/ws', proxy('http://127.0.0.1:8008', opts));
-// app.use('/callComponent', proxy('http://127.0.0.1:8008', opts));
-// app.use('/app', proxy('http://127.0.0.1:8008', opts));
+// app.use('/ws', createProxyMiddleware('https://arteryuat.newlandgo.com', opts));
+// app.use('/callComponent', createProxyMiddleware('https://arteryuat.newlandgo.com', opts));
+// app.use('/app', createProxyMiddleware('https://arteryuat.newlandgo.com', opts));
 
 //app.listen(3000);
 app.use(express.json());

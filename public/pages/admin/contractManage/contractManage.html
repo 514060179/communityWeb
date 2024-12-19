@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{contractManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{contractManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -30,10 +30,10 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <select class="custom-select" v-model="contractManageInfo.conditions.contractType">
-                                    <option selected value="">请选择合同类型</option>
+                                    <option selected value="">{{vc.i18n('请选择合同类型','contractManage')}}</option>
                                     <option :value="item.contractTypeId"
                                             v-for="(item,index) in contractManageInfo.contractTypes">
-                                        {{item.typeName}}
+                                        {{vc.i18n(item.typeName,'contractManage')}}
                                     </option>
                                 </select>
                             </div>

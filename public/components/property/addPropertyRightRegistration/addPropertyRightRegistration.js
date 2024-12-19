@@ -94,7 +94,7 @@
                         {
                             limit: "required",
                             param: "",
-                            errInfo: "单元不能为空"
+                            errInfo: "座不能为空"
                         }
                     ],
                     'addPropertyRightRegistrationInfo.roomId': [
@@ -214,7 +214,7 @@
                         vc.toast(errInfo);
                     });
             },
-            //查询单元
+            //查询座
             _queryUnit: function () {
                 var param = {
                     params: {

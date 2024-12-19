@@ -8,7 +8,7 @@
                             v-for="(item,index) in purchaseApplyDetailManageInfo.resOrderTypes" :key="index"
                             @click="swatchResOrderTypes(item)"
                             :class="{'vc-node-selected':purchaseApplyDetailManageInfo.conditions.resOrderType == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'purchaseApplyDetailManage')}}
                         </li>
                     </ul>
                 </div>
@@ -25,7 +25,7 @@
                             <div class="ibox-tools" style="top:10px;">
                                 <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                         v-on:click="_moreCondition()">
-                                    {{purchaseApplyDetailManageInfo.moreCondition == true?'隐藏':'更多'}}
+                                    {{purchaseApplyDetailManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                                 </button>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                             {{vc.i18n('请选择状态','purchaseApplyDetailManage')}}
                                         </option>
                                         <option v-for="(item,index) in purchaseApplyDetailManageInfo.states"
-                                                :key="index" v-bind:value="item.statusCd">{{item.name}}
+                                                :key="index" v-bind:value="item.statusCd">{{vc.i18n(item.name, 'purchaseApplyDetailManage')}}
                                         </option>
                                     </select>
                                 </div>
@@ -91,7 +91,7 @@
                                             {{vc.i18n('请选择采购方式','purchaseApplyDetailManage')}}
                                         </option>
                                         <option v-for="(item,index) in purchaseApplyDetailManageInfo.warehousingWays"
-                                                :key="index" v-bind:value="item.statusCd">{{item.name}}
+                                                :key="index" v-bind:value="item.statusCd">{{vc.i18n(item.name, 'purchaseApplyDetailManage')}}
                                         </option>
                                     </select>
                                 </div>
@@ -119,7 +119,7 @@
                                             </option>
                                             <option v-for="(item,index) in purchaseApplyDetailManageInfo.resourceStoreTypes"
                                                     :key="index" v-bind:value="item.rstId">
-                                                {{item.name}}
+                                                {{vc.i18n(item.name, 'purchaseApplyDetailManage')}}
                                             </option>
                                         </select>
                                     </div>
@@ -134,7 +134,7 @@
                                             </option>
                                             <option v-for="(item,index) in purchaseApplyDetailManageInfo.resourceStoreSonTypes"
                                                     :key="index" v-bind:value="item.rstId">
-                                                {{item.name}}
+                                                {{vc.i18n(item.name, 'purchaseApplyDetailManage')}}
                                             </option>
                                         </select>
                                     </div>

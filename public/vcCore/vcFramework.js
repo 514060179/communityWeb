@@ -411,6 +411,7 @@
 
         if (_namespace && _lang.hasOwnProperty(_namespace)) {
             let _namespaceObj = _lang[_namespace];
+
             if (_namespaceObj.hasOwnProperty(_key)) {
                 return _namespaceObj[_key];
             }
@@ -442,7 +443,9 @@
             let _vcElement = _tmpI18N[0];
             _vcElement.parentNode.removeChild(_vcElement);
         }
+
         _tmpI18N = document.head.getElementsByTagName("vc:i18n");
+
         for (let _vcElementIndex = 0; _vcElementIndex < _tmpI18N.length; _vcElementIndex++) {
             let _vcElement = _tmpI18N[_vcElementIndex];
             let _name = _vcElement.getAttribute('name');
@@ -451,11 +454,11 @@
             _vcElement.parentNode.appendChild(textNode);
 
         }
+
         for (let _vcElementIndex = 0; _vcElementIndex < _tmpI18N.length; _vcElementIndex++) {
             let _vcElement = _tmpI18N[_vcElementIndex];
             _vcElement.parentNode.removeChild(_vcElement);
         }
-
     }
 
     /**
@@ -795,7 +798,7 @@
         let cnIntUnits = new Array("", "万", "亿", "兆"); //对应整数部分扩展单位
         let cnDecUnits = new Array("角", "分", "毫", "厘"); //对应小数部分单位
         let cnInteger = "整"; //整数金额时后面跟的字符
-        let cnIntLast = "元"; //整型完以后的单位
+        let cnIntLast = "MOP"; //整型完以后的单位
         let maxNum = 999999999999999.9999; //最大处理的数字
         let IntegerNum; //金额整数部分
         let DecimalNum; //金额小数部分
@@ -965,14 +968,14 @@
     let DEFAULT_NAMESPACE = "default";
     vcFramework.http = {
         post: function (componentCode, componentMethod, param, options, successCallback, errorCallback) {
-            let _lang = vcFramework.getData('JAVA110-LANG');
+            let _lang = vcFramework.getData('property-lang');
             if (!_lang) {
                 _lang = {
-                    name: '简体中文',
-                    lang: 'zh-cn'
+                    name: '繁體中文',
+                    lang: 'cn'
                 }
             }
-            Vue.http.headers.common['JAVA110-LANG'] = _lang.lang;
+            Vue.http.headers.common['property-lang'] = _lang.lang;
             Vue.http.headers.common['APP-ID'] = '8000418004';
             Vue.http.headers.common['TRANSACTION-ID'] = vcFramework.uuid();
             Vue.http.headers.common['REQ-TIME'] = vcFramework.getDateYYYYMMDDHHMISS();
@@ -1024,15 +1027,15 @@
                     return;
                 }
             }
-            let _lang = vcFramework.getData('JAVA110-LANG');
+            let _lang = vcFramework.getData('property-lang');
             if (!_lang) {
                 _lang = {
-                    name: '简体中文',
-                    lang: 'zh-cn'
+                    name: '繁體中文',
+                    lang: 'cn'
                 }
             }
             vcFramework.loading('open');
-            Vue.http.headers.common['JAVA110-LANG'] = _lang.lang;
+            Vue.http.headers.common['property-lang'] = _lang.lang;
             Vue.http.headers.common['APP-ID'] = '8000418004';
             Vue.http.headers.common['TRANSACTION-ID'] = vcFramework.uuid();
             Vue.http.headers.common['REQ-TIME'] = vcFramework.getDateYYYYMMDDHHMISS();
@@ -1073,14 +1076,14 @@
         },
         apiPost: function (api, param, options, successCallback, errorCallback) {
             let _api = '';
-            let _lang = vcFramework.getData('JAVA110-LANG');
+            let _lang = vcFramework.getData('property-lang');
             if (!_lang) {
                 _lang = {
-                    name: '简体中文',
-                    lang: 'zh-cn'
+                    name: '繁體中文',
+                    lang: 'cn'
                 }
             }
-            Vue.http.headers.common['JAVA110-LANG'] = _lang.lang;
+            Vue.http.headers.common['property-lang'] = _lang.lang;
             Vue.http.headers.common['APP-ID'] = '8000418004';
             Vue.http.headers.common['TRANSACTION-ID'] = vcFramework.uuid();
             Vue.http.headers.common['REQ-TIME'] = vcFramework.getDateYYYYMMDDHHMISS();
@@ -1145,14 +1148,14 @@
             }
 
             let _api = '';
-            let _lang = vcFramework.getData('JAVA110-LANG');
+            let _lang = vcFramework.getData('property-lang');
             if (!_lang) {
                 _lang = {
-                    name: '简体中文',
-                    lang: 'zh-cn'
+                    name: '繁體中文',
+                    lang: 'cn'
                 }
             }
-            Vue.http.headers.common['JAVA110-LANG'] = _lang.lang;
+            Vue.http.headers.common['property-lang'] = _lang.lang;
             Vue.http.headers.common['APP-ID'] = '8000418004';
             Vue.http.headers.common['TRANSACTION-ID'] = vcFramework.uuid();
             Vue.http.headers.common['REQ-TIME'] = vcFramework.getDateYYYYMMDDHHMISS();
@@ -2099,22 +2102,108 @@
  toast
  **/
 (function (vcFramework) {
-    vcFramework.toast = function Toast(msg, duration) {
+    vcFramework.toast = function Toast(msg, duration, hasCloseButton=false) {
         duration = isNaN(duration) ? 3000 : duration;
+
+        // 创建消息元素
         let m = document.createElement('div');
         m.innerHTML = msg;
-        m.style.cssText = "max-width:60%;min-width: 150px;padding:0 14px;height: 40px;color: rgb(255, 255, 255);line-height: 40px;text-align: center;border-radius: 4px;position: fixed;top: 30%;left: 50%;transform: translate(-50%, -50%);z-index: 999999;background: rgba(0, 0, 0,.7);font-size: 16px;";
+        if(hasCloseButton){
+            m.style.cssText = "max-width:60%;min-width:150px;padding:0 30px;height:80px;color:rgb(255, 255, 255);line-height:80px;text-align:center;border-radius:4px;position:fixed;top:30%;left:50%;transform:translate(-50%, -50%);z-index:999999;background:rgba(0, 0, 0, 0.7);font-size:16px;";
+            // 创建关闭按钮
+            let closeButton = document.createElement('span');
+            closeButton.innerHTML = '&times;';
+            closeButton.style.cssText = "position:absolute;bottom:24px;right:6px;cursor:pointer;font-size:18px;color:rgb(255, 255, 255);";
+            closeButton.onclick = function() {
+                document.body.removeChild(m);
+            };
+
+            m.appendChild(closeButton);
+        }else{
+            m.style.cssText = "max-width:60%;min-width:150px;padding:0 14px;height:40px;color:rgb(255, 255, 255);line-height:40px;text-align:center;border-radius:4px;position:fixed;top:30%;left:50%;transform:translate(-50%, -50%);z-index:999999;background:rgba(0, 0, 0, 0.7);font-size:16px;";
+        }
+
         document.body.appendChild(m);
-        setTimeout(function () {
+
+        // 自动关闭
+        setTimeout(function() {
             let d = 0.5;
             m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
             m.style.opacity = '0';
-            setTimeout(function () {
-                document.body.removeChild(m)
+            setTimeout(function() {
+                if (document.body.contains(m)) {
+                    document.body.removeChild(m);
+                }
             }, d * 1000);
         }, duration);
     }
 })(window.vcFramework);
+
+(function(vcFramework) {
+    //确认弹框
+    vcFramework.confirmDialog = function(options) {
+        const { title, message, onConfirm, onCancel } = options;
+
+        // 创建模态框元素
+        let modal = document.createElement('div');
+        modal.className = 'modal ';
+        modal.tabIndex = -1;
+        modal.role = 'dialog';
+        modal.style.cssText = "display:block; padding-right: 17px; background: rgba(0, 0, 0, 0.5);";
+
+        let modalDialog = document.createElement('div');
+        modalDialog.className = 'modal-dialog';
+        modalDialog.role = 'document';
+
+        let modalContent = document.createElement('div');
+        modalContent.className = 'modal-content';
+
+        // 模态框头部
+        let modalHeader = document.createElement('div');
+        modalHeader.className = 'modal-header';
+        modalHeader.innerHTML = `
+            <h5 class="modal-title">${title}</h5>
+            <button type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        `;
+        modalHeader.querySelector('.close').onclick = function() {
+            document.body.removeChild(modal);
+            if (onCancel) onCancel();
+        };
+
+        // 模态框主体
+        let modalBody = document.createElement('div');
+        modalBody.className = 'modal-body';
+        modalBody.innerHTML = `
+            <p>${message}</p>
+        `;
+
+        // 模态框底部
+        let modalFooter = document.createElement('div');
+        modalFooter.className = 'modal-footer';
+        modalFooter.innerHTML = `
+<!--            <button type="button" class="btn btn-secondary">取消</button>-->
+            <button type="button" class="btn btn-primary">确认</button>
+        `;
+        // modalFooter.querySelector('.btn-secondary').onclick = function() {
+        //     document.body.removeChild(modal);
+        //     if (onCancel) onCancel();
+        // };
+        modalFooter.querySelector('.btn-primary').onclick = function() {
+            document.body.removeChild(modal);
+            if (onConfirm) onConfirm();
+        };
+
+        modalContent.appendChild(modalHeader);
+        modalContent.appendChild(modalBody);
+        modalContent.appendChild(modalFooter);
+        modalDialog.appendChild(modalContent);
+        modal.appendChild(modalDialog);
+        document.body.appendChild(modal);
+    }
+})(window.vcFramework);
+
 
 /**
  toast
@@ -2366,7 +2455,7 @@
          校验手机号
          **/
         phone: function (text) {
-            let regPhone = /^0?1[3|4|5|6|7|8|9][0-9]\d{8}$/;
+            let regPhone = /^((\+?86-?)?1[3-9]\d{9}|(\+?852-?)?[5689]\d{7}|(\+?853-?)?6\d{7})$/;
             return regPhone.test(text);
         },
         /**

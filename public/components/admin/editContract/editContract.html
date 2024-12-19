@@ -43,7 +43,7 @@
                                             <select class="custom-select" v-model="editContractInfo.contractType"
                                                     disabled="disabled">
                                                 <option selected disabled value="">
-                                                    {{vc.i18n('必填','editContract')}}，请选择合同类型
+                                                    {{vc.i18n('必填','editContract')}}，{{vc.i18n('请选择合同类型','editContract')}}
                                                 </option>
                                                 <option v-for="(item,index) in editContractInfo.contractTypes"
                                                         :key="index" :value="item.contractTypeId">{{item.typeName}}

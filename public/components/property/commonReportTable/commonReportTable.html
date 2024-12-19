@@ -37,14 +37,14 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>{{item.componentName}}</h5>
+                    <h5>{{vc.i18n(item.componentName, 'commonReport')}}</h5>
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-primary btn-sm"
                                 v-on:click="_exportReportTableMethod(item)">
-                            <i class="fa fa-plus"></i>导出
+                            <i class="fa fa-plus"></i>{{vc.i18n('导出', 'commonReport')}}
                         </button>
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_printReportTableMethod(item)">
-                            <i class="fa fa-print"></i>打印
+                            <i class="fa fa-print"></i>{{vc.i18n('打印', 'commonReport')}}
                         </button>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                         <thead>
                         <tr>
                             <th class="text-center" v-for="(itemTh,indexTh) in item.th">
-                                <div style="max-width: 200px;"> {{itemTh}}</div>
+                                <div style="max-width: 200px;"> {{vc.i18n(itemTh, 'commonReport')}}</div>
                             </th>
                         </tr>
                         </thead>
@@ -77,7 +77,7 @@
                     </table>
                     <div class="row padding-left" v-if="item.footer">
                         <span class="col-md-2" v-for="(tmpItemTh,key) of item.footer">
-                            <div class="row">{{key}}: {{tmpItemTh}}</div>
+                            <div class="row">{{vc.i18n(key, 'commonReport')}}: {{tmpItemTh}}</div>
                         </span>
                     </div>
                     <!-- 分页 -->

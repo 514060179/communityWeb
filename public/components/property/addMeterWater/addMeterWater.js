@@ -40,7 +40,7 @@
                     $that.addMeterWaterInfo.hasRoom = true;
                     $that.addMeterWaterInfo.roomId = _param.roomId;
                     $that.addMeterWaterInfo.objId = _param.roomId;
-                    // $that.addMeterWaterInfo.objName = _param.roomName.replace('0单元', ''); //处理商铺
+                    // $that.addMeterWaterInfo.objName = _param.roomName.replace('0座', ''); //处理商铺
                     $that.addMeterWaterInfo.objName = $that.transRoomName(_param.roomName);
                     $that.addMeterWaterInfo.ownerName = _param.roomName + '(' + _param.ownerName + ')';
                     $that._queryPreMeterWater(_param.roomId);
@@ -54,21 +54,21 @@
                 if (_param.hasOwnProperty("roomId") && _param.roomId != "") {
                     vc.component.addMeterWaterInfo.roomId = _param.roomId;
                     vc.component.addMeterWaterInfo.objId = _param.roomId;
-                    // $that.addMeterWaterInfo.objName = _param.name.replace('0单元', ''); //处理商铺;
+                    // $that.addMeterWaterInfo.objName = _param.name.replace('0座', ''); //处理商铺;
                     $that.addMeterWaterInfo.objName = $that.transRoomName(_param.name);
                     $that._queryPreMeterWater(_param.roomId);
                 }
             });
         },
         methods: {
-            // 将1-1-1 转化为 1栋1单元1室
+            // 将1-1-1 转化为 1栋1座1室
             transRoomName: function (roomName) {
                 // 没有-则返回
                 if (roomName.indexOf('-') < 0) {
                     return roomName;
                 }
                 roomName = roomName.split('-');
-                return roomName[0] + '栋' + roomName[1] + '单元' + roomName[2] + '室';
+                return roomName[0] + '栋' + roomName[1] + '座' + roomName[2] + '室';
             },
             _initAddMeterWaterDateInfo: function () {
                 $('.addPreReadingTime').datetimepicker({

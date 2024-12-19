@@ -1,0 +1,104 @@
+<div id="searchParkingAreaModel" class="modal fade" role="dialog"
+     aria-labelledby="searchParkingAreaModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="searchParkingAreaModelLabel">
+                    <span><vc:i18n name="选择停车场" namespace="searchParkingArea"></vc:i18n></span>
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox ">
+                            <div class="row" v-if="searchParkingAreaInfo.showSearchCondition == 'true'">
+<!--                                <div class="col-sm-3 m-b-xs">-->
+<!--                                    <div class="input-group" v-if="searchParkingAreaInfo.psFlag == 'SH'">-->
+<!--                                        <input :placeholder="vc.i18n('请输入车牌号','searchParkingArea')" type="text"-->
+<!--                                               v-model.trim="searchParkingAreaInfo.carNum"-->
+<!--                                               class="form-control form-control-sm">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="col-sm-3">
+                                    <div class="input-group">
+                                        <select class="custom-select custom-select-sm"
+                                                v-model="searchParkingAreaInfo.areaNum">
+                                            <option selected value="">
+                                                {{vc.i18n('请选择停车场','searchParkingArea')}}
+                                            </option>
+                                            <option v-for="(item,index) in searchParkingAreaInfo.parkingAreas"
+                                                    :key="index" v-bind:value="item.num">{{item.num}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+<!--                                <div class="col-sm-3">-->
+<!--                                    <input :placeholder="vc.i18n('请输入停车位编号','searchParkingArea')" type="text"-->
+<!--                                           v-model.trim="searchParkingAreaInfo.num"-->
+<!--                                           class="form-control form-control-sm">-->
+<!--                                </div>-->
+                                <div class="col-sm-3">
+                                    <button type="button" class="btn btn-sm btn-primary"
+                                            v-on:click="searchParkingAreas()">
+                                        <i class="fa fa-search"></i>
+                                        <span><vc:i18n name="查询" namespace="searchParkingArea"></vc:i18n></span>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-primary"
+                                            v-on:click="resetParkingSpaces()">
+                                        <i class="fa fa-repeat"></i>
+                                        <span><vc:i18n name="重置" namespace="searchParkingArea"></vc:i18n></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="table-responsive" style="margin-top:15px">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th data-hide="phone" class="text-center">
+                                            <span><vc:i18n name="停车场编码" namespace="searchParkingArea"></vc:i18n></span>
+                                        </th>
+
+                                        <th data-hide="phone" class="text-center">
+                                            <span><vc:i18n name="停车场类型" namespace="searchParkingArea"></vc:i18n></span>
+                                        </th>
+
+                                        <th class="text-center">
+                                            <span><vc:i18n name="操作" namespace="searchParkingArea"></vc:i18n></span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="parkingArea in searchParkingAreaInfo.parkingAreas">
+                                        <td class="text-center">
+                                            {{parkingArea.num}}
+                                        </td>
+
+
+                                        <td class="text-center">
+<!--                                            停车场类型，1001 地上停车场 2001 地下停车场-->
+                                            {{parkingArea.typeCd === "1001"?"地上停车场":"地下停车场"}}
+                                        </td>
+
+                                        <td class="text-center">
+                                            <button class="btn btn-primary btn-xs"
+                                                    v-on:click="chooseParkingArea(parkingArea)">
+                                                <span>
+                                                    <vc:i18n name="选择" namespace="searchParkingArea"></vc:i18n>
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <vc:create namespace="searchParkingArea" path="frame/paginationPlus"></vc:create>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

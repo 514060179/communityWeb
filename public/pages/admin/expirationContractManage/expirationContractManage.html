@@ -27,10 +27,10 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <select class="custom-select" v-model="expirationContractInfo.conditions.contractType">
-                                    <option selected value="">请选择合同类型</option>
+                                    <option selected value="">{{vc.i18n('请选择合同类型','contractManage')}}</option>
                                     <option :value="item.contractTypeId"
                                             v-for="(item,index) in expirationContractInfo.contractTypes">
-                                        {{item.typeName}}
+                                        {{vc.i18n('item.typeName','expirationContractManage')}}
                                     </option>
                                 </select>
                             </div>

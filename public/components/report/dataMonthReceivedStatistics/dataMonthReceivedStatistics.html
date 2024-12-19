@@ -5,7 +5,7 @@
                 <div class="margin-xs-r  treeview attendance-staff" style="height: 650px;">
                     <ul class="list-group text-center border-radius">
                         <li class="list-group-item node-orgTree " v-for="(item,index) in dataMonthReceivedStatisticsInfo.feeTypeCds" :key="index" @click="switchMonthReceivedStatisticsFeeTypeCd(item.statusCd)" :class="{'vc-node-selected':dataMonthReceivedStatisticsInfo.feeTypeCd == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'dataReport')}}
                         </li>
                     </ul>
                 </div>
@@ -15,7 +15,7 @@
             <div class="row ">
                 <div class="col-lg-2 padding-right-xs padding-left-xl">
                     <select class="custom-select" v-model="dataMonthReceivedStatisticsInfo.floorId">
-                        <option value="">请选择楼栋</option>
+                        <option value="">{{vc.i18n('请选择楼栋', 'dataReport')}}</option>
                         <option :value="item.floorId" v-for="(item,index) in dataMonthReceivedStatisticsInfo.floors">
                             {{item.floorNum}}</option>
                     </select>

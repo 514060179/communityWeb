@@ -97,7 +97,7 @@
                     return;
                 }
                 //选中第一个
-                vm._gotoPage(_menu.childs[0].href, _menu.childs[0].name);
+                vm._gotoPage(_menu.childs[0].href, vc.i18n(_menu.childs[0].name));
                 //vc._fix_height()
             },
             miniMenu: function() {

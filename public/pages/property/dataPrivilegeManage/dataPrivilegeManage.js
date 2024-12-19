@@ -18,10 +18,15 @@
                 $that.dataPrivilegeManageInfo.curDataPrivilege = _param;
                 $that._changeDataPrivilegeTab('unit');
             })
+            vc.on('dataPrivilege', 'dataPrivilegeRemove', function (_param) {
+                $that.dataPrivilegeManageInfo.curDataPrivilege = {};
+                vc.emit('dataPrivilegeUnitInfo', 'removeUnit', {});
+            })
         },
         methods: {
             _changeDataPrivilegeTab: function (_tabName) {
                 $that.dataPrivilegeManageInfo.tabName = _tabName;
+                if (!$that.dataPrivilegeManageInfo.curDataPrivilege.dpId) return
                 if (_tabName == 'unit') {
                     vc.emit('dataPrivilegeUnitInfo', 'openDataPrivilegeUnit', {dpId: $that.dataPrivilegeManageInfo.curDataPrivilege.dpId});
                 }

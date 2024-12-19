@@ -95,7 +95,7 @@
                 vc.saveData('simplifyAcceptanceSearch', {
                     searchType: '1',
                     searchValue: _room.floorNum + "-" + _room.unitNum + "-" + _room.roomNum,
-                    searchPlaceholder: '请输入房屋编号 楼栋-单元-房屋 如1-1-1',
+                    searchPlaceholder: '请输入房屋编号 楼栋-座-房屋 如1-1-1',
                 })
                 vc.jumpToPage('/#/pages/property/simplifyAcceptance?tab=业务受理');
             },

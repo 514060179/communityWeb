@@ -10,37 +10,37 @@
                     </div>
                     <div class="col-md-3 margin-xs margin-bottom">
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_confirmCouponPropertyUser()">
-                            <vc:i18n name="核销"></vc:i18n>
+                            <vc:i18n name="核销" namespace="couponPropertyUserManage"></vc:i18n>
                         </button>
                     </div>
                 </div>
                 <div class="margin-xs-r bg-white treeview attendance-staff">
                     <div class="padding flex justify-between">
-                        <span class="font-1">核销结果</span>
+                        <span class="font-1">{{vc.i18n('核销结果','couponPropertyUserManage')}}</span>
                         <span>{{couponPropertyUserManageInfo.order.remark}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">核销时间</span>
+                        <span class="font-1">{{vc.i18n('核销时间','couponPropertyUserManage')}}</span>
                         <span>{{couponPropertyUserManageInfo.order.createTime}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">优惠券</span>
+                        <span class="font-1">{{vc.i18n('核销时间','couponPropertyUserManage')}}</span>
                         <span>{{couponPropertyUserManageInfo.order.couponName}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">面值</span>
+                        <span class="font-1">{{vc.i18n('面值','couponPropertyUserManage')}}</span>
                         <span>{{couponPropertyUserManageInfo.order.value}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">用户名称</span>
+                        <span class="font-1">{{vc.i18n('用户名称','couponPropertyUserManage')}}</span>
                         <span>{{couponPropertyUserManageInfo.order.userName}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">手机号</span>
+                        <span class="font-1">{{vc.i18n('手机号','couponPropertyUserManage')}}</span>
                         <span>{{couponPropertyUserManageInfo.order.tel}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">用途</span>
+                        <span class="font-1">{{vc.i18n('用途','couponPropertyUserManage')}}</span>
                         <span>{{couponPropertyUserManageInfo.order.toTypeName}}</span>
                     </div>
                 </div>

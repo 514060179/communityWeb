@@ -23,7 +23,7 @@
                                     </option>
                                     <option v-for="(item,index) in roomCreatePayFeeInfo.feeTypeCds" :key="index"
                                         v-bind:value="item.statusCd" v-if="item.statusCd != '888800010017'">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, 'roomCreatePayFee')}}
                                     </option>
                                 </select>
                             </div>

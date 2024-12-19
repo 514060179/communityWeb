@@ -8,7 +8,7 @@
                         <span><vc:i18n name="查询条件" namespace="unit"></vc:i18n></span>
                     </h5>
                     <div class="ibox-tools" style="top:10px;">
-                        <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;" v-on:click="_moreCondition()">{{unitInfo.moreCondition == true?'隐藏':'更多'}}
+                        <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;" v-on:click="_moreCondition()">{{unitInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                         </div>
                         <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" :placeholder="vc.i18n('请输入单元编号','unit')" v-model="unitInfo.conditions.unitNum" class=" form-control">
+                                <input type="text" :placeholder="vc.i18n('请输入座编号','unit')" v-model="unitInfo.conditions.unitNum" class=" form-control">
                             </div>
                         </div>
                         <div class="col-sm-4">
@@ -58,7 +58,7 @@
             <div class="ibox">
                 <div class="ibox-title">
                     <h5>
-                        <span><vc:i18n name="单元信息" namespace="unit"></vc:i18n></span>
+                        <span><vc:i18n name="座信息" namespace="unit"></vc:i18n></span>
                     </h5>
                     <div class="ibox-tools" style="top:10px;" v-if="vc.hasPrivilege('502020082488167931')">
                         <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px" v-on:click="openAddUnitModel()">
@@ -70,12 +70,12 @@
                     <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                         <thead>
                             <tr>
-                                <!-- <th><span><vc:i18n name="单元" namespace="unit"></vc:i18n></span>ID</th> -->
+                                <!-- <th><span><vc:i18n name="座" namespace="unit"></vc:i18n></span>ID</th> -->
                                 <th class="text-center">
                                     <span><vc:i18n name="楼栋" namespace="unit"></vc:i18n></span>
                                 </th>
                                 <th data-hide="phone" class="text-center">
-                                    <span><vc:i18n name="单元编号" namespace="unit"></vc:i18n></span>
+                                    <span><vc:i18n name="座编号" namespace="unit"></vc:i18n></span>
                                 </th>
                                 <th data-hide="phone" class="text-center">
                                     <span><vc:i18n name="总层数" namespace="unit"></vc:i18n></span>
@@ -104,7 +104,7 @@
                                 </td>
                                 <td class="text-center">
                                     {{unit.unitNum}}
-                                    <span><vc:i18n name="单元" namespace="unit"></vc:i18n></span>
+                                    <span><vc:i18n name="座" namespace="unit"></vc:i18n></span>
                                 </td>
                                 <td class="text-center">
                                     {{unit.layerCount}}
@@ -112,7 +112,7 @@
                                 </td>
                                 <td class="text-center">
                                     {{unit.unitArea}}
-                                    <span><vc:i18n name="平方米" namespace="unit"></vc:i18n></span>
+                                    <span><vc:i18n name="尺" namespace="unit"></vc:i18n></span>
                                 </td>
                                 <td class="text-center">
                                     {{unit.lift == '1010'?'有':'无'}}

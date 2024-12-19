@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <!-- <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                                {{payFeeAuditManageInfo.moreCondition == true ? '隐藏' : '更多'}}
+                                {{payFeeAuditManageInfo.moreCondition == true ? vc.i18n('隐藏' ):vc.i18n('更多' )}}
                         </button> -->
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="col-sm-3" v-else>
                             <div class="form-group">
-                                <input type="text" :placeholder="vc.i18n('请填写房屋 楼栋-单元-室','payFeeAuditManage')"
+                                <input type="text" :placeholder="vc.i18n('请填写房屋 楼栋-座-室','payFeeAuditManage')"
                                     v-model="payFeeAuditManageInfo.conditions.payerObjId" class="form-control">
                             </div>
                         </div>
@@ -100,10 +100,10 @@
                                     <vc:i18n name="缴费结束时间" namespace="payFeeAuditManage"></vc:i18n>
                                 </th>
                                 <th class="text-center">
-                                    <vc:i18n name="应付金额(单位:元)" namespace="payFeeAuditManage"></vc:i18n>
+                                    <vc:i18n name="应付金额(单位:MOP)" namespace="payFeeAuditManage"></vc:i18n>
                                 </th>
                                 <th class="text-center">
-                                    <vc:i18n name="实付金额(单位:元)" namespace="payFeeAuditManage"></vc:i18n>
+                                    <vc:i18n name="实付金额(单位:MOP)" namespace="payFeeAuditManage"></vc:i18n>
                                 </th>
                                 <th class="text-center">
                                     <vc:i18n name="操作员工" namespace="payFeeAuditManage"></vc:i18n>

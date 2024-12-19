@@ -66,7 +66,7 @@
                 $.fn.modal.Constructor.prototype.enforceFocus = function() {};
                 $.fn.select2.defaults.set('width', '100%');
                 this.unitSelect2Info.unitSelector = $('#unitSelector').select2({
-                    placeholder: '必填，请选择单元',
+                    placeholder: '必填，请选择座',
                     allowClear: true, //允许清空
                     escapeMarkup: function(markup) {
                         return markup;
@@ -129,7 +129,7 @@
                 for (var i = 0; i < _units.length; i++) {
                     var _tmpUnit = {
                         id: _units[i].unitId,
-                        text: _units[i].unitNum + '单元'
+                        text: _units[i].unitNum + '座'
                     };
                     _tmpUnits.push(_tmpUnit);
                 }

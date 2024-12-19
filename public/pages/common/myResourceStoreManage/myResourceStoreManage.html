@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{myResourceStoreManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{myResourceStoreManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                                         @change="_listResourceStoreSonTypes">
                                     <option selected value="">{{vc.i18n('请选择物品类型','myResourceStoreManage')}}</option>
                                     <option v-for="(item,index) in myResourceStoreManageInfo.resourceStoreTypes"
-                                            :key="index" v-bind:value="item.rstId">{{item.name}}
+                                            :key="index" v-bind:value="item.rstId">{{vc.i18n(item.name, 'myResourceStoreManage')}}
                                     </option>
                                 </select>
                             </div>
@@ -64,7 +64,7 @@
                                         @change="_listResourceStoreSpecifications">
                                     <option selected value="">{{vc.i18n('请选择二级分类','myResourceStoreManage')}}</option>
                                     <option v-for="(item,index) in myResourceStoreManageInfo.resourceStoreSonTypes"
-                                            :key="index" v-bind:value="item.rstId">{{item.name}}
+                                            :key="index" v-bind:value="item.rstId">{{vc.i18n(item.name, 'myResourceStoreManage')}}
                                     </option>
                                 </select>
                             </div>
@@ -100,7 +100,7 @@
                                 <select class="custom-select" v-model="myResourceStoreManageInfo.conditions.isFixed">
                                     <option selected value="">{{vc.i18n('请选择物品是否固定','myResourceStoreManage')}}</option>
                                     <option v-for="(item,index) in myResourceStoreManageInfo.isFixeds"
-                                            :value="item.statusCd">{{item.name}}
+                                            :value="item.statusCd">{{vc.i18n(item.name, 'myResourceStoreManage')}}
                                     </option>
                                 </select>
                             </div>

@@ -33,7 +33,7 @@
                                             <option selected value="">{{vc.i18n('请选择小区','orgManage')}}</option>
                                             <option v-for="(item,index) in orgManageInfo.communitys"
                                                 :value="item.communityId">
-                                                {{item.name}}
+                                                {{vc.i18n(item.name, 'orgManage')}}
                                             </option>
                                         </select>
                                     </div>

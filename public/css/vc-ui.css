@@ -1584,7 +1584,8 @@ table.table-mail tr td {
 }
 
 .carousel_div1 {
-    background: url(../img/login-bg.png) fixed center center
+    background: url(../img/login_back.png) no-repeat fixed center center;
+    background-size: cover;
 }
 
 .carousel_div2 {

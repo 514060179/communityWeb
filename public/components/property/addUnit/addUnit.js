@@ -54,23 +54,23 @@
                     'addUnitInfo.unitNum': [{
                         limit: "required",
                         param: "",
-                        errInfo: "单元编号不能为空"
+                        errInfo: "座编号不能为空"
                     },
                         {
                             limit: "num",
                             param: "",
-                            errInfo: "单元编号必须为数字"
+                            errInfo: "座编号必须为数字"
                         },
                     ],
                     'addUnitInfo.layerCount': [{
                         limit: "required",
                         param: "",
-                        errInfo: "单元楼层高度不能为空"
+                        errInfo: "座楼层高度不能为空"
                     },
                         {
                             limit: "num",
                             param: "",
-                            errInfo: "单元楼层高度必须为数字"
+                            errInfo: "座楼层高度必须为数字"
                         }
                     ],
                     'addUnitInfo.unitArea': [{
@@ -87,7 +87,7 @@
                     'addUnitInfo.lift': [{
                         limit: "required",
                         param: "",
-                        errInfo: "必须选择单元是否电梯"
+                        errInfo: "必须选择座是否电梯"
                     }],
                     'addUnitInfo.remark': [{
                         limit: "maxLength",
@@ -102,7 +102,7 @@
                     return;
                 }
                 if (vc.component.addUnitInfo.unitNum == '0') {
-                    vc.toast("0单元为商铺特有，不允许添加");
+                    vc.toast("0座为商铺特有，不允许添加");
                     return;
                 }
                 vc.component.addUnitInfo.communityId = vc.getCurrentCommunity().communityId;

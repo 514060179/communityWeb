@@ -1,5 +1,5 @@
 /**
- 单元 组件
+ 座 组件
  **/
 (function (vc) {
     vc.extends({

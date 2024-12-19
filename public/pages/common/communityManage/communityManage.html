@@ -48,10 +48,10 @@
                         <vc:i18n name="小区信息" namespace="communityManage"></vc:i18n>
                     </h5>
                     <div class="ibox-tools" style="top:10px;">
-                        <button type="button" class="btn btn-primary btn-sm"
+                        <!-- <button type="button" class="btn btn-primary btn-sm"
                             v-on:click="vc.showMarkdown('/pages/common/communityManage')">
-                            <vc:i18n name="文档"></vc:i18n>
-                        </button>
+                            <vc:i18n name="文档" ></vc:i18n>
+                        </button> -->
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddCommunityModal()">
                             <vc:i18n name="添加小区" namespace="communityManage"></vc:i18n>
                         </button>
@@ -74,7 +74,7 @@
                                     <vc:i18n name="城市编码" namespace="communityManage"></vc:i18n>
                                 </th>
                                 <th v-for="(item,index) in communityManageInfo.listColumns" class="text-center">
-                                    {{item.specName}}
+                                    {{vc.i18n(item.specName, 'communityManage')}}
                                 </th>
                                 <th class="text-center">
                                     <vc:i18n name="状态" namespace="communityManage"></vc:i18n>

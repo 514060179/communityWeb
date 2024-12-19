@@ -13,13 +13,13 @@
                             v-on:click="_openAddMeterWaterModal()">
                             水电抄表
                         </button> -->
-                        <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
-                            v-on:click="_openCarCreateFeeAddModal()">
-                            <i class="fa fa-plus"></i>
-                            <span>
-                                <vc:i18n name="创建费用" namespace="listCarFee"></vc:i18n>
-                            </span>
-                        </button>
+<!--                        <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"-->
+<!--                            v-on:click="_openCarCreateFeeAddModal()">-->
+<!--                            <i class="fa fa-plus"></i>-->
+<!--                            <span>-->
+<!--                                <vc:i18n name="创建费用" namespace="listCarFee"></vc:i18n>-->
+<!--                            </span>-->
+<!--                        </button>-->
                         <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                             v-on:click="_goBack()">
                             <i class="fa fa-close"></i>
@@ -43,9 +43,9 @@
                                 <th class="text-center">
                                     <vc:i18n name="费用类型" namespace="listCarFee"></vc:i18n>
                                 </th>
-                                <th class="text-center">
-                                    <vc:i18n name="应收金额" namespace="listCarFee"></vc:i18n>
-                                </th>
+<!--                                <th class="text-center">-->
+<!--                                    <vc:i18n name="应收金额" namespace="listCarFee"></vc:i18n>-->
+<!--                                </th>-->
                                 <th class="text-center">
                                     <vc:i18n name="建账时间" namespace="listCarFee"></vc:i18n>
                                 </th>
@@ -70,7 +70,7 @@
                                 </td>
                                 <td class="text-center">{{fee.feeFlagName}}</td>
                                 <td class="text-center">{{fee.feeTypeCdName}}</td>
-                                <td class="text-center">{{fee.amountOwed}}</td>
+<!--                                <td class="text-center">{{fee.amountOwed}}</td>-->
                                 <td class="text-center">{{fee.startTime}}</td>
                                 <td class="text-center">{{_getEndTime(fee)}}~<br />{{_getDeadlineTime(fee)}}</td>
                                 <td class="text-center"

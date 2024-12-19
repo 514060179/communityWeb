@@ -4,7 +4,7 @@
             <div class="ibox ">
                 <div class="ibox-title">
                     <h5><span>
-                            <vc:i18n name="查询条件"></vc:i18n>
+                            <vc:i18n name="查询条件" namespace="marketSmsManage"></vc:i18n>
                         </span></h5>
                     <div class="ibox-tools" style="top:10px;">
 
@@ -24,7 +24,7 @@
                                     {{vc.i18n('请选择设置类型','marketSmsManage')}}
                                 </option>
                                 <option v-for="(item,index) in marketSmsManageInfo.smsTypes" :value="item.statusCd">
-                                    {{item.name}}</option>
+                                    {{vc.i18n(item.name, 'marketSmsManage')}}</option>
                             </select>
                         </div>
                         <div class="col-sm-1">
@@ -48,7 +48,7 @@
                         </span></h5>
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-white btn-sm" v-on:click="vc.showMarkdown('/pages/admin/marketSmsManage')">
-                            <span><vc:i18n name="文档" namespace="marketSmsManage"></vc:i18n></span>
+                            <span><vc:i18n name="文档"></vc:i18n></span>
                         </button>
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddMarketSmsModal()">
                             <span>

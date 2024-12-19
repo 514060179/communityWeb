@@ -22,7 +22,7 @@
                                         v-model="storeInfoManageInfo.conditions.convenienceMenusId">
                                     <option value="">{{vc.i18n('请选择便民种类','storeInfoManage')}}</option>
                                     <option :value="item.convenienceMenusId"
-                                            v-for="(item,index) in storeInfoManageInfo.menuInfos">{{item.name}}
+                                            v-for="(item,index) in storeInfoManageInfo.menuInfos">{{vc.i18n(item.name, 'storeInfoManage')}}
                                     </option>
                                 </select>
                             </div>

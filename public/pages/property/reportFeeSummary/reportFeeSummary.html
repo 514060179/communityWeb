@@ -6,12 +6,12 @@
                     <ul class="list-group text-center border-radius">
                         <li class="list-group-item node-orgTree " @click="swatchFloor('')"
                             :class="{'vc-node-selected':reportFeeSummaryInfo.conditions.floorId == ''}">
-                            全部
+                            {{vc.i18n('全部','reportFeeSummary')}}
                         </li>
                         <li class="list-group-item node-orgTree " v-for="(item,index) in reportFeeSummaryInfo.floors"
                             :key="index" @click="swatchFloor(item.floorId)"
                             :class="{'vc-node-selected':reportFeeSummaryInfo.conditions.floorId == item.floorId}">
-                            {{item.floorName}}
+                            {{vc.i18n(item.floorName,'reportFeeSummary')}}
                         </li>
                     </ul>
                 </div>
@@ -28,7 +28,7 @@
                             <div class="ibox-tools" style="top:10px;">
                                 <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                         v-on:click="_moreCondition()">
-                                    {{reportFeeSummaryInfo.moreCondition == true?'隐藏':'更多'}}
+                                    {{reportFeeSummaryInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                                 </button>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                         <option selected value="">{{vc.i18n('请选择费用大类','reportFeeSummary')}}</option>
                                         <option v-for="(item,index) in reportFeeSummaryInfo.feeTypeCds" :key="index"
                                                 v-bind:value="item.statusCd">
-                                            {{item.name}}
+                                            {{vc.i18n(item.name, 'reportFeeSummary')}}
                                         </option>
                                     </select>
                                 </div>
@@ -114,7 +114,7 @@
                                         </option>
                                         <option v-for="(item,index) in reportFeeSummaryInfo.communitys" :key="index"
                                                 v-bind:value="item.communityId">
-                                            {{item.name}}
+                                            {{vc.i18n(item.name, 'reportFeeSummary')}}
                                         </option>
                                     </select>
                                 </div>
@@ -145,7 +145,7 @@
                             </h5>
                             <span class="fa fa-info-circle popover-show" style="cursor: pointer;"
                                   data-content="以月份为维度，进行费用情况汇总"></span>
-                            <span style="font-size: 10px;">(按天更新)</span>
+                            <span style="font-size: 10px;">{{vc.i18n('(按天更新)','reportFeeSummary')}}</span>
                             <div class="ibox-tools" style="top:10px;">
                                 <button type="button" class="btn btn-primary btn-sm" v-on:click="_exportExcel()">
                                     <i class="fa fa-plus"></i>

@@ -21,10 +21,10 @@
                         <div class="col-sm-4">
                             <select class="custom-select" v-model="ownerInvoiceInfo.conditions.invoiceType">
                                 <option selected value="">
-                                    请选择发票类型
+                                    {{vc.i18n('请选择发票类型','ownerInvoice')}}
                                 </option>
-                                <option value="1001">个人</option>
-                                <option value="2002">企业</option>
+                                <option value="1001">{{vc.i18n('个人','ownerInvoice')}}</option>
+                                <option value="2002">{{vc.i18n('企业','ownerInvoice')}}</option>
                             </select>
                         </div>
                         <div class="col-sm-3">

@@ -7,7 +7,7 @@
             </h5>
             <div class="ibox-tools" style="top:10px;">
                 <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
-                    v-on:click="_moreCondition()">{{reportPayFeeDetailInfo.moreCondition == true?'隐藏':'更多'}}
+                    v-on:click="_moreCondition()">{{reportPayFeeDetailInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                 </button>
             </div>
         </div>
@@ -163,25 +163,25 @@
                             <vc:i18n name="收银员" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="应缴/应收金额(元)" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="应缴/应收金额(MOP)" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="实收金额(元)" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="实收金额(MOP)" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="账户抵扣(元)" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="账户抵扣(MOP)" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="优惠/减免金额(元)" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="优惠/减免金额(MOP)" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="赠送金额(元)" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="赠送金额(MOP)" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="滞纳金(元)" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="滞纳金(MOP)" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
-                            <vc:i18n name="面积(平方米)" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="面积(尺)" namespace="reportPayFeeDetail"></vc:i18n>
                         </th>
                         <th class="text-center">
                             <vc:i18n name="车位" namespace="reportPayFeeDetail"></vc:i18n>
@@ -241,7 +241,7 @@
                             <vc:i18n name="应收:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.totalReceivableAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                     <div class="row">
@@ -249,7 +249,7 @@
                             <vc:i18n name="应收:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>{{reportPayFeeDetailInfo.allReceivableAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                 </div>
@@ -259,7 +259,7 @@
                             <vc:i18n name="实收:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.totalReceivedAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                     <div class="row">
@@ -267,7 +267,7 @@
                             <vc:i18n name="实收:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.allReceivedAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                 </div>
@@ -277,7 +277,7 @@
                             <vc:i18n name="优惠:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.totalPreferentialAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                     <div class="row">
@@ -285,7 +285,7 @@
                             <vc:i18n name="优惠:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.allPreferentialAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
                             <vc:i18n name="减免:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.totalDeductionAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                     <div class="row">
@@ -303,7 +303,7 @@
                             <vc:i18n name="减免:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.allDeductionAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                 </div>
@@ -313,7 +313,7 @@
                             <vc:i18n name="赠送:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.totalGiftAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                     <div class="row">
@@ -321,7 +321,7 @@
                             <vc:i18n name="赠送:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.allGiftAmount}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                 </div>
@@ -331,7 +331,7 @@
                             <vc:i18n name="滞纳金:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.totalLateFee}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                     <div class="row">
@@ -339,7 +339,7 @@
                             <vc:i18n name="滞纳金:" namespace="reportPayFeeDetail"></vc:i18n>
                         </span> {{reportPayFeeDetailInfo.allLateFee}}
                         <span>
-                            <vc:i18n name="元" namespace="reportPayFeeDetail"></vc:i18n>
+                            <vc:i18n name="MOP" namespace="reportPayFeeDetail"></vc:i18n>
                         </span>
                     </div>
                 </div>

@@ -151,7 +151,7 @@
                         vc.toast(errInfo);
                     });
             },
-            //查询单元
+            //查询座
             selectUnit: function () {
                 var param = {
                     params: {

@@ -14,13 +14,14 @@
                 moreCondition: false,
                 carNum: '',
                 conditions: {
-                    state: '',
+                    state: '100500',
                     carNum: '',
                     inoutId: '',
-                    carType: '',
+                    carType: 'H',
                     startTime: '',
                     endTime: '',
                     paNum: '',
+                    paId: '',
                     iotApiCode: 'listCarInoutDetailBmoImpl'
                 }
             }
@@ -39,6 +40,11 @@
             });
         },
         methods: {
+            _carInoutOpenFile: function (url) {
+                vc.emit('viewImage', 'showImage', {
+                    url
+                })
+            },
             _loadParkingArea: function () {
                 let param = {
                     params: {
@@ -63,6 +69,7 @@
             },
             _swatchParkingArea: function (_parkingArea) {
                 $that.carInoutManageInfo.conditions.paNum = _parkingArea.num;
+                $that.carInoutManageInfo.conditions.paId = _parkingArea.paId;
                 $that._listCarInouts(DEFAULT_PAGE, DEFAULT_ROWS);
             },
 
@@ -84,7 +91,7 @@
                 param.params.carNum = param.params.carNum.trim();
                 param.params.inoutId = param.params.inoutId.trim();
                 //发送get请求
-                vc.http.apiGet('/iot.getOpenApi',
+                vc.http.apiGet('/carInoutDetail.listCarInoutDetail',
                     param,
                     function (json, res) {
                         let _json = JSON.parse(json);

@@ -8,7 +8,7 @@
                     </h5>
                     <div class="ibox-tools" style="top:10px;">
                         <!--<button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
-                                v-on:click="_moreCondition()">{{workflowManageInfo.moreCondition == true?'隐藏':'更多'}}
+                                v-on:click="_moreCondition()">{{workflowManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>-->
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                             <select class="custom-select" v-model="workflowManageInfo.conditions.flowType">
                                 <option selected value="">{{vc.i18n('请选择流程','workflowManage')}}</option>
                                 <option v-for="(item,index) in workflowManageInfo.flowTypes" :key="index"
-                                        v-bind:value="item.statusCd">{{item.name}}
+                                        v-bind:value="item.statusCd">{{vc.i18n(item.name, 'workflowManage')}}
                                 </option>
                             </select>
                         </div>

@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{reportFeeDetailInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{reportFeeDetailInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                                     v-model="reportFeeDetailInfo.conditions.communityId" @change="_changCommunity()">
                                 <option disabled selected value="">{{vc.i18n('请选择小区','reportFeeSummary')}}</option>
                                 <option v-for="(item,index) in reportFeeDetailInfo.communitys" :key="index"
-                                        v-bind:value="item.communityId">{{item.name}}
+                                        v-bind:value="item.communityId">{{vc.i18n(item.name, 'reportFeeSummary')}}
                                 </option>
                             </select>
                         </div>

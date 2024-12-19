@@ -26,7 +26,7 @@
             vc.on('complaintDetail', 'openComplaintDetailModal', function (_params) {
                 vc.component.refreshcomplaintDetailInfo();
                 $('#complaintDetailModel').modal('show');
-                let _roomName = _params.floorNum + '号楼' + _params.unitNum + '单元' + _params.roomNum + '室';
+                let _roomName = _params.floorNum + '号楼' + _params.unitNum + '座' + _params.roomNum + '室';
                 vc.copyObject(_params, vc.component.complaintDetailInfo);
                 vc.component.complaintDetailInfo.photos.forEach((item) => {
                     vc.component.complaintDetailInfo.photosShow.push({url: photoUrl + "?fileId=" + item.url + "&communityId=-1&time=" + new Date()});

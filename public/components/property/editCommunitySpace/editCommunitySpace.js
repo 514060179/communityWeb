@@ -9,16 +9,20 @@
                 feeMoney: '',
                 adminName: '',
                 tel: '',
-                state: ''
+                state: '',
+                remark: '',
+                ruleFile: '',
+                priceFile: '',
+                tempfile: ''
             }
         },
         _initMethod: function () {
-            // vc.initHourMinute('editSpaceStartTime', function(_value) {
-            //     $that.editCommunitySpaceInfo.startTime = _value;
-            // });
-            // vc.initHourMinute('editSpaceEndTime', function(_value) {
-            //     $that.editCommunitySpaceInfo.endTime = _value;
-            // });
+            vc.initHourMinute('editSpaceStartTime', function(_value) {
+                $that.editCommunitySpaceInfo.startTime = _value;
+            });
+            vc.initHourMinute('editSpaceEndTime', function(_value) {
+                $that.editCommunitySpaceInfo.endTime = _value;
+            });
         },
         _initEvent: function () {
             vc.on('editCommunitySpace', 'openEditCommunitySpaceModal', function (_params) {
@@ -26,6 +30,14 @@
                 $('#editCommunitySpaceModel').modal('show');
                 vc.copyObject(_params, vc.component.editCommunitySpaceInfo);
                 vc.component.editCommunitySpaceInfo.communityId = vc.getCurrentCommunity().communityId;
+            });
+
+            vc.on("editCommunitySpace", "notifyUploadImage", function (_param) {
+                if (_param.length > 0) {
+                    vc.component.editCommunitySpaceInfo.img = _param[0].fileId;
+                } else {
+                    vc.component.editCommunitySpaceInfo.img = ''
+                }
             });
         },
         methods: {
@@ -100,9 +112,9 @@
                             errInfo: "管理员电话不能为空"
                         },
                         {
-                            limit: "maxLength",
-                            param: "11",
-                            errInfo: "管理员电话不能超过11"
+                            limit: "phone",
+                            param: "",
+                            errInfo: "不是有效的手机号"
                         }
                     ],
                     'editCommunitySpaceInfo.state': [
@@ -165,7 +177,92 @@
                     tel: '',
                     state: ''
                 }
-            }
+            },
+            getRuleFile: function (e) {
+                $that.editCommunitySpaceInfo.tempfile = e.target.files[0];
+                this._importRuleData();
+            },
+            _importRuleData: function () {
+                // 导入数据
+                let _fileName = $that.editCommunitySpaceInfo.tempfile.name;
+                let _suffix = _fileName.substring(_fileName.lastIndexOf('.') + 1);
+                if (!$that.checkFileType(_suffix.toLowerCase())) {
+                    vc.toast('操作失败，请上传图片、PDF格式的文件');
+                    return;
+                }
+                let param = new FormData();
+                param.append("uploadFile", $that.editCommunitySpaceInfo.tempfile);
+                vc.http.upload(
+                    'importRoomFee',
+                    'uploadContactFile',
+                    param, {
+                        emulateJSON: true,
+                        //添加请求头
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        }
+                    },
+                    function (json, res) {
+                        //vm.menus = vm.refreshMenuActive(JSON.parse(json),0);
+                        if (res.status === 200) {
+                            $that.editCommunitySpaceInfo.ruleFile = json;
+                            vc.toast("上传成功");
+                            return;
+                        }
+                        vc.toast(json, 10000);
+                    },
+                    function (errInfo, error) {
+                        console.log('请求失败处理');
+                        vc.toast(errInfo, 10000);
+                    });
+            },
+            getPriceFile: function (e) {
+                $that.editCommunitySpaceInfo.tempfile = e.target.files[0];
+                this._importPriceData();
+            },
+            _importPriceData: function () {
+                // 导入数据
+                let _fileName = $that.editCommunitySpaceInfo.tempfile.name;
+                let _suffix = _fileName.substring(_fileName.lastIndexOf('.') + 1);
+                if (!$that.checkFileType(_suffix.toLowerCase())) {
+                    vc.toast('操作失败，请上传图片、PDF格式的文件');
+                    return;
+                }
+                let param = new FormData();
+                param.append("uploadFile", $that.editCommunitySpaceInfo.tempfile);
+                vc.http.upload(
+                    'importRoomFee',
+                    'uploadContactFile',
+                    param, {
+                        emulateJSON: true,
+                        //添加请求头
+                        headers: {
+                            "Content-Type": "multipart/form-data"
+                        }
+                    },
+                    function (json, res) {
+                        if (res.status == 200) {
+                            $that.editCommunitySpaceInfo.priceFile = json;
+                            vc.toast("上传成功");
+                            return;
+                        }
+                        vc.toast(json, 10000);
+                    },
+                    function (errInfo, error) {
+                        console.log('请求失败处理');
+                        vc.toast(errInfo, 10000);
+                    });
+            },
+
+            checkFileType: function (fileType) {
+                const acceptTypes = ['png', 'pdf', 'jpg'];
+                for (var i = 0; i < acceptTypes.length; i++) {
+                    if (fileType === acceptTypes[i]) {
+                        return true;
+                    }
+                }
+                return false;
+            },
         }
     });
 })(window.vc, window.vc.component);

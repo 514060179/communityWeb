@@ -44,6 +44,29 @@
             });
         },
         methods: {
+            // 导出
+            _exportRepairReturnVisit: function () {
+                vc.component.repairReturnVisitInfo.conditions.communityId = vc.getCurrentCommunity().communityId;
+                vc.component.repairReturnVisitInfo.conditions.pagePath = 'repairReturnVisit';
+                let param = {
+                    params: vc.component.repairReturnVisitInfo.conditions
+                };
+                //发送get请求
+                vc.http.apiGet(
+                    '/export.exportData',
+                    param,
+                    function (json, res) {
+                        let _json = JSON.parse(json);
+                        vc.toast(_json.msg);
+                        if (_json.code == 0) {
+                            vc.jumpToPage('/#/pages/property/downloadTempFile?tab=下载中心')
+                        }
+                    },
+                    function (errInfo, error) {
+                        console.log('请求失败处理');
+                    }
+                );
+            },
             //查询方法
             _listRepairPools: function (_page, _rows) {
                 vc.component.repairReturnVisitInfo.conditions.page = _page;

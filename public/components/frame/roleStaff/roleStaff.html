@@ -51,7 +51,7 @@
         <td class="text-center">
             <div class="btn-group">
                 <button class="btn-white btn btn-xs" v-on:click="_openDeleteRoleStaffModel(staff)"
-                        >
+                        v-if="vc.hasPrivilege('502022082920040010','502023011946550001')">
                     <span><vc:i18n name="删除"></vc:i18n></span>
                 </button>
             </div>

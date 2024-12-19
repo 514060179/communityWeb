@@ -14,35 +14,35 @@
                 </div>
                 <div class="margin-xs-r bg-white treeview attendance-staff">
                     <div class="padding flex justify-between">
-                        <span class="font-1">核销结果</span>
+                        <span class="font-1">{{vc.i18n('核销结果','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.remark}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">核销时间</span>
+                        <span class="font-1">{{vc.i18n('核销时间','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.createTime}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">商品/服务</span>
+                        <span class="font-1">{{vc.i18n('商品/服务','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.goodsName}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">核销数量</span>
+                        <span class="font-1">{{vc.i18n('核销数量','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.quantity}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约日期</span>
+                        <span class="font-1">{{vc.i18n('预约日期','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.appointmentTime}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约小时</span>
+                        <span class="font-1">{{vc.i18n('预约小时','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.hours}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约人</span>
+                        <span class="font-1">{{vc.i18n('预约人','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.personName}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约电话</span>
+                        <span class="font-1">{{vc.i18n('预约电话','reserveConfirm')}}</span>
                         <span>{{reserveConfirmInfo.order.personTel}}</span>
                     </div>
                 </div>
@@ -64,17 +64,17 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <input type="text" :placeholder="vc.i18n('请选择预约人','communitySpaceManage')" v-model="reserveConfirmInfo.conditions.personName" class=" form-control">
+                                        <input type="text" :placeholder="vc.i18n('请选择预约人','reserveConfirm')" v-model="reserveConfirmInfo.conditions.personName" class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <input type="text" :placeholder="vc.i18n('请选择预约电话','communitySpaceManage')" v-model="reserveConfirmInfo.conditions.personTel" class=" form-control">
+                                        <input type="text" :placeholder="vc.i18n('请选择预约电话','reserveConfirm')" v-model="reserveConfirmInfo.conditions.personTel" class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" :placeholder="vc.i18n('请选择预约时间','communitySpaceManage')" v-model="reserveConfirmInfo.conditions.appointmentTime" class=" form-control">
+                                        <input type="text" :placeholder="vc.i18n('请选择预约时间','reserveConfirm')" v-model="reserveConfirmInfo.conditions.appointmentTime" class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
@@ -97,31 +97,31 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">
-                                            核销订单
+                                            {{vc.i18n('核销订单','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            商品/服务
+                                            {{vc.i18n('商品/服务','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            核销数量
+                                            {{vc.i18n('核销数量','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            预约日期
+                                            {{vc.i18n('预约日期','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            预约时间
+                                            {{vc.i18n('预约时间','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            预约人
+                                            {{vc.i18n('预约人','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            预约电话
+                                            {{vc.i18n('预约电话','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            核销时间
+                                            {{vc.i18n('核销时间','reserveConfirm')}}
                                         </th>
                                         <th class="text-center">
-                                            备注
+                                            {{vc.i18n('备注','reserveConfirm')}}
                                         </th>
                                     </tr>
                                 </thead>

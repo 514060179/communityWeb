@@ -105,13 +105,13 @@
                             errInfo: "结租时间不能为空"
                         }
                     ],
-                    'carAddParkingSpaceInfo.psId': [
-                        {
-                            limit: "required",
-                            param: "",
-                            errInfo: "车位不能为空"
-                        }
-                    ]
+                    // 'carAddParkingSpaceInfo.psId': [
+                    //     {
+                    //         limit: "required",
+                    //         param: "",
+                    //         errInfo: "车位不能为空"
+                    //     }
+                    // ]
                 });
             },
             _loadCarInfo: function () {

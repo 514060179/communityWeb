@@ -94,7 +94,7 @@
                             <option selected disabled value="">{{vc.i18n('必填，请选择事由类型','addVisitSpace')}}</option>
                             <option v-for="(item,index) in addVisitSpaceInfo.reasonTypes" :key="index"
                                     :value="item.statusCd">
-                                {{item.name}}
+                                {{vc.i18n(item.name, 'addVisitSpace')}}
                             </option>
                         </select>
                     </div>
@@ -117,7 +117,7 @@
                     </label>
                     <div class="col-sm-4">
                         <textarea v-model="addVisitSpaceInfo.visitCase" type="text"
-                                  :placeholder="vc.i18n('请填写访客拜访事由','addVisitSpace')" rows="3" class="form-control">
+                                  :placeholder="vc.i18n('可选，请填写访客拜访事由','addVisitSpace')" rows="3" class="form-control">
                         </textarea>
                     </div>
                     <label class="col-sm-2 col-form-label text-right">

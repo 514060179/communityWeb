@@ -36,7 +36,7 @@
                                     <option selected value="">{{vc.i18n('请选择费用大类','communityFeeSummary')}}</option>
                                     <option v-for="(item,index) in communityFeeSummaryInfo.feeTypeCds" :key="index"
                                         v-bind:value="item.statusCd">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, 'communityFeeSummary')}}
                                     </option>
                                 </select>
                             </div>

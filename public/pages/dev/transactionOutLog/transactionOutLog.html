@@ -6,7 +6,7 @@
                     <ul class="list-group text-center border-radius">
                         <!--  -->
                         <li class="list-group-item node-orgTree " v-for="(item,index) in transactionOutLogInfo.logTypes" :key="index" @click="swatchLogType(item)" :class="{'vc-node-selected':transactionOutLogInfo.conditions.logType == item.value}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'transactionOutLog')}}
                         </li>
                     </ul>
                 </div>

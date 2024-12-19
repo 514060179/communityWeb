@@ -7,7 +7,7 @@
                         <li class="list-group-item node-orgTree " v-for="(item,index) in itemOutManageInfo.states"
                             :key="index" @click="swatchState(item)"
                             :class="{'vc-node-selected':itemOutManageInfo.conditions.state == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'itemOutManage')}}
                         </li>
                     </ul>
                 </div>

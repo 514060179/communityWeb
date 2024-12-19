@@ -10,19 +10,16 @@
             nav: {
                 moreNoticeUrl: '/#/pages/common/noticeManage',
                 langs: [{
+                    name: '繁體',
+                    lang: 'cn'
+                }, {
                     name: '中文',
                     lang: 'zh-cn'
                 }, {
-                    name: '繁体',
-                    lang: 'cn'
-                }, {
                     name: 'english',
                     lang: 'en'
-                }, {
-                    name: 'བོད་སྐད།',
-                    lang: 'tibetan'
                 }],
-                langName: '中文',
+                langName: '繁體',
                 _currentCommunity: '',
                 communityInfos: [],
                 storeTypeCd: '',
@@ -48,9 +45,9 @@
                 this.logo = sysInfo.logo;
             },
             initLang: function() {
-                let _lang = vc.getData('JAVA110-LANG')
+                let _lang = vc.getData('property-lang')
                 if (!_lang) {
-                    vc.saveData('JAVA110-LANG', {
+                    vc.saveData('property-lang', {
                         name: '中文',
                         lang: 'zh-cn'
                     })
@@ -59,7 +56,7 @@
                 }
             },
             _changeLang: function (_lang) {
-                vc.saveData('JAVA110-LANG', _lang);
+                vc.saveData('property-lang', _lang);
                 location.reload();
             },
             logout: function() {

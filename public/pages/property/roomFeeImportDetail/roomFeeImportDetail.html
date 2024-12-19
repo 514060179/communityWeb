@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{roomFeeImportDetailInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{roomFeeImportDetailInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <input type="text" :placeholder="vc.i18n('请输入单元编号','roomFeeImportDetail')"
+                                <input type="text" :placeholder="vc.i18n('请输入座编号','roomFeeImportDetail')"
                                        v-model="roomFeeImportDetailInfo.conditions.unitNum" class=" form-control">
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                                 <span><vc:i18n name="楼栋编号" namespace="roomFeeImportDetail"></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="单元编号" namespace="roomFeeImportDetail"></vc:i18n></span>
+                                <span><vc:i18n name="座编号" namespace="roomFeeImportDetail"></vc:i18n></span>
                             </th>
                             <th class="text-center">
                                 <span><vc:i18n name="房屋编号" namespace="roomFeeImportDetail"></vc:i18n></span>

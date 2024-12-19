@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="addDataPrivilegeUnitModelLabel">
-                    <vc:i18n name="楼栋单元" namespace="addDataPrivilegeUnit"></vc:i18n>
+                    <vc:i18n name="楼栋座" namespace="addDataPrivilegeUnit"></vc:i18n>
                 </h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -24,7 +24,7 @@
                                 </div>
                                 <div class="col-sm-4 m-b-xs">
                                     <div class="input-group">
-                                        <input :placeholder="vc.i18n('输入单元编号','addDataPrivilegeUnit')" type="text"
+                                        <input :placeholder="vc.i18n('输入座编号','addDataPrivilegeUnit')" type="text"
                                                v-model.trim="addDataPrivilegeUnitInfo.unitNum"
                                                class="form-control form-control-sm">
                                     </div>
@@ -58,7 +58,7 @@
                                             <vc:i18n name="楼栋编号" namespace="addDataPrivilegeUnit"></vc:i18n>
                                         </th>
                                         <th class="text-center">
-                                            <vc:i18n name="单元编号" namespace="addDataPrivilegeUnit"></vc:i18n>
+                                            <vc:i18n name="座编号" namespace="addDataPrivilegeUnit"></vc:i18n>
                                         </th>
                                     </tr>
                                     </thead>

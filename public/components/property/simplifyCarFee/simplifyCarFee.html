@@ -36,7 +36,7 @@
                     <span><vc:i18n name="费用类型" namespace="simplifyCarFee"></vc:i18n></span>
                 </th>
                 <th class="text-center">
-                    <span><vc:i18n name="应收金额" namespace="simplifyCarFee"></vc:i18n></span>
+                    <span><vc:i18n name="应收金额(单位:MOP)" namespace="simplifyCarFee"></vc:i18n></span>
                 </th>
                 <th class="text-center">
                     <span><vc:i18n name="建账时间" namespace="simplifyCarFee"></vc:i18n></span>
@@ -45,7 +45,7 @@
                     <span><vc:i18n name="应收时间段" namespace="simplifyCarFee"></vc:i18n></span>
                 </th>
                 <th class="text-center">
-                    <span><vc:i18n name="说明" namespace="simplifyCarFee"></vc:i18n></span>
+                    <span><vc:i18n name="说明(单位:MOP)" namespace="simplifyCarFee"></vc:i18n></span>
                 </th>
                 <th class="text-center">
                     <span><vc:i18n name="状态" namespace="simplifyCarFee"></vc:i18n></span>
@@ -170,7 +170,7 @@
                 </div>
             </div>
             <div class="col-sm-2">
-                <span> 欠费小计：{{simplifyCarFeeInfo.totalAmount}}</span>
+                <span> 欠费小计：MOP {{simplifyCarFeeInfo.totalAmount}}</span>
             </div>
             <div class="col-sm-5 float-right">
                 <vc:create namespace="simplifyCarFee" path="frame/paginationPlus"></vc:create>

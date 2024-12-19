@@ -89,27 +89,29 @@
                 );
             },
             _listCommunityVenues: function (_page, _rows) {
-                let param = {
-                    params: {
-                        page: 1,
-                        row: 100,
-                        communityId: vc.getCurrentCommunity().communityId
-                    }
-                };
-                //发送get请求
-                vc.http.apiGet('/communityVenue.listCommunityVenue',
-                    param,
-                    function (json, res) {
-                        let _communityVenue = JSON.parse(json);
-                        vc.component.reportCommunitySpaceInfo.venues = _communityVenue.data;
-                        if (_communityVenue.data && _communityVenue.data.length > 0) {
-                            $that.swatchVenue(_communityVenue.data[0]);
-                        }
-                    },
-                    function (errInfo, error) {
-                        console.log('请求失败处理');
-                    }
-                );
+                // let param = {
+                //     params: {
+                //         page: 1,
+                //         row: 100,
+                //         communityId: vc.getCurrentCommunity().communityId
+                //     }
+                // };
+                // //发送get请求
+                // vc.http.apiGet('/communityVenue.listCommunityVenue',
+                //     param,
+                //     function (json, res) {
+                //         let _communityVenue = JSON.parse(json);
+                //         vc.component.reportCommunitySpaceInfo.venues = _communityVenue.data;
+                //         if (_communityVenue.data && _communityVenue.data.length > 0) {
+                //             $that.swatchVenue(_communityVenue.data[0]);
+                //         }
+                //     },
+                //     function (errInfo, error) {
+                //         console.log('请求失败处理');
+                //     }
+                // );
+
+                $that.swatchVenue('');
             },
             _openAddCommunitySpaceModal: function () {
                 if (!$that.reportCommunitySpaceInfo.conditions.venueId) {
@@ -147,7 +149,7 @@
                 return "可预约";
             },
             swatchVenue: function (_venue) {
-                $that.reportCommunitySpaceInfo.conditions.venueId = _venue.venueId;
+                // $that.reportCommunitySpaceInfo.conditions.venueId = _venue.venueId;
                 $that._listCommunitySpacePerson();
             },
             _moreCondition: function () {

@@ -53,12 +53,12 @@
                         <td class="text-center">{{item.squarePrice}}</br>{{item.units}}</td>
                         <td class="text-center">{{item.area}}</td>
                         <td class="text-center" v-if="item.amount < 0">{{item.amount}}<vc:i18n name="元(退费)" namespace="printPayFee"></vc:i18n></td>
-                        <td class="text-center" v-else>{{item.amount}}<vc:i18n name="元" namespace="printPayFee"></vc:i18n></td>
-                        <!-- <td class="text-center"><span><vc:i18n name="元" namespace="printPayFee"></vc:i18n></span></td> -->
+                        <td class="text-center" v-else>{{item.amount}}<vc:i18n name="MOP" namespace="printPayFee"></vc:i18n></td>
+                        <!-- <td class="text-center"><span><vc:i18n name="MOP" namespace="printPayFee"></vc:i18n></span></td> -->
                         <td class="text-center" width="200px">{{item.remark}}</td>
                     </tr>
                     <tr>
-                        <td colspan="3" class="text-center "><span><vc:i18n name="大写人民币" namespace="printPayFee"></vc:i18n></span>（元）</td>
+                        <td colspan="3" class="text-center "><span><vc:i18n name="澳门币" namespace="printPayFee"></vc:i18n></span>（MOP）</td>
                         <td colspan="4" class="text-center ">{{vc.changeNumMoneyToChinese(printPayFeeInfo.amount)}}
                         </td>
                         <td colspan="3" class="text-center ">{{printPayFeeInfo.amount}}</td>

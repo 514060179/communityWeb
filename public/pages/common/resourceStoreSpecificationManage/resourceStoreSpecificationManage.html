@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{resourceStoreSpecificationManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{resourceStoreSpecificationManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                                     </option>
                                     <option v-for="(item,index) in resourceStoreSpecificationManageInfo.resourceStoreTypes"
                                             :key="index" v-bind:value="item.rstId">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, 'resourceStoreSpecificationManage')}}
                                     </option>
                                 </select>
                             </div>
@@ -39,7 +39,7 @@
                                     </option>
                                     <option v-for="(item,index) in resourceStoreSpecificationManageInfo.resourceStoreSonTypes"
                                             :key="index" v-bind:value="item.rstId">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, 'resourceStoreSpecificationManage')}}
                                     </option>
                                 </select>
                             </div>

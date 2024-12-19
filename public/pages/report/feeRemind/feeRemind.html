@@ -9,19 +9,19 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{feeRemindInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{feeRemindInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
                 <div class="ibox-content">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <!-- <div class="col-sm-2">
                             <div class="form-group">
                                 <input type="text" :placeholder="vc.i18n('请填写房屋编号/合同名称/车牌号','feeRemind')"
                                        class="form-control form-control-md"
                                        v-model.trim="feeRemindInfo.conditions.objName">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-sm-2">
                             <div class="form-group input-group">
                                 <input type="text" :placeholder="vc.i18n('请填写业主名称','feeRemind')"
@@ -51,7 +51,7 @@
                                 <option disabled selected value="">{{vc.i18n('请选择小区','feeRemind')}}</option>
                                 <option v-for="(item,index) in feeRemindInfo.communitys" :key="index"
                                         v-bind:value="item.communityId">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'feeRemind')}}
                                 </option>
                             </select>
                         </div>

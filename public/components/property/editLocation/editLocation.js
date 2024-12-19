@@ -33,7 +33,7 @@
                 if ($that.editLocationInfo.locationType == '6000' && _param.floorNum) { //楼栋
                     vc.component.editLocationInfo.locationObjId = _param.floorId;
                     vc.component.editLocationInfo.locationObjName = _param.floorNum;
-                } else if ($that.editLocationInfo.locationType == '2000' && _param.unitName) { //单元
+                } else if ($that.editLocationInfo.locationType == '2000' && _param.unitName) { //座
                     vc.component.editLocationInfo.locationObjId = _param.unitId;
                     vc.component.editLocationInfo.locationObjName = _param.floorNum + _param.unitName;
                 } else if ($that.editLocationInfo.locationType == '4000' && _param.boxName) { //岗亭
@@ -94,13 +94,13 @@
                     vc.component.editLocationInfo.locationObjId = vc.getCurrentCommunity().communityId;
                     vc.component.editLocationInfo.locationObjName = vc.getCurrentCommunity().name;
                 }
-                if ($that.editLocationInfo.locationType == '2000') { //2000 单元
+                if ($that.editLocationInfo.locationType == '2000') { //2000 座
                     if ($that.editLocationInfo.floorId == null || $that.editLocationInfo.floorId == '' || $that.editLocationInfo.floorId == undefined) {
                         vc.toast("楼栋不能为空！");
                         return;
                     }
                     if ($that.editLocationInfo.unitId == null || $that.editLocationInfo.unitId == '' || $that.editLocationInfo.unitId == undefined) {
-                        vc.toast("单元不能为空！");
+                        vc.toast("座不能为空！");
                         return;
                     }
                 }
@@ -159,7 +159,7 @@
                         vc.toast(errInfo);
                     });
             },
-            //查询单元
+            //查询座
             _queryUnit: function (floorId, flag) {
                 if (flag == '1') {
                     vc.component.editLocationInfo.unitId = "";

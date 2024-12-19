@@ -63,21 +63,21 @@
                                     {{item.specName}}：{{item.specValue}}
                                 </div>
                             </td>
-                            <!-- <td class="text-center">{{feeDiscount.discountPrice}}<span><vc:i18n name="元" namespace="payFeeDiscount"></vc:i18n></span></td> -->
+                            <!-- <td class="text-center">{{feeDiscount.discountPrice}}<span><vc:i18n name="MOP" namespace="payFeeDiscount"></vc:i18n></span></td> -->
                             <td class="text-center" v-if="feeDiscount.discountType == '1001'">
                                 {{feeDiscount.discountPrice < 0 ? feeDiscount.discountPrice : feeDiscount.discountPrice
                                 * -1}}
-                                <span><vc:i18n name="元" namespace="payFeeDiscount"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="payFeeDiscount"></vc:i18n></span>
                             </td>
                             <td class="text-center" v-if="feeDiscount.discountType == '2002'">
                                 {{feeDiscount.discountPrice > 0 ? feeDiscount.discountPrice : feeDiscount.discountPrice
                                 * -1}}
-                                <span><vc:i18n name="元" namespace="payFeeDiscount"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="payFeeDiscount"></vc:i18n></span>
                             </td>
                             <td class="text-center" v-if="feeDiscount.discountType == '3003'">
                                 {{feeDiscount.discountPrice < 0 ? feeDiscount.discountPrice : feeDiscount.discountPrice
                                 * -1}}
-                                <span><vc:i18n name="元" namespace="payFeeDiscount"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="payFeeDiscount"></vc:i18n></span>
                             </td>
                         </tr>
                         </tbody>

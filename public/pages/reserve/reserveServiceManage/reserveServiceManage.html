@@ -9,13 +9,13 @@
                         <li class="list-group-item node-orgTree "
                             v-for="(item,index) in reserveServiceManageInfo.catalogs" @click="swatchReserveCatalog(item)"
                             :class="{'vc-node-selected':reserveServiceManageInfo.conditions.catalogId==item.catalogId}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'reserveServiceManage')}}
                         </li>
                     </ul>
                     <ul class="list-group text-center border-radius" v-else>
                         <!--  -->
                         <li class="list-group-item node-orgTree " @click="_addCatalog()">
-                            添加目录
+                            {{vc.i18n('添加目录', 'reserveServiceManage')}}
                         </li>
                     </ul>
                 </div>
@@ -155,7 +155,7 @@
                                             <div class="btn-group">
                                                 <button class="btn-white btn btn-xs"
                                                     v-on:click="_openReserveServicePersonModel(reserveService)"><span>
-                                                        <vc:i18n name='预约服务'></vc:i18n>
+                                                        <vc:i18n name='预约服务' namespace='reserveServiceManage'></vc:i18n>
                                                     </span></button>
                                             </div>
                                             <div class="btn-group">

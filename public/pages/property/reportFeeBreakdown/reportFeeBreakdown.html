@@ -8,7 +8,7 @@
                     </h5>
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
-                                v-on:click="_moreCondition()">{{reportFeeBreakdownInfo.moreCondition == true?'隐藏':'更多'}}
+                                v-on:click="_moreCondition()">{{reportFeeBreakdownInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -31,10 +31,10 @@
                             <div class="form-group">
                                 <select class="form-control-md form-control input-s-sm inline"
                                         v-model="reportFeeBreakdownInfo.conditions.unitId">
-                                    <option selected value="">{{vc.i18n('请选择单元','reportFeeBreakdown')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择座','reportFeeBreakdown')}}</option>
                                     <option v-for="(unit,index) in reportFeeBreakdownInfo.roomUnits" :key="index"
                                             v-bind:value="unit.unitId">
-                                        {{unit.unitNum}}{{vc.i18n('单元','reportFeeBreakdown')}}
+                                        {{unit.unitNum}}{{vc.i18n('座','reportFeeBreakdown')}}
                                     </option>
                                 </select>
                             </div>
@@ -104,28 +104,28 @@
                                 <span><vc:i18n name="费用项" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="历史欠费" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="历史欠费" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="当月应收" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="当月应收" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="应收合计" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="应收合计" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="当月实收" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="当月实收" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="欠费追回" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="欠费追回" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="预交费用" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="预交费用" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="实收合计" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="实收合计" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="欠费金额" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="欠费金额" namespace="reportFeeBreakdown"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
                                 <span><vc:i18n name="更新时间" namespace="reportFeeBreakdown"></vc:i18n></span>
@@ -184,41 +184,41 @@
                         <span class="col-md-2">
                             <div class="row">
                                 <span><vc:i18n name="应收" namespace="reportFeeBreakdown"></vc:i18n></span>: {{reportFeeBreakdownInfo.totalReceivableAmount}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="应收" namespace="reportFeeBreakdown"></vc:i18n></span>: {{reportFeeBreakdownInfo.allReceivableAmount}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-2">
                             <div class="row">
                                 <span><vc:i18n name="实收" namespace="reportFeeBreakdown"></vc:i18n></span>: {{reportFeeBreakdownInfo.totalReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="实收" namespace="reportFeeBreakdown"></vc:i18n></span>: {{reportFeeBreakdownInfo.allReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-2">
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportFeeBreakdown"></vc:i18n></span>: {{_computeTotalOweAmount()}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportFeeBreakdown"></vc:i18n></span>: {{reportFeeBreakdownInfo.allOweAmount}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-2">
                             <div class="row">
                                 <span><vc:i18n name="欠费追回" namespace="reportFeeBreakdown"></vc:i18n></span>: {{_computeTotalHisOweReceivedAmount()}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="欠费追回" namespace="reportFeeBreakdown"></vc:i18n></span>: {{reportFeeBreakdownInfo.allHisOweReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportFeeBreakdown"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFeeBreakdown"></vc:i18n></span>
                             </div>
                         </span>
                     </div>

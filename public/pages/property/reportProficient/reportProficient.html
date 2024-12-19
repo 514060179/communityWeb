@@ -23,7 +23,7 @@
                                     {{vc.i18n('请选择收费类型','reportProficient')}}
                                 </option>
                                 <option v-for="(item,index) in reportProficientInfo.feeTypeCds" :key="index"
-                                        v-bind:value="item.statusCd">{{item.name}}
+                                        v-bind:value="item.statusCd">{{vc.i18n(item.name, 'reportProficient')}}
                                 </option>
                             </select>
                         </div>

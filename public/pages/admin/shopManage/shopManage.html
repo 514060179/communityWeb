@@ -21,7 +21,7 @@
                                 <select class="custom-select" v-model="shopManageInfo.conditions.storeType">
                                     <option value="">{{vc.i18n('请选择店铺类型','shopManage')}}</option>
                                     <option :value="item.statusCd" v-for="(item,index) in shopManageInfo.storeTypes">
-                                        {{item.name}}</option>
+                                        {{vc.i18n(item.name, 'shopManage')}}</option>
                                 </select>
                             </div>
                         </div>

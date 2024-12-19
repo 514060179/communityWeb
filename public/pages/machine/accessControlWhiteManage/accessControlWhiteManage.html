@@ -8,7 +8,7 @@
                             v-for="(item,index) in accessControlWhiteManageInfo.personTypes" :key="index"
                             @click="swatchPersonType(item)"
                             :class="{'vc-node-selected':accessControlWhiteManageInfo.conditions.personType == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'accessControlWhiteManage')}}
                         </li>
                     </ul>
                 </div>

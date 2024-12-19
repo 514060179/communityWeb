@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <!-- <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                  v-on:click="_moreCondition()">
-                                 {{staffFeeManageInfo.moreCondition == true ? '隐藏' : '更多'}}
+                                 {{staffFeeManageInfo.moreCondition == true ? vc.i18n('隐藏' ):vc.i18n('更多' )}}
                          </button>-->
                     </div>
                 </div>
@@ -85,10 +85,10 @@
                             <td class="text-center">{{staffFee.userId}}</td>
                             <td class="text-center">{{staffFee.userName}}</td>
                             <td class="text-center">{{staffFee.receivableAmount}}
-                                <span><vc:i18n name="元" namespace="staffFeeManage"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="staffFeeManage"></vc:i18n></span>
                             </td>
                             <td class="text-center">{{staffFee.receivedAmount}}
-                                <span><vc:i18n name="元" namespace="staffFeeManage"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="staffFeeManage"></vc:i18n></span>
                             </td>
                         </tr>
                         </tbody>

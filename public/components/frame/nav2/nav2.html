@@ -2,9 +2,9 @@
     <div>
         <ul class="flex flex-start">
             <!-- <li class="title"><a href="/">{{vc.i18n('systemName')}}</a></li> -->
-            <li class="title"><a href="/">{{logo}}</a></li>
+            <li class="title"><a href="/">安智</a></li>
             <li :class="{'active' :item.active == '1' }" v-for="(item,index) in nav.catalogs" @click="_changeMenuCatalog(item)" v-if="!item.privId || vc.hasPrivilege(item.privId)">
-                <i :class="item.icon"></i>{{item.name}}
+                <i :class="item.icon"></i>{{vc.i18n(item.name, "menus")}}
             </li>
         </ul>
     </div>
@@ -42,7 +42,7 @@
                 <i class="fa fa-question-circle-o"></i>
             </li>
             <li v-on:click="logout()">
-                <i class="fa fa-sign-out"></i> {{vc.i18n('signOut')}}
+                <i class="fa fa-sign-out"></i> {{vc.i18n('退出')}}
             </li>
         </ul>
     </div>

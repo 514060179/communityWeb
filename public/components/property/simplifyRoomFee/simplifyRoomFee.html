@@ -105,6 +105,8 @@
                 </th>
                 <th class="text-center">
                     <vc:i18n name="应收金额" namespace="simplifyRoomFee"></vc:i18n>
+                    <vc:i18n name="(单位:MOP)" namespace="simplifyRoomFee"></vc:i18n>
+
                 </th>
                 <th class="text-center">
                     <span><vc:i18n name="建账时间" namespace="simplifyRoomFee"></vc:i18n></span>
@@ -115,7 +117,7 @@
                     <span class="fa fa-info-circle popover-show-endTime hand" data-content="该费用欠费时间段"></span>
                 </th>
                 <th class="text-center">
-                    <vc:i18n name="说明" namespace="simplifyRoomFee"></vc:i18n>
+                    <vc:i18n name="说明(单位:MOP)" namespace="simplifyRoomFee"></vc:i18n>
                 </th>
                 <th class="text-center">
                     <vc:i18n name="状态" namespace="simplifyRoomFee"></vc:i18n>
@@ -365,7 +367,7 @@
             <span>
                 <span>
                     <vc:i18n name="欠费小计：" namespace="simplifyRoomFee"></vc:i18n>
-                </span>{{simplifyRoomFeeInfo.totalAmount}}
+                </span>MOP {{simplifyRoomFeeInfo.totalAmount}}
             </span>
         </div>
         <div class="col-sm-5 float-right" v-show="simplifyRoomFeeInfo.showFlag == 'DEFAULT'">

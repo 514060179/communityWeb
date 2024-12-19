@@ -8,7 +8,7 @@
                             v-for="(item,index) in allocationStorehousesInfo.applyTypes" :key="index"
                             @click="swatchApplyType(item)"
                             :class="{'vc-node-selected':allocationStorehousesInfo.conditions.applyType == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'allocationStorehouseDetailed')}}
                         </li>
                     </ul>
                 </div>
@@ -25,7 +25,7 @@
                             <div class="ibox-tools" style="top:10px;">
                                 <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                         v-on:click="_moreCondition()">
-                                    {{allocationStorehousesInfo.moreCondition == true?'隐藏':'更多'}}
+                                    {{allocationStorehousesInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                                 </button>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                                 {{vc.i18n('请选择物品类型','allocationStorehouseDetailed')}}
                                             </option>
                                             <option v-for="(item,index) in allocationStorehousesInfo.resourceStoreTypes"
-                                                    :key="index" v-bind:value="item.rstId">{{item.name}}
+                                                    :key="index" v-bind:value="item.rstId">{{vc.i18n(item.name, 'allocationStorehouseDetailed')}}
                                             </option>
                                         </select>
                                     </div>
@@ -68,7 +68,7 @@
                                                 {{vc.i18n('请选择二级分类','allocationStorehouseDetailed')}}
                                             </option>
                                             <option v-for="(item,index) in allocationStorehousesInfo.resourceStoreSonTypes"
-                                                    :key="index" v-bind:value="item.rstId">{{item.name}}
+                                                    :key="index" v-bind:value="item.rstId">{{vc.i18n(item.name, 'allocationStorehouseDetailed')}}
                                             </option>
                                         </select>
                                     </div>
@@ -158,7 +158,7 @@
                                             {{vc.i18n('请选择调拨状态','allocationStorehouseDetailed')}}
                                         </option>
                                         <option v-for="(item,index) in allocationStorehousesInfo.states" :key="index"
-                                                :value="item.statusCd">{{item.name}}
+                                                :value="item.statusCd">{{vc.i18n(item.name, 'allocationStorehouseDetailed')}}
                                         </option>
                                     </select>
                                 </div>

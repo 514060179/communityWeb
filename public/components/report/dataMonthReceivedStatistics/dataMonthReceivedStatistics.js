@@ -25,7 +25,7 @@
                 $that.dataMonthReceivedStatisticsInfo.feeTypeCds = _data;
                 $that.dataMonthReceivedStatisticsInfo.feeTypeCd = _data[0].statusCd;
             });
-           
+            $that._loadMonthReceivedFloors();
         },
         _initEvent: function () {
             vc.on('dataMonthReceivedStatistics', 'switch', function (_data) {
@@ -36,7 +36,7 @@
                  setTimeout(function(){
                     $that._initMonthReceivedDate();
                  },1000);
-                $that._loadMonthReceivedFloors();
+               
                 $that._qureyDataMonthReceivedStatistics(DEFAULT_PAGE, DEFAULT_ROWS);
 
             });

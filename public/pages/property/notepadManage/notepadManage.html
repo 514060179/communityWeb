@@ -8,7 +8,7 @@
                     </h5>
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
-                                v-on:click="_moreCondition()">{{notepadManageInfo.moreCondition == true?'隐藏':'更多'}}
+                                v-on:click="_moreCondition()">{{notepadManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -17,9 +17,9 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <select class="custom-select" v-model="notepadManageInfo.conditions.noteType">
-                                    <option selected value="">{{vc.i18n('请选择反馈类型','notepadManageInfo')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择反馈类型','notepadManage')}}</option>
                                     <option v-for="(item,index) in notepadManageInfo.noteTypes" :value="item.statusCd">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, 'notepadManage')}}
                                     </option>
                                 </select>
                             </div>
@@ -33,9 +33,9 @@
                         <div class="col-sm-3">
                             <div class="form-group">
                                 <select class="custom-select" v-model="notepadManageInfo.conditions.state">
-                                    <option selected value="">{{vc.i18n('请选择状态','notepadManageInfo')}}</option>
-                                    <option value="W">跟进中</option>
-                                    <option value="F">完成</option>
+                                    <option selected value="">{{vc.i18n('请选择状态','notepadManage')}}</option>
+                                    <option value="W">{{vc.i18n('跟进中','notepadManage')}}</option>
+                                    <option value="F">{{vc.i18n('完成','notepadManage')}}</option>
                                 </select>
                             </div>
                         </div>
@@ -89,31 +89,31 @@
                         <thead>
                         <tr>
                             <th class="text-center">
-                                <span><vc:i18n name='类型' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='类型' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='房屋' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='房屋' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='联系人' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='联系人' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='联系电话' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='联系电话' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='状态' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='状态' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='记录时间' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='记录时间' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='登记人' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='登记人' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='登记内容' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='登记内容' namespace='notepadManage'></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name='操作' namespace='simplifyNotepadManage'></vc:i18n></span>
+                                <span><vc:i18n name='操作' ></vc:i18n></span>
                             </th>
                         </tr>
                         </thead>

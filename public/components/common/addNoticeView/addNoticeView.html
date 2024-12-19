@@ -41,7 +41,7 @@
                             <option value="005">{{vc.i18n('关注用户','addNoticeView')}}</option>
                             <option value="001">{{vc.i18n('小区','addNoticeView')}}</option>
                             <option value="002">{{vc.i18n('楼栋','addNoticeView')}}</option>
-                            <option value="003">{{vc.i18n('单元','addNoticeView')}}</option>
+                            <option value="003">{{vc.i18n('座','addNoticeView')}}</option>
                             <option value="004">{{vc.i18n('房屋','addNoticeView')}}</option>
                         </select>
                     </div>
@@ -73,7 +73,7 @@
                 <div class="form-group row"
                     v-show="addNoticeViewInfo.objType == '003' || addNoticeViewInfo.objType == '004'  ">
                     <label class="col-sm-2 col-form-label">
-                        <vc:i18n name="归属单元" namespace="addNoticeView"></vc:i18n>
+                        <vc:i18n name="归属座" namespace="addNoticeView"></vc:i18n>
                     </label>
                     <div class="col-sm-10">
                         <vc:create path="property/unitSelect2" parentModal="addNoticeView"

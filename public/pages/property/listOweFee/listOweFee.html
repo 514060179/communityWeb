@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{listOweFeeInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{listOweFeeInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -32,10 +32,10 @@
                             <div class="form-group">
                                 <select class="form-control-md form-control input-s-sm inline"
                                         v-model="listOweFeeInfo.conditions.unitId">
-                                    <option selected value="">{{vc.i18n('请选择单元','listOweFee')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择座','listOweFee')}}</option>
                                     <option v-for="(unit,index) in listOweFeeInfo.roomUnits" :key="index"
                                             v-bind:value="unit.unitId">
-                                        {{unit.unitNum}}{{vc.i18n('单元','listOweFee')}}
+                                        {{unit.unitNum}}{{vc.i18n('座','listOweFee')}}
                                     </option>
                                 </select>
                             </div>
@@ -65,7 +65,7 @@
                                         v-model="listOweFeeInfo.conditions.roomSubType">
                                     <option selected value="">{{vc.i18n('请选择房屋类型','listOweFee')}}</option>
                                     <option :value="item.statusCd" v-for="(item,index) in listOweFeeInfo.roomSubTypes">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, 'listOweFee')}}
                                     </option>
                                 </select>
                             </div>
@@ -82,7 +82,7 @@
                                 <select class="custom-select" v-model="listOweFeeInfo.conditions.payObjType">
                                     <option selected value="">{{vc.i18n('请选择付费对象类型','listOweFee')}}</option>
                                     <option v-for="(item,index) in listOweFeeInfo.payObjTypes" :key="index"
-                                            :value="item.statusCd">{{item.name}}
+                                            :value="item.statusCd">{{vc.i18n(item.name, 'listOweFee')}}
                                     </option>
                                 </select>
                             </div>
@@ -163,7 +163,7 @@
                                 {{item.configName}}
                             </th>
                             <th class="text-center">
-                                <vc:i18n name="合计(单位:元)" namespace="listOweFee"></vc:i18n>
+                                <vc:i18n name="合计(单位:MOP)" namespace="listOweFee"></vc:i18n>
                             </th>
                             <th class="text-center">
                                 <vc:i18n name="更新时间" namespace="listOweFee"></vc:i18n>
@@ -204,14 +204,14 @@
                         </div>
                         <div class="col-md-2" v-for="(item,index) in listOweFeeInfo.feeConfigNames">
                             <div>{{item.configName}}: {{_getFeeOweAllAmount(item)}}
-                                <span><vc:i18n name="元" namespace="listOweFee"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="listOweFee"></vc:i18n></span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div>
                                 <span><vc:i18n name="合计" namespace="listOweFee"></vc:i18n></span>:
                                 {{_getFeeOweAllAmounts()}}
-                                <span><vc:i18n name="元" namespace="listOweFee"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="listOweFee"></vc:i18n></span>
                             </div>
                         </div>
                     </div>
@@ -225,14 +225,14 @@
                         </div>
                         <div class="col-md-2" v-for="(item,index) in listOweFeeInfo.feeConfigNames">
                             <div>{{item.configName}}: {{_getFeeOweAllTotalAmount(item)}}
-                                <span><vc:i18n name="元" namespace="listOweFee"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="listOweFee"></vc:i18n></span>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div>
                                 <span><vc:i18n name="合计" namespace="listOweFee"></vc:i18n></span>:
                                 {{listOweFeeInfo.fees[0].totalOweAmount}}
-                                <span><vc:i18n name="元" namespace="listOweFee"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="listOweFee"></vc:i18n></span>
                             </div>
                         </div>
                     </div>

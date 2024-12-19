@@ -18,6 +18,7 @@
                 ownerPhoto: '',
                 ownerPhotoUrl: '',
                 idCard: '',
+                areaCode: '',
                 videoPlaying: true,
                 mediaStreamTrack: null,
                 attrs: []
@@ -32,6 +33,7 @@
                     vc.component.addOwnerInfo.ownerId = _ownerId;
                 }
                 $('#addOwnerModel').modal('show');
+			
                 vc.component._initAddOwnerMedia();
             });
         },
@@ -50,6 +52,13 @@
                             limit: "maxin",
                             param: "2,64",
                             errInfo: "姓名长度必须在2位至64位"
+                        }
+                    ],
+                    'addOwnerInfo.areaCode': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "区号不能为空"
                         }
                     ],
                     'addOwnerInfo.link': [
@@ -104,6 +113,7 @@
                     vc.toast("人员类型不能为空");
                     return;
                 }
+			
                 if (vc.component.addOwnerInfo.componentTitle == '业主') {
                     vc.component.addOwnerInfo.ownerTypeCd = '1001';
                 }
@@ -121,7 +131,7 @@
                         if (_json.code == 0) {
                             //关闭model
                             $('#addOwnerModel').modal('hide');
-                            //vc.component.clearAddOwnerInfo();
+                            vc.component.clearAddOwnerInfo();
                             vc.toast("添加成功");
                             vc.emit($props.notifyLoadDataComponentName, 'listOwnerData', vc.component.addOwnerInfo);
                             return;
@@ -149,6 +159,7 @@
                     ownerPhoto: '',
                     ownerPhotoUrl: '',
                     idCard: '',
+                    areaCode: '',
                     videoPlaying: true,
                     mediaStreamTrack: null,
                     attrs: []
@@ -312,6 +323,42 @@
                 $that._closeVedio();
                 $('#addOwnerModel').modal('hide');
             },
+            checkPhoneNumber(){
+                let link = $that.addOwnerInfo.link;
+                // 综合正则表达式
+                let regex = /^((\+?86-?)?1[3-9]\d{9}|(\+?852-?)?[5689]\d{7}|(\+?853-?)?6\d{7})$/;
+                // 验证手机号
+                if (!regex.test(link)) {
+                    vc.toast('手机号无效');
+                    $that.addOwnerInfo.link = "";
+                    return false;
+                }
+                return true;
+            },
+			checkIdCard: function () {
+			    let idCard = $that.addOwnerInfo.idCard;
+			    // 内地身份证
+			    let format = /^(([1][1-5])|([2][1-3])|([3][1-7])|([4][1-6])|([5][0-4])|([6][1-5])|([7][1])|([8][1-2]))\d{4}(([1][9]\d{2})|([2]\d{3}))(([0][1-9])|([1][0-2]))(([0][1-9])|([1-2][0-9])|([3][0-1]))\d{3}[0-9xX]$/;
+			    
+			    //香港身份证号码校验
+			    //开头一位或两位大写字母，然后接上6-10位数字，最后一位数字或字母校验
+                let isMatchHongKong = /^[A-Z]{1,2}[0-9]{6,10}[0-9A-Z]$/;
+			     
+			    //澳门身份证号码校验
+			    //开头数字1或者5或者7，然后接上6位数字，再接上一位数字或者大写字母校验
+                let isMatchAoMen = /^[1|5|7][0-9]{6}[0-9A-Z]$/;
+			    console.log(!format.test(idCard) && !isMatchHongKong.test(idCard) && !isMatchAoMen.test(idCard))
+			
+				//号码规则校验
+			    if (!format.test(idCard) && !isMatchHongKong.test(idCard) && !isMatchAoMen.test(idCard)) {
+			        vc.toast('身份证号码不合规');
+			        $that.addOwnerInfo.idCard = "";
+			        return false;
+			    }
+				return true;
+				
+			    
+			},
 
         }
     });

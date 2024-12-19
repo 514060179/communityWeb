@@ -35,6 +35,9 @@
                         vc.component.dataPrivilegeDivInfo.dataPrivileges = _dataPrivilegeManageInfo.data;
                         if (_dataPrivilegeManageInfo.data && _dataPrivilegeManageInfo.data.length > 0) {
                             $that._switchDataPrivilege(_dataPrivilegeManageInfo.data[0])
+                        } else {
+                            $that.dataPrivilegeDivInfo.curDataPrivilege = {}
+                            vc.emit('dataPrivilege', 'dataPrivilegeRemove', {});
                         }
                     },
                     function (errInfo, error) {

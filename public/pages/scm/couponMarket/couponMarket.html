@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-5 padding-lr-0 margin-left-sm">
-            <input type="text" class="form-control" placeholder="请输入优惠券名称" @keyup.enter="_doSearch()" />
+            <input type="text" class="form-control" :placeholder="vc.i18n('请输入优惠券名称', 'couponMarket')" @keyup.enter="_doSearch()" />
         </div>
         <div class="col-md-1 padding-lr-0 margin-left-sm">
             <button type="button" class="form-control btn btn-primary" @click="_doSearch()">
@@ -24,14 +24,14 @@
             <!-- <img :src="item.url" class="border-radius"/> -->
             <img :src="couponMarketInfo.url" class="border-radius" />
             <div class="title padding-xs">
-                <span>{{item.name}}</span>
+                <span>{{vc.i18n(item.name, 'couponMarket')}}</span>
             </div>
             <div class="row padding-xs">
                 <div class="col-md-6">
-                    售价：<span style="color: #ff0036">￥{{item.valuePrice}}</span>
+                    {{vc.i18n('售价', 'couponMarket')}}：<span style="color: #ff0036">￥{{item.valuePrice}}</span>
                 </div>
                 <div class="col-md-6 text-right">
-                    <a href="">购买</a>
+                    <a href="">{{vc.i18n('购买', 'couponMarket')}}</a>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
                         <li class="list-group-item node-orgTree " v-for="(item,index) in menuManageInfo.storeTYpes"
                             :key="index" @click="_swatchStoreType(item)"
                             :class="{'vc-node-selected':menuManageInfo.conditions.domain == item.storeType}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'menuManage')}}
                         </li>
                     </ul>
                 </div>

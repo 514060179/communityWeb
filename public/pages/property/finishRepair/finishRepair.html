@@ -19,7 +19,7 @@
                                         < option selected value="">{{vc.i18n('请选择是否用料','finishRepair')}}</option>
                                         <option v-for="(item,index) in finishRepairInfo.maintenanceTypes" :key="index"
                                                 :value="item.statusCd"
-                                                v-if="item.statusCd != '1001' && item.statusCd != '1002'">{{item.name}}
+                                                v-if="item.statusCd != '1001' && item.statusCd != '1002'">{{vc.i18n(item.name, 'finishRepair')}}
                                         </option>
                                     </select>
                                 </div>
@@ -34,7 +34,7 @@
                                         <option v-for="(item,index) in finishRepairInfo.maintenanceTypes" :key="index"
                                                 :value="item.statusCd"
                                                 v-if="item.statusCd != '1003' && item.statusCd != '1004'">
-                                            {{item.name}}
+                                            {{vc.i18n(item.name, 'finishRepair')}}
                                         </option>
                                     </select>
                                 </div>
@@ -151,7 +151,7 @@
                                             {{vc.i18n('必填','finishRepair')}}，请选择支付方式
                                         </option>
                                         <option v-for="(item,index) in finishRepairInfo.payTypes" :key="index"
-                                                :value="item.statusCd">{{item.name}}
+                                                :value="item.statusCd">{{vc.i18n(item.name, 'finishRepair')}}
                                         </option>
                                     </select>
                                 </div>

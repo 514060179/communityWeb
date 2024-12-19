@@ -60,10 +60,10 @@
         },
         _initEvent: function () {
             vc.on('roomCreateFee', 'selectRoom', function (_param) {
-                $that.roomCreateFeeInfo.ownerName = '';
                 if (vc.isBack()) {
                     return;
                 }
+                $that.roomCreateFeeInfo.ownerName = '';
                 if (vc.notNull(vc.getParam("sign"))) {
                     $that.roomCreateFeeInfo.roomId = vc.getParam('payerObjId');
                     $that.roomCreateFeeInfo.conditions.roomId = vc.getParam('payerObjId');
@@ -142,7 +142,7 @@
                 );
             },
             _toOwnerPayFee: function (_room) {
-                let roomName = _room.floorNum + "栋" + _room.unitNum + "单元" + _room.roomNum + "室"
+                let roomName = _room.floorNum + "栋" + _room.unitNum + "座" + _room.roomNum + "室"
                 vc.jumpToPage('/#/pages/property/owePayFeeOrder?payObjId=' + _room.roomId + "&payObjType=3333&roomName=" + roomName);
             },
             _printOwnOrder: function (_room) {
@@ -447,7 +447,7 @@
                 vc.saveData('simplifyAcceptanceSearch', {
                     searchType: '1',
                     searchValue: $that.roomCreateFeeInfo.floorNum + "-" + $that.roomCreateFeeInfo.unitNum + "-" + $that.roomCreateFeeInfo.roomNum,
-                    searchPlaceholder: '请输入房屋编号 楼栋-单元-房屋 如1-1-1',
+                    searchPlaceholder: '请输入房屋编号 楼栋-座-房屋 如1-1-1',
                 })
                 vc.jumpToPage('/#/pages/property/simplifyAcceptance?tab=业务受理');
             },

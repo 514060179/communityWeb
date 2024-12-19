@@ -77,7 +77,7 @@
         <div class="col-md-2">缴费金额：
             <span style="font-size: 30px; color: red; padding-left: 0px;">{{owePayFeeOrderInfo.feePrices}}
                 <span>
-                    <vc:i18n name="元" namespace="owePayFeeOrder"></vc:i18n>
+                    <vc:i18n name="MOP" namespace="owePayFeeOrder"></vc:i18n>
                 </span>
             </span>
         </div>
@@ -117,7 +117,7 @@
                         </label>
                         <label class="col-sm-9 col-form-label">{{owePayFeeOrderInfo.feePrices}}
                             <span>
-                                <vc:i18n name="元" namespace="owePayFeeOrder"></vc:i18n>
+                                <vc:i18n name="MOP" namespace="owePayFeeOrder"></vc:i18n>
                             </span>
                         </label>
                     </div>
@@ -133,7 +133,7 @@
                                 </option>
                                 <option v-for="(item,index) in owePayFeeOrderInfo.primeRates" :key="index"
                                     v-if="item.statusCd != '5' && item.statusCd != '6'" :value="item.statusCd">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'owePayFeeOrder')}}
                                 </option>
                             </select>
                             <select class="custom-select" v-model="owePayFeeOrderInfo.primeRate" v-else>
@@ -142,7 +142,7 @@
                                 </option>
                                 <option v-for="(item,index) in owePayFeeOrderInfo.primeRates" :key="index"
                                     v-if="item.statusCd == '3' || item.statusCd == '4'" :value="item.statusCd">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'owePayFeeOrder')}}
                                 </option>
                             </select>
                         </div>

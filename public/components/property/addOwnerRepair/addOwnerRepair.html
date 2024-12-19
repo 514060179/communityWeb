@@ -20,7 +20,7 @@
                                         </option>
                                         <option value="001">{{vc.i18n('小区','addOwnerRepair')}}</option>
                                         <option value="002">{{vc.i18n('楼栋','addOwnerRepair')}}</option>
-                                        <option value="003">{{vc.i18n('单元','addOwnerRepair')}}</option>
+                                        <option value="003">{{vc.i18n('座','addOwnerRepair')}}</option>
                                         <option value="004">{{vc.i18n('房屋','addOwnerRepair')}}</option>
                                     </select>
                                 </div>
@@ -39,7 +39,7 @@
                             <div class="form-group row"
                                  v-show="addOwnerRepairInfo.repairObjType == '003' ||  addOwnerRepairInfo.repairObjType == '004'">
                                 <label class="col-sm-2 col-form-label">
-                                    <vc:i18n name="归属单元" namespace="addOwnerRepair"></vc:i18n>
+                                    <vc:i18n name="归属座" namespace="addOwnerRepair"></vc:i18n>
                                 </label>
                                 <div class="col-sm-10">
                                     <vc:create path="property/unitSelect2" parentModal="addOwnerRepairModel"

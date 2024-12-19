@@ -7,7 +7,7 @@
                         <li class="list-group-item node-orgTree " v-for="(item,index) in feeConfigManageInfo.feeTypeCds"
                             :key="index" @click="swatchFeeTypeCd(item)"
                             :class="{'vc-node-selected':feeConfigManageInfo.conditions.feeTypeCd == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name,'feeConfigManage')}}
                         </li>
                     </ul>
                 </div>
@@ -24,7 +24,7 @@
                             <div class="ibox-tools" style="top:10px;">
                                 <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                         v-on:click="_moreCondition()">
-                                    {{feeConfigManageInfo.moreCondition == true?'隐藏':'更多'}}
+                                    {{feeConfigManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                                 </button>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                     <select class="custom-select" v-model="feeConfigManageInfo.conditions.feeFlag">
                                         <option selected value="">{{vc.i18n('请选择费用标识','feeConfigManage')}}</option>
                                         <option v-for="(item,index) in feeConfigManageInfo.feeFlags" :key="index"
-                                                :value="item.statusCd">{{item.name}}
+                                                :value="item.statusCd">{{vc.i18n(item.name, 'feeConfigManage')}}
                                         </option>
                                     </select>
                                 </div>
@@ -55,7 +55,7 @@
                                     <select class="custom-select" v-model="feeConfigManageInfo.conditions.paymentCd">
                                         <option selected value="">{{vc.i18n('请选择付费类型','feeConfigManage')}}</option>
                                         <option v-for="(item,index) in feeConfigManageInfo.paymentCds" :key="index"
-                                                :value="item.statusCd">{{item.name}}
+                                                :value="item.statusCd">{{vc.i18n(item.name, 'feeConfigManage')}}
                                         </option>
                                     </select>
                                 </div>
@@ -94,7 +94,7 @@
                                     <select class="custom-select" v-model="feeConfigManageInfo.conditions.isDefault">
                                         <option selected value="">{{vc.i18n('请选择默认费用','feeConfigManage')}}</option>
                                         <option v-for="(item,index) in feeConfigManageInfo.isDefaults" :key="index"
-                                                :value="item.statusCd">{{item.name}}
+                                                :value="item.statusCd">{{vc.i18n(item.name, 'feeConfigManage')}}
                                         </option>
                                     </select>
                                 </div>
@@ -111,11 +111,11 @@
                                 <span><vc:i18n name="费用项" namespace="feeConfigManage"></vc:i18n></span>
                             </h5>
                             <div class="ibox-tools" style="top:10px;">
-                                <button type="button" class="btn btn-primary btn-sm"
+                                <!-- <button type="button" class="btn btn-primary btn-sm"
                                         v-on:click="vc.showMarkdown('/pages/property/feeConfigManage')">
                                     <i class="fa fa-file"></i>
                                     <span><vc:i18n name="文档"></vc:i18n></span>
-                                </button>
+                                </button> -->
                                 <button type="button" class="btn btn-primary btn-sm"
                                         v-on:click="_openAddFeeConfigModal()"
                                         v-if="vc.hasPrivilege('502022022571930560')">
@@ -156,10 +156,10 @@
                                         <vc:i18n name="公式" namespace="feeConfigManage"></vc:i18n>
                                     </th>
                                     <th class="text-center">
-                                        <vc:i18n name="计费单价(单位:元)" namespace="feeConfigManage"></vc:i18n>
+                                        <vc:i18n name="计费单价(单位:MOP)" namespace="feeConfigManage"></vc:i18n>
                                     </th>
                                     <th class="text-center">
-                                            <vc:i18n name="附加/固定费用(单位:元)" namespace="feeConfigManage"></vc:i18n>
+                                            <vc:i18n name="附加/固定费用(单位:MOP)" namespace="feeConfigManage"></vc:i18n>
                                     </th>
                                     <th class="text-center">
                                         <vc:i18n name="账户抵扣" namespace="feeConfigManage"></vc:i18n>

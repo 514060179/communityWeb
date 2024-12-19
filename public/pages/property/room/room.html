@@ -1,22 +1,22 @@
 <div>
     <div class="bg-white padding-sm">
         <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddRoomFloorModal()">
-            <i class="fa fa-plus"></i>添加楼栋
+            <i class="fa fa-plus"></i>{{vc.i18n("添加楼栋", "room")}}
         </button>
         <button type="button" class="btn btn-primary btn-sm" v-on:click="_openUpdateRoomFloorModal()">
-            <i class="fa fa-edit"></i>修改楼栋
+            <i class="fa fa-edit"></i>{{vc.i18n("修改楼栋", "room")}}
         </button>
         <button type="button" class="btn btn-primary btn-sm" v-on:click="_openDeleteRoomFloorModal()">
-            <i class="fa fa-close"></i>删除楼栋
+            <i class="fa fa-close"></i>{{vc.i18n("删除楼栋", "room")}}
         </button>
         <button type="button" class="btn btn-primary btn-sm margin-left-sm" v-on:click="_openAddRoomUnitModal()">
-            <i class="fa fa-plus"></i>添加单元
+            <i class="fa fa-plus"></i>{{vc.i18n("添加座", "room")}}
         </button>
         <button type="button" class="btn btn-primary btn-sm margin-left-sm" v-on:click="_openUpdateRoomUnitModal()">
-            <i class="fa fa-edit"></i>修改单元
+            <i class="fa fa-edit"></i>{{vc.i18n("修改座", "room")}}
         </button>
         <button type="button" class="btn btn-primary btn-sm margin-left-sm" v-on:click="_openDeleteRoomUnitModal()">
-            <i class="fa fa-close"></i>删除单元
+            <i class="fa fa-close"></i>{{vc.i18n("删除座", "room")}}
         </button>
         <button type="button" class="btn btn-primary btn-sm margin-left-sm" v-on:click="_openAddRoom()"
                 v-if="vc.hasPrivilege('502020082453087940')">
@@ -27,10 +27,10 @@
             <i class="fa fa-plus"></i>
             <span><vc:i18n name="房产导入" namespace="room"></vc:i18n></span>
         </button>
-        <button type="button" class="btn btn-primary btn-sm" v-on:click="vc.showMarkdown('/pages/property/room')">
+        <!-- <button type="button" class="btn btn-primary btn-sm" v-on:click="vc.showMarkdown('/pages/property/room')">
             <i class="fa fa-file"></i>
             <span><vc:i18n name="文档"></vc:i18n></span>
-        </button>
+        </button> -->
     </div>
     <div class="flex justify-start">
         <div style="padding-right:0px;width: 200px;" class="room-floor-unit-tree">
@@ -44,7 +44,7 @@
                     </h5>
                     <div class="ibox-tools" style="top:10px;">
                         <!-- <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
-                                v-on:click="_moreCondition()">{{roomInfo.moreCondition == true?'隐藏':'更多'}}
+                                v-on:click="_moreCondition()">{{roomInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button> -->
                     </div>
                 </div>
@@ -52,8 +52,14 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <input type="text" :placeholder="vc.i18n('请填写房屋编号  格式 楼栋-单元-房屋','room')"
+                                <input type="text" :placeholder="vc.i18n('请填写房屋编号  格式 楼栋-座-房屋','room')"
                                        class="form-control form-control-sm" v-model="roomInfo.conditions.roomId">
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="form-group">
+                                <input type="text" :placeholder="vc.i18n('请填写联系方式','room')"
+                                       class="form-control form-control-sm" v-model="roomInfo.conditions.link">
                             </div>
                         </div>
                         <div class="col-sm-2">
@@ -61,7 +67,7 @@
                                     v-model="roomInfo.conditions.state">
                                 <option selected value="">{{vc.i18n('请选择状态','room')}}</option>
                                 <option v-for="(item,index) in roomInfo.states" :key="index" :value="item.statusCd">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'room')}}
                                 </option>
                             </select>
                         </div>
@@ -70,15 +76,15 @@
                                     v-model="roomInfo.conditions.roomSubType">
                                 <option selected value="">{{vc.i18n('必填，请选择房屋类型','room')}}</option>
                                 <option :value="item.statusCd" v-for="(item,index) in roomInfo.roomSubTypes">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'room')}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <select class="form-control-sm form-control input-s-sm inline" v-model="roomInfo.isAll"
                                     @change="_changeIsAll()">
-                                <option value="N">当前楼栋单元</option>
-                                <option value="Y">全部楼栋单元</option>
+                                <option value="N">{{vc.i18n('当前楼栋座','room')}}</option>
+                                <option value="Y">{{vc.i18n('全部楼栋座','room')}}</option>
                             </select>
                         </div>
                         <div class="col-sm-2">
@@ -88,7 +94,7 @@
                             </button>
                             <button type="button" class="btn btn-info btn-sm" v-on:click="_resetRoomInfo()">
                                 <i class="fa fa-repeat"></i>
-                                <span><vc:i18n name="重置" namespace="room"></vc:i18n></span>
+                                <span><vc:i18n name="重置" ></vc:i18n></span>
                             </button>
                         </div>
                     </div>
@@ -220,7 +226,7 @@
                                 <td class="text-center">
                                     <div class="hc-td">
                                         {{room.builtUpArea}}/{{room.roomArea}}
-                                        <span><vc:i18n name="平方米" namespace="room"></vc:i18n></span>
+                                        <span><vc:i18n name="尺" namespace="room"></vc:i18n></span>
                                     </div>
                                 </td>
                                 <td class="text-center">

@@ -20,7 +20,7 @@
                     <select class="custom-select" v-model="repairSettingManageInfo.conditions.repairWay">
                         <option selected value="">{{vc.i18n('请选择派单方式','repairSettingManage')}}</option>
                         <option v-for="(item,index) in repairSettingManageInfo.repairWays" :key="index"
-                            :value="item.statusCd">{{item.name}}
+                            :value="item.statusCd">{{vc.i18n(item.name,'repairSettingManage')}}
                         </option>
                     </select>
                 </div>
@@ -28,7 +28,7 @@
                     <select class="custom-select" v-model="repairSettingManageInfo.conditions.repairSettingType">
                         <option selected value="">{{vc.i18n('请选择报修设置类型','repairSettingManage')}}</option>
                         <option v-for="(item,index) in repairSettingManageInfo.repairSettingTypes" :key="index"
-                            :value="item.statusCd">{{item.name}}
+                            :value="item.statusCd">{{vc.i18n(item.name,'repairSettingManage')}}
                         </option>
                     </select>
                 </div>
@@ -36,7 +36,7 @@
                     <select class="custom-select" v-model="repairSettingManageInfo.conditions.publicArea">
                         <option selected value="">{{vc.i18n('请选择区域','repairSettingManage')}}</option>
                         <option v-for="(item,index) in repairSettingManageInfo.publicAreas" :key="index"
-                            :value="item.statusCd">{{item.name}}
+                            :value="item.statusCd">{{vc.i18n(item.name,'repairSettingManage')}}
                         </option>
                     </select>
                 </div>
@@ -44,7 +44,7 @@
                     <select class="custom-select" v-model="repairSettingManageInfo.conditions.returnVisitFlag">
                         <option selected value="">{{vc.i18n('请选择是否回访','repairSettingManage')}}</option>
                         <option v-for="(item,index) in repairSettingManageInfo.returnVisitFlags" :key="index"
-                            :value="item.statusCd">{{item.name}}
+                            :value="item.statusCd">{{vc.i18n(item.name,'repairSettingManage')}}
                         </option>
                     </select>
                 </div>
@@ -69,7 +69,7 @@
             <div class="ibox-tools" style="top:10px;">
                 <button type="button" class="btn btn-white btn-sm"
                     v-on:click="vc.showMarkdown('/pages/property/repairSettingManage')">
-                    <vc:i18n name="文档" namespace="repairSettingManage"></vc:i18n>
+                    <vc:i18n name="文档"></vc:i18n>
                 </button>
                 <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddRepairSettingModal()">
                     <vc:i18n name="添加" namespace="repairSettingManage"></vc:i18n>
@@ -153,7 +153,7 @@
                     <div> 2、指派 专门由客服派单员工（报修类型下的师傅）维修处理，一般物业的选择</div>
                     <div> 3、轮训 由系统定时派单员工（报修类型下的师傅）维修处理</div>
                     <div>区域：</div>
-                    <div> 小区、楼栋、单元 为非房屋类区域 房屋为房屋类区域</div>
+                    <div> 小区、楼栋、座 为非房屋类区域 房屋为房屋类区域</div>
                     <div> 注意：一般业主房屋报修 我们必须要添加一个房屋类区域的类型才能正常报修</div>
                 </div>
                 <div class="col-sm-3 float-right">

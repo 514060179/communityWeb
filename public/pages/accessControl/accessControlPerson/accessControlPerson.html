@@ -1,0 +1,117 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>
+                    <vc:i18n name="门禁授权" namespace="accessControlPerson"></vc:i18n>
+                </h5>
+                <div class="ibox-tools" style="top:10px;">
+                    <button type="button" class="btn btn-white btn-sm" v-on:click="_goBack()">
+                        <i class="fa fa-close"></i>返回
+                    </button>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label text-right">
+                            <vc:i18n name="开始时间" namespace="accessControlPerson"></vc:i18n>
+                    </label>
+                    <div class="col-sm-4">
+                        <input v-model="accessControlPersonInfo.startDate" type="text" :placeholder="vc.i18n('必填，请选择开始时间','accessControlPerson')" class="form-control startDate">
+                    </div>
+                    <label class="col-sm-2 col-form-label text-right">
+                        <vc:i18n name="结束时间" namespace="accessControlPerson"></vc:i18n>
+                    </label>
+                    <div class="col-sm-4">
+                        <input v-model="accessControlPersonInfo.endDate" type="text" :placeholder="vc.i18n('必填，请选择结束时间','accessControlPerson')" class="form-control endDate">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label text-right">
+                                    <vc:i18n name="人员" namespace="accessControlPerson"></vc:i18n>
+                            </label>
+                            <div class="col-sm-8">
+                                <input v-model="accessControlPersonInfo.ownerName" disabled type="text"
+                                       :placeholder="vc.i18n('必填，请选择人员','accessControlPerson')" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label text-right">
+                                <vc:i18n name="二维码开门" namespace="accessControlPerson"></vc:i18n>
+                            </label>
+                            <div class="col-sm-8">
+                                <label class="margin-right" style="line-height: 3;">
+                                    <input type="checkbox" v-model="accessControlPersonInfo.qrCodeOpenDoor">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label text-right">
+                                <vc:i18n name='门禁设备' namespace='accessControlPerson'></vc:i18n>
+                            </label>
+                            <div class="col-sm-8 col-form-label">
+                                <label class="margin-right" style="display: none;" v-for="(item,index) in accessControlPersonInfo.machines">
+                                    <input type="checkbox" v-model="accessControlPersonInfo.machineIds"
+                                           :value="item.machineId" @click="checkAccessControlItem($event)">
+                                    {{item.machineName}}
+                                </label>
+                                <div id="jstree_accessControl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label text-right">
+                                <vc:i18n name="门禁卡号" namespace="accessControlPerson"></vc:i18n>
+                            </label>
+                            <div class="col-sm-6">
+                                <div v-for="(item,index) in accessControlPersonInfo.cardNumberList" class="form-group row">
+                                    <div class="col-sm-8">
+                                        <input v-model="item" type="text"
+                                               :placeholder="vc.i18n('选填，请输入门禁卡号','accessControlPerson')" class="form-control">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <button type="button" class="btn btn-warning btn-sm"
+                                                v-on:click="_deleteAccessCard(index, item)">删除
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-primary btn-sm" v-on:click="_openChooseAccessCard()">选择门禁卡
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group row" v-for="(item,index) in accessControlPersonInfo.units">
+                            <label class="col-sm-4 col-form-label text-right">
+                                {{ item.floorNum + '栋' + item.unitNum + '座電梯' }}
+                            </label>
+                            <div class="col-sm-8">
+                                <input v-model="item.handFloor" type="text"
+                                       :placeholder="vc.i18n('选填，请输入手选楼层','accessControlPerson')" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <button type="button" class="btn btn-warning " style="margin-right:20px;" @click="_goBack()">
+                        <vc:i18n name="返回" namespace="accessControlPerson"></vc:i18n>
+                </button>
+                <button class="btn btn-primary" type="button" v-on:click="_authorizeAccessControl()"><i
+                        class="fa fa-check"></i>&nbsp;提交
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <vc:create path="accessControl/searchAccessCard" emitChooseAccessCard="accessControlPerson"
+               emitLoadData="accessControlPerson">
+    </vc:create>
+
+</div>

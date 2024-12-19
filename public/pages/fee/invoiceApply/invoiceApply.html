@@ -5,7 +5,7 @@
                 <div class="margin-xs-r  treeview attendance-staff">
                     <ul class="list-group text-center border-radius">
                         <li class="list-group-item node-orgTree " v-for="(item,index) in invoiceApplyInfo.states" :key="index" @click="swatchState(item)" :class="{'vc-node-selected':invoiceApplyInfo.conditions.state == item.state}">
-                            {{item.stateName}}
+                            {{vc.i18n(item.stateName, "invoiceApply")}}
                         </li>
                     </ul>
                 </div>
@@ -33,10 +33,10 @@
                                 <div class="col-sm-2">
                                     <select class="custom-select" v-model="invoiceApplyInfo.conditions.invoiceType">
                                         <option selected value="">
-                                            请选择发票类型
+                                            {{vc.i18n("请选择发票类型", "invoiceApply")}}
                                         </option>
-                                        <option value="1001">个人</option>
-                                        <option value="2002">企业</option>
+                                        <option value="1001">{{vc.i18n("个人", "invoiceApply")}}</option>
+                                        <option value="2002">{{vc.i18n("企业", "invoiceApply")}}</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2">

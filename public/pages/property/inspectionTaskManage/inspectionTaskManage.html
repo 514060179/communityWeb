@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{inspectionTaskManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{inspectionTaskManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -81,9 +81,16 @@
             <div class="ibox">
                 <div class="ibox-title">
                     <h5>
-                        <span><vc:i18n name="巡检任务" namespace="inspectionTaskManage"></vc:i18n></span>
+                        <span><vc:i18n name="巡检任务(凌晨2点更新)" namespace="inspectionTaskManage"></vc:i18n></span>
                     </h5>
-                    <div class="ibox-tools" style="top:10px;"></div>
+                    <div class="ibox-tools" style="top:10px;">
+                        <button type="button" class="btn btn-primary btn-sm" v-on:click="_exportInspectionTaskManage()">
+                            <i class="fa fa-download"></i>
+                            <span>
+                                <vc:i18n name="导出" namespace="inspectionTaskManage"></vc:i18n>
+                            </span>
+                        </button>
+                    </div>
                 </div>
                 <div class="ibox-content">
                     <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">

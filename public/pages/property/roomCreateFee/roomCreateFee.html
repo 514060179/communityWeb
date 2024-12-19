@@ -75,7 +75,7 @@
                                             v-on:click="_resetRoomCreateFeeMethod()">
                                         <i class="fa fa-repeat"></i>
                                         <span>
-                                            <vc:i18n name="重置" namespace="room"></vc:i18n>
+                                            <vc:i18n name="重置" ></vc:i18n>
                                         </span>
                                     </button>
                                 </div>
@@ -100,36 +100,36 @@
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_roomCreateFeetoSimplifyAcceptance()"
                                         v-if="roomCreateFeeInfo.ownerName">
-                                    <i class="fa fa-plus"></i>业务受理
+                                    <i class="fa fa-plus"></i>{{vc.i18n('业务受理', 'listRoomFee')}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_openProxyFeeModal()"
                                         v-if="roomCreateFeeInfo.hireOwnerFee == '0' && vc.hasPrivilege('502022073049300004')">
-                                    <i class="fa fa-plus"></i>按量缴费
+                                    <i class="fa fa-plus"></i>{{vc.i18n('按量缴费', 'listRoomFee')}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_openAddMeterWaterModal()"
                                         v-if="roomCreateFeeInfo.hireOwnerFee == '0' && vc.hasPrivilege('502022073042960005')">
-                                    <i class="fa fa-plus"></i>水电抄表
+                                    <i class="fa fa-plus"></i>{{vc.i18n('水电抄表', 'listRoomFee')}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_openRoomCreateFeeComboModal()"
                                         v-if="roomCreateFeeInfo.hireOwnerFee == '0' && vc.hasPrivilege('502022073006890006')">
-                                    <i class="fa fa-plus"></i>创建费用套餐
+                                    <i class="fa fa-plus"></i>{{vc.i18n('创建费用套餐', 'listRoomFee')}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_openOnlyRoomCreateFeeAddModal(roomCreateFeeInfo,false)"
                                         v-if="roomCreateFeeInfo.hireOwnerFee == '0' && vc.hasPrivilege('502022073096990007')">
-                                    <i class="fa fa-plus"></i>创建费用
+                                    <i class="fa fa-plus"></i>{{vc.i18n('创建费用', 'listRoomFee')}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_toOwnerPayFee()"
                                         v-if="roomCreateFeeInfo.hireOwnerFee == '0' && vc.hasPrivilege('502020080570210194')">
-                                    <i class="fa fa-plus"></i>欠费缴费
+                                    <i class="fa fa-plus"></i>{{vc.i18n('欠费缴费', 'listRoomFee')}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_printOwnOrder(roomCreateFeeInfo)">
-                                    <i class="fa fa-plus"></i>催缴单
+                                    <i class="fa fa-plus"></i>{{vc.i18n('催缴单', 'listRoomFee')}}
                                 </button>
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="vc.showMarkdown('/pages/property/roomCreateFee')">
@@ -141,7 +141,7 @@
                                 <button type="button" class="btn btn-primary btn-sm" style="margin-left:10px"
                                         v-on:click="_exportRoomCreateFee()">
                                     <i class="fa fa-download"></i>
-                                    <span><vc:i18n name="导出"></vc:i18n></span>
+                                    <span><vc:i18n name="导出" namespace="listRoomFee"></vc:i18n></span>
                                 </button>
                             </div>
                         </div>

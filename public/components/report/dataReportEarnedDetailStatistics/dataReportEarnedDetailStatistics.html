@@ -43,13 +43,13 @@
                     <vc:i18n name="实收" namespace="dataReportEarnedDetailStatistics"></vc:i18n>
                 </th>
                 <th class="text-center" v-for="(item,index) in dataReportEarnedDetailStatisticsInfo.feeTypeCds">
-                    {{item.name}}
+                    {{vc.i18n(item.name, 'dataReport')}}
                 </th>
             </tr>
             </thead>
             <tbody>
             <tr v-for="fee in dataReportEarnedDetailStatisticsInfo.fees">
-                <td class="text-center">{{fee.roomName}}</td>
+                <td class="text-center">{{vc.i18n(fee.roomName, 'dataReport')}}</td>
                 <td class="text-center">{{fee.ownerName}}({{fee.link}})</td>
                 <td class="text-center">
                     {{fee.receivedFee || 0}}

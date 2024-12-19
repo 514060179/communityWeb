@@ -10,7 +10,7 @@
             <thead>
             <tr>
                 <template v-for="(item,index) in dataReportEarnedWayStatisticsInfo.fees">
-                    <th class="text-center">{{item.name}}</th>
+                    <th class="text-center"> {{vc.i18n(item.name, 'dataReport')}}</th>
                 </template>
             </tr>
             </thead>

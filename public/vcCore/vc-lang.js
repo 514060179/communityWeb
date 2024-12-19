@@ -21,12 +21,12 @@
         document.getElementsByTagName('head')[0].appendChild(script);
     }
 
-    //let _langObj = vc.getData('JAVA110-LANG')
-    let _langObj = JSON.parse(window.localStorage.getItem('JAVA110-LANG'));
-    let _lang = 'zh-cn';
+    //let _langObj = vc.getData('property-lang')
+    let _langObj = JSON.parse(window.localStorage.getItem('property-lang'));
+    let _lang = 'cn';
     if (_langObj) {
         _lang = _langObj.lang;
     }
-    console.log(123)
+
     loadJS('/vcCore/vc-' + _lang + ".js")
 })(window.vcFramework)

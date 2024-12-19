@@ -57,6 +57,28 @@
             });
         },
         methods: {
+            _exportComplaint: function () {
+                vc.component.complaintInfo.conditions.communityId = vc.getCurrentCommunity().communityId;
+                vc.component.complaintInfo.conditions.pagePath = 'complaint';
+                let param = {
+                    params: vc.component.complaintInfo.conditions
+                };
+                //发送get请求
+                vc.http.apiGet(
+                    '/export.exportData',
+                    param,
+                    function (json, res) {
+                        let _json = JSON.parse(json);
+                        vc.toast(_json.msg);
+                        if (_json.code == 0) {
+                            vc.jumpToPage('/#/pages/property/downloadTempFile?tab=下载中心')
+                        }
+                    },
+                    function (errInfo, error) {
+                        console.log('请求失败处理');
+                    }
+                );
+            },
             _listComplaints: function (_page, _rows) {
                 $that.complaintInfo.conditions.page = _page;
                 $that.complaintInfo.conditions.row = _rows;

@@ -30,21 +30,21 @@
                     <th scope="col" class="text-center"><span><vc:i18n name="本期用量" namespace="printPayFeeBangTai"></vc:i18n></span></th>
                     <th scope="col" class="text-center"><span><vc:i18n name="单位" namespace="printPayFeeBangTai"></vc:i18n></span></th>
                     <th scope="col" class="text-center"><span><vc:i18n name="单价" namespace="printPayFeeBangTai"></vc:i18n></span></th>
-                    <th scope="col" class="text-center"><span><vc:i18n name="小计(元)" namespace="printPayFeeBangTai"></vc:i18n></span></th>
+                    <th scope="col" class="text-center"><span><vc:i18n name="小计(MOP)" namespace="printPayFeeBangTai"></vc:i18n></span></th>
                 </tr>
             </thead>
             <tbody class="vc-table-border" style="color:#000;font-size:20px">
                 <tr v-for="(item,index) in printPayFeeInfo.fees" class="vc-table-border">
                     <td scope="row" class="text-center">{{item.feeName}}</td>
                     <td class="text-center">{{vc.dateFormat(item.startTime)}}</td>
-                    <td class="text-center">{{vc.dateFormat(item.endTime)}}</td>
+                    <td class="text-center">{{vc.dateSubOneDay(vc.dateFormat(item.startTime),vc.dateFormat(item.endTime),item.feeFlag)}}</td>
                     <td class="text-center" v-if="item.preDegrees">{{item.preDegrees}} </td>
                     <td class="text-center" v-else>-</td>
                     <td class="text-center" v-if="item.preDegrees">{{item.curDegrees}}</td>
                     <td class="text-center" v-else>-</td>
                     <td class="text-center" v-if="item.preDegrees">{{item.curDegrees - item.preDegrees}}</td>
                     <td class="text-center" v-else>-</td>
-                    <td class="text-center">{{item.units}}</td>
+                    <td class="text-center">m2</td>
                     <td class="text-center">{{item.squarePrice}}</td>
                     <td class="text-center">{{item.amount}}</td>
                 </tr>

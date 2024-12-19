@@ -25,11 +25,11 @@
                         </select>
                     </div>
                     <label class="col-sm-2 col-form-label text-right">
-                        <vc:i18n name="单元" namespace="addRoomView"></vc:i18n>
+                        <vc:i18n name="座" namespace="addRoomView"></vc:i18n>
                     </label>
                     <div class="col-sm-4">
                         <select class="custom-select" v-model="addRoomViewInfo.unitId">
-                            <option selected disabled value="">{{vc.i18n('必填，请选择单元','addRoomView')}}</option>
+                            <option selected disabled value="">{{vc.i18n('必填，请选择座','addRoomView')}}</option>
                             <option v-for="(unit,index) in addRoomViewInfo.units" :key="index"
                                 v-if="unit.unitNum != '0'" v-bind:value="unit.unitId">{{unit.unitNum}}
                             </option>
@@ -60,7 +60,7 @@
                         <select class="custom-select" v-model="addRoomViewInfo.roomSubType">
                             <option selected disabled value="">{{vc.i18n('必填，请选择房屋类型','addRoomView')}}</option>
                             <option :value="item.statusCd" v-for="(item,index) in addRoomViewInfo.roomSubTypes">
-                                {{item.name}}
+                                {{vc.i18n(item.name, 'addRoomView')}}
                             </option>
                         </select>
                     </div>
@@ -74,14 +74,14 @@
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label text-right">
-                        <vc:i18n name="建筑面积(平方)" namespace="addRoomView"></vc:i18n>
+                        <vc:i18n name="建筑面积(尺)" namespace="addRoomView"></vc:i18n>
                     </label>
                     <div class="col-sm-4">
                         <input v-model="addRoomViewInfo.builtUpArea" type="text"
                             :placeholder="vc.i18n('必填，请填写建筑面积','addRoomView')" class="form-control">
                     </div>
                     <label class="col-sm-2 col-form-label text-right">
-                        <vc:i18n name="室内面积(平方)" namespace="addRoomView"></vc:i18n>
+                        <vc:i18n name="室内面积(尺)" namespace="addRoomView"></vc:i18n>
                     </label>
                     <div class="col-sm-4">
                         <input v-model="addRoomViewInfo.roomArea" type="text"

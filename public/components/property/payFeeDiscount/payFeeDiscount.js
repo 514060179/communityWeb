@@ -58,7 +58,14 @@
             _listFeeDiscounts: function (_page, _rows) {
 
                 let _cycles = $that.payFeeDiscountInfo.cycles;
+                //todo 自定义缴费周期
+                if (_cycles == '103' && $that.payFeeDiscountInfo.custEndTime) {
+                    let _customEndTime = vc.dateAdd($that.payFeeDiscountInfo.custEndTime);
 
+                    const timeDiff = Math.abs(new Date(_customEndTime) - new Date($that.payFeeDiscountInfo.endTime));
+                    _cycles =timeDiff / (1000 * 3600 * 24 * 30);
+                    _cycles = _cycles.toFixed(2)
+                }
 
                 let param = {
                     params: {
@@ -69,8 +76,7 @@
                         cycles: _cycles,
                         payerObjId: $that.payFeeDiscountInfo.payerObjId,
                         payerObjType: $that.payFeeDiscountInfo.payerObjType,
-                        endTime: $that.payFeeDiscountInfo.endTime,
-                        custEndTime:vc.dateAdd($that.payFeeDiscountInfo.custEndTime)
+                        endTime: $that.payFeeDiscountInfo.endTime
                     }
                 };
                 //发送get请求

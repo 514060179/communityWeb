@@ -1,13 +1,13 @@
 <div>
     <div class="vc-index-nav">
-        <span><i class="fa fa-home margin-right-sm"></i>首页</span><span
-            class="margin-left-sm margin-right-sm">/</span><span>平台数据</span>
+        <span><i class="fa fa-home margin-right-sm"></i>{{vc.i18n('首页')}}</span><span
+            class="margin-left-sm margin-right-sm">/</span><span>{{vc.i18n('平台数据', 'adminIndex')}}</span>
     </div>
     <div class="row">
         <div class="col-lg-2 margin-bottom" v-for="(item,index) in adminIndexInfo.datas" :key="index">
             <div class="white-bg text-center padding-top-sm" style="height:140px;border: 1px solid #e0e5eb;">
                 <div style="font-size: 38px;font-weight: 600;" :style="{'color':item.color}">{{item.value}}</div>
-                <div class="margin-top-lg" style="font-size: 20px;font-weight: 100;">{{item.name}}</div>
+                <div class="margin-top-lg" style="font-size: 20px;font-weight: 100;">{{vc.i18n(item.name, 'adminIndex')}}</div>
             </div>
         </div>
     </div>

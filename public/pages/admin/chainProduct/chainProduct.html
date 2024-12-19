@@ -3,7 +3,7 @@
         <div class="col-lg-12">
             <div class="ibox ">
                 <div class="ibox-title">
-                    <h5>查询条件</h5>
+                    <h5>{{vc.i18n('查询条件', 'chainProduct')}}</h5>
                     <div class="ibox-tools" style="top:10px;">
                         
                     </div>
@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-sm-3">
                             <select class="custom-select" v-model="chainProductInfo.conditions.categoryId">
-                                <option selected disabled value="">请选择商品分组</option>
+                                <option selected disabled value="">{{vc.i18n('请选择商品分组', 'chainProduct')}}</option>
                                 <option v-for="(item,index) in chainProductInfo.productCategorys"
                                         :value="item.categoryId">{{item.categoryName}}
                                 </option>
@@ -26,18 +26,18 @@
                         </div>
                         <div class="col-sm-3">
                             <select class="custom-select" v-model="chainProductInfo.conditions.state">
-                                <option selected disabled value="">请选择状态</option>
+                                <option selected disabled value="">{{vc.i18n('请选择状态', 'chainProduct')}}</option>
                                 <option v-for="(item,index) in chainProductInfo.states" :value="item.statusCd">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'chainProduct')}}
                                 </option>
                             </select>
                         </div>
                         <div class="col-sm-2">
                             <button type="button" class="btn btn-primary btn-sm" v-on:click="_queryProductMethod()">
-                                <i class="fa fa-search"></i> 查询
+                                <i class="fa fa-search"></i> {{vc.i18n('查询', 'chainProduct')}}
                             </button>
                             <button type="button" class="btn btn-primary btn-sm" v-on:click="_resetProductMethod()">
-                                <i class="fa fa-repeat"></i> 重置
+                                <i class="fa fa-repeat"></i> {{vc.i18n('重置', 'chainProduct')}}
                             </button>
                         </div>
                     </div>
@@ -49,13 +49,13 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>商品信息</h5>
+                    <h5>{{vc.i18n('商品信息', 'chainProduct')}}</h5>
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-white btn-sm" v-on:click="_goBack()">
-                            返回
+                            {{vc.i18n('返回', 'chainProduct')}}
                          </button>
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddProductModal()">
-                            <i class="fa fa-plus"></i>添加
+                            <i class="fa fa-plus"></i>{{vc.i18n('添加', 'chainProduct')}}
                         </button>
                         
                     </div>
@@ -64,15 +64,15 @@
                     <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                         <thead>
                             <tr>
-                                <th class="text-center">商品ID</th>
-                                <th class="text-center">商品图片</th>
-                                <th class="text-center">商品分类</th>
-                                <th class="text-center">商品名称</th>
-                                <th class="text-center">商品单位</th>
-                                <th class="text-center">排序</th>
-                                <th class="text-center">状态</th>
-                                <th class="text-center">创建时间</th>
-                                <th class="text-center">操作</th>
+                                <th class="text-center">{{vc.i18n('商品ID', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('商品图片', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('商品分类', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('商品名称', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('商品单位', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('排序', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('状态', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('创建时间', 'chainProduct')}}</th>
+                                <th class="text-center">{{vc.i18n('操作', 'chainProduct')}}</th>
                             </tr>
                             </thead>
                             <tbody>

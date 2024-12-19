@@ -45,6 +45,31 @@
             });
         },
         methods: {
+            _exportInspectionTaskManage: function() {
+                vc.component.inspectionTaskManageInfo.conditions.communityId = vc.getCurrentCommunity().communityId;
+                vc.component.inspectionTaskManageInfo.conditions.pagePath = 'inspectionTask';
+                var param = {
+                    params: vc.component.inspectionTaskManageInfo.conditions
+                };
+                param.params.planUserName = param.params.planUserName.trim();
+                param.params.inspectionPlanId = param.params.inspectionPlanId.trim();
+                param.params.inspectionPlanName = param.params.inspectionPlanName.trim();
+                //发送get请求
+                vc.http.apiGet(
+                    '/export.exportData',
+                    param,
+                    function (json, res) {
+                        let _json = JSON.parse(json);
+                        vc.toast(_json.msg);
+                        if (_json.code == 0) {
+                            vc.jumpToPage('/#/pages/property/downloadTempFile?tab=下载中心')
+                        }
+                    },
+                    function (errInfo, error) {
+                        console.log('请求失败处理');
+                    }
+                );
+            },
             _initInspectionTaskDateInfo: function() {
                 $('.startTime').datetimepicker({
                     language: 'zh-CN',

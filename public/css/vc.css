@@ -1,8 +1,8 @@
 :root {
     --vc-page-bg-color: #F6F6F7;
-    --vc-menu-main-bg: #1F2339;
+    --vc-menu-main-bg: #1e3799;
     --vc-menu-main-font-color: #838A9B;
-    --vc-menu-main-bg-active-color: #3E77FC;
+    --vc-menu-main-bg-active-color: #4066b0;
     --vc-menu-main-active-font-color: #FFFFFF;
     --vc-menu-main-title-font-color: #FFFFFF;
     --vc-menu-sub-bg: #FFFFFF;
@@ -11,7 +11,7 @@
     --vc-menu-sub-active-font-color: #3E77FC;
     --vc-menu-sub-title-font-color: #4F525C;
     --vc-menu-sub-footer: #F6F6F7;
-    --vc-nav-bg: #1D1F2D;
+    --vc-nav-bg: #2850a7;
     --vc-nav-color: #888888;
     --vc-nav-active-color: #FFFFFF;
     --vc-org-bg-active-color: #EAF0FE;
@@ -1102,4 +1102,11 @@ nav-link nav-link-breadcrumb active:active {
 .vc-reserve-active {
     border: 1px solid #007bff;
     color: #007bff;
+}
+
+.vc-border-view {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 30px 15px rgba(0, 0, 0, 0.1);
 }

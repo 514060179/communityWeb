@@ -1602,16 +1602,17 @@ table.table-mail tr td {
 }
 
 .carousel_div1 {
-    background: url(../img/login-bg.png) fixed center center
+    background: url(https://qiniu.zjnxse.com/dongmai-bg.png) no-repeat fixed center center;
+    background-size: cover;
 }
 
 .carousel_div2 {
     background: url(../img/login-bg1.png) fixed center center
 }
 
-/*.carousel_div3 {*/
-/*  background: url(../img/BG-A.png) fixed center center*/
-/*}*/
+.carousel_div3 {
+  background: url(../img/BG-A.png) fixed center center
+}
 
 .layer_notice {
     background: #5fb878 none repeat scroll 0 0;

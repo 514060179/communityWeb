@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "node ./bin/www"
+    "dev": "node ./bin/www",
+    "upload-dev": "scp -r public/* root@120.77.248.16:/root/project/h5/back/",
+    "upload-test": "scp -r public.zip root@116.63.74.17:/home/newland/project/micro/"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

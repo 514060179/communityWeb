@@ -8,12 +8,12 @@
                         <li class="list-group-item node-orgTree "
                             :class="{'vc-node-selected':reserveOrderInfo.conditions.type=='1001'}"
                             @click="_changeType('1001')">
-                            就餐订单
+                            {{vc.i18n('就餐订单','reserveOrder')}}
                         </li>
                         <li class="list-group-item node-orgTree "
                             :class="{'vc-node-selected':reserveOrderInfo.conditions.type=='2002'}"
                             @click="_changeType('2002')">
-                            服务订单
+                            {{vc.i18n('服务订单','reserveOrder')}}
                         </li>
                     </ul>
                 </div>

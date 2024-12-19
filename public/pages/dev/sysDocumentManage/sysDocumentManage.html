@@ -5,7 +5,7 @@
                 <div class="ibox-title">
                     <h5><span><vc:i18n name="查询条件" namespace="sysDocumentManage"></vc:i18n></span></h5>
                     <div class="ibox-tools" style="top:10px;">
-                        <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;" v-on:click="_moreCondition()">{{sysDocumentManageInfo.moreCondition == true?'隐藏':'更多'}}
+                        <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;" v-on:click="_moreCondition()">{{sysDocumentManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                 <!-- <th class="text-center"><span><vc:i18n name="信息" namespace="sysDocumentManage"></vc:i18n></span>ID</th> -->
                                 <th class="text-center"><span><vc:i18n name="文档标题" namespace="sysDocumentManage"></vc:i18n></span></th>
                                 <th class="text-center"><span><vc:i18n name="文档编码" namespace="sysDocumentManage"></vc:i18n></span></th>
-                                <th class="text-center"><span><vc:i18n name="文档" namespace="sysDocumentManage"></vc:i18n></span>ID</th>
+                                <th class="text-center"><span><vc:i18n name="文档" ></vc:i18n></span>ID</th>
                                 <th class="text-center"><span><vc:i18n name="创建时间" namespace="sysDocumentManage"></vc:i18n></span></th>
                                 <th class="text-right"><span><vc:i18n name="操作" namespace="sysDocumentManage"></vc:i18n></span></th>
                             </tr>

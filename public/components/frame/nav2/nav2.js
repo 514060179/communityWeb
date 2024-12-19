@@ -10,19 +10,16 @@
             nav: {
                 moreNoticeUrl: '/#/pages/common/noticeManage',
                 langs: [{
-                    name: '中文',
-                    lang: 'zh-cn'
-                }, {
-                    name: '繁体',
+                    name: '繁體',
                     lang: 'cn'
+                }, {
+                    name: '简体',
+                    lang: 'zh-cn'
                 }, {
                     name: 'english',
                     lang: 'en'
-                }, {
-                    name: 'བོད་སྐད།',
-                    lang: 'tibetan'
                 }],
-                langName: '中文',
+                langName: '繁體',
                 _currentCommunity: '',
                 communityInfos: [],
                 storeTypeCd: '',
@@ -32,9 +29,9 @@
             userName: ""
         },
         mounted: function () {
+            this.initLang();
             this._initSysInfo();
             this.getNavCommunity(1, 3);
-            this.initLang();
             this._getMenuCatalog();
             // 定义事件名为'build'.
         },
@@ -52,18 +49,18 @@
                 this.logo = sysInfo.systemSimpleTitle;
             },
             initLang: function () {
-                let _lang = vc.getData('JAVA110-LANG')
+                let _lang = vc.getData('property-lang')
                 if (!_lang) {
-                    vc.saveData('JAVA110-LANG', {
-                        name: '中文',
-                        lang: 'zh-cn'
+                    vc.saveData('property-lang', {
+                        name: '繁體',
+                        lang: 'cn'
                     })
                 } else {
                     this.nav.langName = _lang.name;
                 }
             },
             _changeLang: function (_lang) {
-                vc.saveData('JAVA110-LANG', _lang);
+                vc.saveData('property-lang', _lang);
                 location.reload();
             },
             logout: function () {

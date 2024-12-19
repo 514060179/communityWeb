@@ -7,7 +7,7 @@
                         <li class="list-group-item node-orgTree " v-for="(item,index) in auditAuthOwnerInfo.states"
                             :key="index" @click="_swatchState(item)"
                             :class="{'vc-node-selected':auditAuthOwnerInfo.conditions.state == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, "auditAuthOwner")}}
                         </li>
                     </ul>
                 </div>

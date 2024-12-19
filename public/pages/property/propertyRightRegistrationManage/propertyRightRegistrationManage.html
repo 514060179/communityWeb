@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{propertyRightRegistrationManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{propertyRightRegistrationManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <input type="text"
-                                       :placeholder="vc.i18n('请填写房屋编号 格式 楼栋-单元-房屋','propertyRightRegistrationManage')"
+                                       :placeholder="vc.i18n('请填写房屋编号 格式 楼栋-座-房屋','propertyRightRegistrationManage')"
                                        v-model.trim="propertyRightRegistrationManageInfo.conditions.allNum"
                                        class="form-control">
                             </div>
@@ -106,11 +106,11 @@
                                 <select class="custom-select"
                                         v-model="propertyRightRegistrationManageInfo.conditions.unitId">
                                     <option selected value="">
-                                        {{vc.i18n('请选择单元','propertyRightRegistrationManage')}}
+                                        {{vc.i18n('请选择座','propertyRightRegistrationManage')}}
                                     </option>
                                     <option v-for="(item,index) in propertyRightRegistrationManageInfo.units"
                                             :value="item.unitId">
-                                        {{item.unitNum}}{{vc.i18n('单元','propertyRightRegistrationManage')}}
+                                        {{item.unitNum}}{{vc.i18n('座','propertyRightRegistrationManage')}}
                                     </option>
                                 </select>
                             </div>

@@ -131,18 +131,6 @@
                             errInfo: "访客时间格式错误"
                         }
                     ],
-                    'updateVisitSpaceInfo.visitCase': [
-                        {
-                            limit: "required",
-                            param: "",
-                            errInfo: "拜访事由不能为空"
-                        },
-                        {
-                            limit: "maxLength",
-                            param: "512",
-                            errInfo: "拜访事由过长"
-                        }
-                    ],
                     'updateVisitSpaceInfo.reasonType': [
                         {
                             limit: "required",

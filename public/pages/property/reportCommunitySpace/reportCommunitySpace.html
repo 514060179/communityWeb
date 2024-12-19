@@ -1,24 +1,31 @@
 <div>
     <div class="row">
-        <div class="col-md-2 padding-r-0">
-            <div class=" border-radius bg-white padding-top-sm">
+<!--        <div class="col-md-2 padding-r-0">-->
+<!--            <div class=" border-radius bg-white padding-top-sm">-->
+<!--                <div class="margin-xs margin-bottom">-->
+<!--                    <input type="text" :placeholder="vc.i18n('请选择月份','monthAttendanceManage')"-->
+<!--                           v-model="reportCommunitySpaceInfo.appointmentTime" class=" form-control queryDate"-->
+<!--                           @blur="_changeDateQuery()">-->
+<!--                </div>-->
+<!--                <div class="margin-xs-r bg-white treeview attendance-staff">-->
+<!--                    <ul class="list-group text-center border-radius">-->
+<!--                        <li class="list-group-item node-orgTree "-->
+<!--                            v-for="(item,index) in reportCommunitySpaceInfo.venues" @click="swatchVenue(item)"-->
+<!--                            :class="{'vc-node-selected':reportCommunitySpaceInfo.conditions.venueId==item.venueId}">-->
+<!--                            {{vc.i18n(item.name, "reportCommunitySpace")}}-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="col-md-12">
+            <div class="row">
                 <div class="margin-xs margin-bottom">
                     <input type="text" :placeholder="vc.i18n('请选择月份','monthAttendanceManage')"
                            v-model="reportCommunitySpaceInfo.appointmentTime" class=" form-control queryDate"
                            @blur="_changeDateQuery()">
                 </div>
-                <div class="margin-xs-r bg-white treeview attendance-staff">
-                    <ul class="list-group text-center border-radius">
-                        <li class="list-group-item node-orgTree "
-                            v-for="(item,index) in reportCommunitySpaceInfo.venues" @click="swatchVenue(item)"
-                            :class="{'vc-node-selected':reportCommunitySpaceInfo.conditions.venueId==item.venueId}">
-                            {{item.name}}
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </div>
-        <div class="col-md-10">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox">
@@ -26,14 +33,14 @@
                             <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                                 <thead>
                                 <tr>
-                                    <th class="text-center">预约时间</th>
+                                    <th class="text-center">{{vc.i18n("预约时间", "reportCommunitySpace")}}</th>
                                     <th class="text-center"
                                         v-if="!reportCommunitySpaceInfo.communitySpaces || reportCommunitySpaceInfo.communitySpaces.length < 1">
-                                        未设置场地
+                                        {{vc.i18n("未设置场地", "reportCommunitySpace")}}
                                     </th>
                                     <th class="text-center" v-else
                                         v-for="(item,index) in reportCommunitySpaceInfo.communitySpaces">
-                                        {{item.name}}
+                                        {{vc.i18n(item.name, "reportCommunitySpace")}}
                                     </th>
                                 </tr>
                                 </thead>

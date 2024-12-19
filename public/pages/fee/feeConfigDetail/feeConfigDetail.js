@@ -23,7 +23,7 @@
                 payOnline: 'Y',
                 scale: '1',
                 decimalPlace: '2',
-                units: '元',
+                units: 'MOP',
                 _currentTab: 'feeConfigDetailHis',
                 needBack: false,
             }

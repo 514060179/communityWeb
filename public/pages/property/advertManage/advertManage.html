@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                             v-on:click="_moreCondition()">
-                            {{advertManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{advertManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                             <select class="custom-select" v-model="advertManageInfo.conditions.locationTypeCd">
                                 <option selected value="">{{vc.i18n('请选择投放位置','advertManage')}}</option>
                                 <option v-for="(item,index) in advertManageInfo.locationTypeCds" :value="item.statusCd">
-                                    {{item.name}}
+                                    {{vc.i18n(item.name, 'advertManage')}}
                                 </option>
                             </select>
                         </div>

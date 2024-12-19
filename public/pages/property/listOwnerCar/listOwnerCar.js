@@ -132,6 +132,27 @@
             _openDelOwnerCarModel: function (_car) {
                 vc.emit('deleteOwnerCar', 'openOwnerCarModel', _car);
             },
+            _createCarParkingSpace: function (_car) {
+                vc.http.apiPost(
+                    '/owner.carAddParkingSpace',
+                    JSON.stringify(_car), {
+                        emulateJSON: true
+                    },
+                    function (json, res) {
+                        let _json = JSON.parse(json);
+                        if (_json.code == 0) {
+                            $that._listOwnerCar(DEFAULT_PAGE, DEFAULT_ROWS);
+                            vc.toast('开户成功');
+                            return;
+                        } else {
+                            vc.toast(_json.msg);
+                        }
+                    },
+                    function (errInfo, error) {
+                        console.log('请求失败处理');
+                        vc.toast(errInfo);
+                    });
+            },
             _deleteCarParkingSpace: function (_car) {
                 vc.http.apiPost(
                     '/owner.deleteCarParkingSpace',
@@ -164,6 +185,9 @@
                 vc.jumpToPage('/#/pages/property/listOwnerCarMember?carId=' + car.carId + "&carNum=" + car.carNum)
             },
             _getCarState: function (car) {
+                if (car.state != null && car.state != '' && car.state != 'undefined' && car.state == '4004') {
+                    return "注销";
+                }
                 if (car.state != null && car.state != '' && car.state != 'undefined' && car.state == '3003') {
                     return "到期";
                 }

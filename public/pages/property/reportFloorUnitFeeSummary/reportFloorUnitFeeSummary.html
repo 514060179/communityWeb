@@ -28,10 +28,10 @@
                             <div class="form-group">
                                 <select class="form-control-md form-control input-s-sm inline"
                                         v-model="reportFloorUnitFeeSummaryInfo.conditions.unitId">
-                                    <option selected value="">{{vc.i18n('请选择单元','reportFloorUnitFeeSummary')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择座','reportFloorUnitFeeSummary')}}</option>
                                     <option v-for="(unit,index) in reportFloorUnitFeeSummaryInfo.roomUnits" :key="index"
                                             v-bind:value="unit.unitId">
-                                        {{unit.unitNum}}{{vc.i18n('单元','reportFloorUnitFeeSummary')}}
+                                        {{unit.unitNum}}{{vc.i18n('座','reportFloorUnitFeeSummary')}}
                                     </option>
                                 </select>
                             </div>
@@ -92,7 +92,7 @@
                 <div class="ibox-title">
                     <h5><span><vc:i18n name="楼栋费用表" namespace="reportFloorUnitFeeSummary"></vc:i18n></span></h5>
                     <span class="fa fa-info-circle popover-show" style="cursor: pointer;"
-                          data-content="以楼栋单元为维度，进行费用情况汇总"></span>
+                          data-content="以楼栋座为维度，进行费用情况汇总"></span>
                     <span style="font-size: 10px;">(按天更新)</span>
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_exportExcel()">
@@ -111,34 +111,34 @@
                             <th class="text-center">
                                 <span><vc:i18n name="楼栋" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
                             </th>
-                            <th class="text-center">{{vc.i18n('单元','reportFloorUnitFeeSummary')}}</th>
+                            <th class="text-center">{{vc.i18n('座','reportFloorUnitFeeSummary')}}</th>
                             <th class="text-center"
                                 v-for="(item,index) in reportFloorUnitFeeSummaryInfo.feeConfigNames">
                                 {{item.configName}}(实收)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="历史欠费" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="历史欠费" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="当月应收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="当月应收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="应收合计" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="应收合计" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="当月实收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="当月实收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="欠费追回" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="欠费追回" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="预交费用" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="预交费用" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="实收合计" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="实收合计" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="欠费金额" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:元)
+                                <span><vc:i18n name="欠费金额" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>(单位:MOP)
                             </th>
                             <th class="text-center">
                                 <span><vc:i18n name="更新时间" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
@@ -154,7 +154,7 @@
                             <td class="text-center">{{fee.floorNum}}
                                 <span><vc:i18n name="号楼" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
                             </td>
-                            <td class="text-center">{{fee.unitNum}}{{vc.i18n('单元','reportFloorUnitFeeSummary')}}</td>
+                            <td class="text-center">{{fee.unitNum}}{{vc.i18n('座','reportFloorUnitFeeSummary')}}</td>
                             <td class="text-center" v-for="item in reportFloorUnitFeeSummaryInfo.feeConfigNames">
                                 {{_getFeeReceivedAmountAmount(item,fee)}}
                             </td>
@@ -198,26 +198,26 @@
                     </div>
                     </span>
                         <!-- <span class="col-md-2">
-                                <div class="row"><span><vc:i18n name="应收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{reportFloorUnitFeeSummaryInfo.totalReceivableAmount}}<span><vc:i18n name="元" namespace="reportFloorUnitFeeSummary"></vc:i18n></span></div>
-                                <div class="row"><span><vc:i18n name="应收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{reportFloorUnitFeeSummaryInfo.allReceivableAmount}}<span><vc:i18n name="元" namespace="reportFloorUnitFeeSummary"></vc:i18n></span></div>
+                                <div class="row"><span><vc:i18n name="应收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{reportFloorUnitFeeSummaryInfo.totalReceivableAmount}}<span><vc:i18n name="MOP" namespace="reportFloorUnitFeeSummary"></vc:i18n></span></div>
+                                <div class="row"><span><vc:i18n name="应收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{reportFloorUnitFeeSummaryInfo.allReceivableAmount}}<span><vc:i18n name="MOP" namespace="reportFloorUnitFeeSummary"></vc:i18n></span></div>
                             </span> -->
                         <span class="col-md-2">
                             <div class="row">
                                 <span><vc:i18n name="实收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{reportFloorUnitFeeSummaryInfo.totalReceivedAmount}}
-                    <span><vc:i18n name="元" namespace="reportFloorUnitFeeSummary"></vc:i18n></span></div>
+                    <span><vc:i18n name="MOP" namespace="reportFloorUnitFeeSummary"></vc:i18n></span></div>
                 <div class="row">
                     <span><vc:i18n name="实收" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{reportFloorUnitFeeSummaryInfo.allReceivedAmount}}
-                    <span><vc:i18n name="元" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
+                    <span><vc:i18n name="MOP" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
                 </div>
                 </span>
                         <span class="col-md-2">
                             <div class="row">
                                 <span><vc:i18n name="欠费追回" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{_computeTotalHisOweReceivedAmount()}}
-                                <span><vc:i18n name="元" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="欠费追回" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>: {{reportFloorUnitFeeSummaryInfo.allHisOweReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportFloorUnitFeeSummary"></vc:i18n></span>
                             </div>
                         </span>
                     </div>

@@ -27,7 +27,7 @@
               <select class="custom-select" v-model="editReserveDiningInfo.paramsId">
                 <option selected disabled value="">{{vc.i18n('必填，请选择参数','editReserveDining')}}</option>
                 <option :value="item.paramsId" v-for="(item,index) in editReserveDiningInfo.reserveParamss" :key="index">
-                  {{item.name}}</option>
+                  {{vc.i18n(item.name, 'editReserveDining')}}</option>
               </select>
             </div>
           </div>

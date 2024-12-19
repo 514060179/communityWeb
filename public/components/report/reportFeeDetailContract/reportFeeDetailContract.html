@@ -10,20 +10,20 @@
             <thead>
             <tr>
                 <th class="text-center">
-                    <vc:i18n name="合同" namespace="reportFeeDetailContract"></vc:i18n>
+                    <vc:i18n name="合同" namespace="reportFeeDetail"></vc:i18n>
                 </th>
                 <th class="text-center">
-                    <vc:i18n name="业主" namespace="reportFeeDetailContract"></vc:i18n>
+                    <vc:i18n name="业主" namespace="reportFeeDetail"></vc:i18n>
                 </th>
                 <th class="text-center">
-                    <vc:i18n name="欠费" namespace="reportFeeDetailContract"></vc:i18n>
+                    <vc:i18n name="欠费" namespace="reportFeeDetail"></vc:i18n>
                 </th>
                 <th class="text-center">
-                    <vc:i18n name="实收" namespace="reportFeeDetailContract"></vc:i18n>
+                    <vc:i18n name="实收" namespace="reportFeeDetail"></vc:i18n>
                 </th>
                 <th class="text-center" colspan="2" v-for="(item,index) in reportFeeDetailContractInfo.feeTypeCds">
                     {{item.name}}</br>
-                    欠费/实收
+                    <vc:i18n name="欠费/实收" namespace="reportFeeDetail"></vc:i18n>
                 </th>
             </tr>
             </thead>

@@ -33,7 +33,7 @@
                         <td v-if="printRepairDetailInfo.maintenanceType == '1001'"><span><vc:i18n name="报修用料" namespace="printRepairDetail"></vc:i18n></span>：{{printRepairDetailInfo.repairMaterials}}</td>
                     </tr>
                     <tr v-if="printRepairDetailInfo.maintenanceType == '1001'">
-                        <td colspan="3"><span><vc:i18n name="费用明细" namespace="printRepairDetail"></vc:i18n></span>：{{printRepairDetailInfo.repairFee}}<span><vc:i18n name="元" namespace="printRepairDetail"></vc:i18n></span> &nbsp;&nbsp;(单价*数量)</td>
+                        <td colspan="3"><span><vc:i18n name="费用明细" namespace="printRepairDetail"></vc:i18n></span>：{{printRepairDetailInfo.repairFee}}<span><vc:i18n name="MOP" namespace="printRepairDetail"></vc:i18n></span> &nbsp;&nbsp;(单价*数量)</td>
                     </tr>
                 </tbody>
             </table>

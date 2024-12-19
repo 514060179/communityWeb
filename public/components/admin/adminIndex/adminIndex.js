@@ -85,7 +85,7 @@
             _initAdminIndexCommunityFeeCharts: function (_data) {
                 let dom = document.getElementById('communityFeeCharts');
                 let _source = [
-                    ['product', '缴费数', '缴费金额'],
+                    ['product', vc.i18n('缴费数', 'adminIndex'), vc.i18n('缴费金额', 'adminIndex')],
                 ];
 
                 _data.forEach(item => {
@@ -103,7 +103,7 @@
                     tooltip: {},
                     title: {
                         show: "true",
-                        text: '小区缴费统计'
+                        text: vc.i18n('小区缴费统计', 'adminIndex')
                     },
                     color: ['#FFDAB9', '#66CDAA'],
                     dataset: {
@@ -149,7 +149,7 @@
             _initAdminIndexCommunityRepairCharts: function (_data) {
                 let dom = document.getElementById('communityRepairCharts');
                 let _source = [
-                    ['product', '报修单数'],
+                    ['product', vc.i18n('报修单数', 'adminIndex')],
                 ];
 
                 _data.forEach(item => {
@@ -166,7 +166,7 @@
                     tooltip: {},
                     title: {
                         show: "true",
-                        text: '小区报修统计'
+                        text: vc.i18n('小区报修统计', 'adminIndex')
                     },
                     color: ['#FFDAB9', '#66CDAA'],
                     dataset: {

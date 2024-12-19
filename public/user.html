@@ -15,32 +15,26 @@
 </head>
 
 <body>
-    <div class="layui-carousel video_mask" id="login_carousel">
+    <div class="container layui-carousel video_mask" id="login_carousel">
         <vc:create path="frame/bodyTop"></vc:create>
 
         <div carousel-item>
             <div class="carousel_div1"></div>
-            <div class="carousel_div2"></div>
-            <div class="carousel_div3"></div>
+<!--            <div class="carousel_div2"></div>-->
+<!--            <div class="carousel_div3"></div>-->
         </div>
-        <div class="login layui-anim layui-anim-up">
-            <div class="layui-logo" style="width: 300px;height:80px">
-                <!--<img class="java110-logo" width="300px" height="80px;" /> -->
-                <a href="#" target="_blank" class="java110-logo"></a>
+        <div class="login  ">
+            <div class="layui-logo" >
+                <img src="https://qiniu.zjnxse.com/dongmai.png" width="70px" height="70p;" />
             </div>
-            <fieldset class="layui-elem-field layui-field-title">
-                <legend class="text-white">
-                    <span class="java110-sub-system-name"></span>
-                </legend>
-            </fieldset>
+
+            <div class="title">安智物業系統</div>
             <div id="component" class="layui-form" action="" method="post">
                 <vc:create path="/pages/frame/login"></vc:create>
             </div>
-            <hr class="layui-bg-gray">
-            <div class="layui-footer text-white">
+            <div class="layui-footer ">
                 <!-- 底部固定区域 -->
-                &copy;2020-2024
-                <span class="java110-company-team"></span>
+                <img class="icon" src='/img/login/newland-icon.png'>澳門安智科技有限公司 版權所有
 
             </div>
         </div>
@@ -69,4 +63,130 @@
     </script>
 </body>
 
+<style>
+    html {
+        font-size: 16px;
+    }
+
+    .icon{
+        width: 17px;
+        height: 17px;
+        margin: 0 3px;
+    }
+    input{
+        all: unset;
+        border: 0 none !important;
+        outline: none !important;
+        -webkit-appearance: none !important;
+        color: #888;
+        background-color: #F5F7FA;
+        text-align: left;
+        width: 100%;
+    }
+
+    input::placeholder{
+        color: #C0C4CC;
+        background-color: #F5F7FA;
+    }
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    select:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px #F5F7FA inset;
+        box-shadow: 0 0 0px 1000px #F5F7FA inset;
+        -webkit-text-fill-color: #000; /* 如果需要的话，设置文本颜色 */
+    }
+    .title{
+        font-size: 20pt;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 0px;
+        font-variation-settings: "opsz" auto;
+        color: #2E3845;
+        margin: 14px 0 36px 0;
+    }
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .login{
+        border-radius: 20px;
+        opacity: 1;
+        background: #FFFFFF;
+        margin: auto auto;
+        z-index: 99;
+        width: 440px;
+        left: auto !important;;
+        top: auto !important;
+        text-align: center;
+        min-height: 500px;
+
+    }
+
+    .layui-form{
+        padding: 0 30px;
+
+
+
+    }
+    .login-logo{
+        width: 100%;
+    }
+    .login_btn {
+        border-radius: 4px;
+        margin-top: 18px;
+    }
+    .code{
+        position: absolute;
+        right: 0;
+
+    }
+    .layui-form-item{
+        display: block;
+        overflow: hidden;
+
+
+
+    }
+    .label-div{
+        width: 100%;
+        text-align: left;
+        label{
+            font-size: 14pt;
+            font-weight: normal;
+            line-height: 22pt;
+            letter-spacing: 0px;
+            color: #A1A4AF;
+        }
+    }
+
+    .input-wrapper{
+        display: flex;
+        align-content: center;
+        position: relative;
+        align-items: center;
+        border-radius: 4px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0 12px;
+        opacity: 1;
+        background: #F5F7FA;
+
+    }
+    .left-icon{
+        width: 17px;
+        height: 17px;
+    }
+    .dongmai-input{
+        margin-left: 12px;
+        background-color: #F5F7FA;
+    }
+    .layui-footer{
+        color: #C0C4CC;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+    }
+
+</style>
 </html>

@@ -40,7 +40,7 @@
             _initFloorFeeSummaryChart: function(_data) {
                 let dom = document.getElementById("floorFeeSummary");
                 let _source = [
-                    ['product', '户收费率', '收费率'],
+                    ['product', vc.i18n('户收费率','reportFeeSummary'), vc.i18n('收费率','reportFeeSummary')],
                 ];
 
                 _data.forEach(item => {
@@ -58,7 +58,7 @@
                     tooltip: {},
                     title: {
                         show: "true",
-                        text: '楼栋收费率统计'
+                        text: vc.i18n('楼栋收费率统计','reportFeeSummary')
                     },
                     color: ['#FFDAB9', '#66CDAA'],
                     dataset: {

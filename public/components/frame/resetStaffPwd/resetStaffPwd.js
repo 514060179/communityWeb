@@ -29,7 +29,17 @@
                         if (_json.code == 0) {
                             //关闭model
                             $('#resetStaffPwdModel').modal('hide');
-                            vc.toast("修改密码成功，密码为" + _json.pwd + "请及时修改密码", 10 * 1000);
+                            //vc.toast("修改密码成功，密码为" + _json.pwd + "请及时修改密码", 10 * 1000, true);
+                            vc.confirmDialog({
+                                title: '操作成功',
+                                message: "修改密码成功，密码为" + _json.pwd + "请及时修改密码",
+                                onConfirm: function() {
+                                    // 执行确认操作的逻辑
+                                },
+                                onCancel: function() {
+                                    // 执行取消操作的逻辑
+                                }
+                            });
                             return;
                         } else {
                             vc.toast(_json.msg);

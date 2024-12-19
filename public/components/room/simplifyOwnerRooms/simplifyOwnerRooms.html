@@ -36,7 +36,7 @@
                 </th>
                 <th data-hide="phone" class="text-center">
                     <span>
-                        <vc:i18n name="租金" namespace="simplifyOwnerRooms"></vc:i18n>
+                        <vc:i18n name="租金(单位:MOP)" namespace="simplifyOwnerRooms"></vc:i18n>
                     </span>
                 </th>
                 <th data-hide="phone" class="text-center">
@@ -106,7 +106,7 @@
             <div class="col-sm-10 float-right">
                 <span>
                     <span><vc:i18n name="欠费小计" namespace="simplifyRoomFee"></vc:i18n></span>
-                </span>：{{simplifyOwnerRoomsInfo.allOweFeeAmount}}
+                </span>：MOP {{simplifyOwnerRoomsInfo.allOweFeeAmount}}
             </div>
             <div class="col-sm-12 float-right">
                 <vc:create namespace="simplifyOwnerRooms" path="frame/paginationPlus"></vc:create>

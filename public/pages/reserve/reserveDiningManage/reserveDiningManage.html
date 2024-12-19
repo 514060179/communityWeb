@@ -6,13 +6,13 @@
                     <ul class="list-group text-center border-radius" v-if="reserveDiningManageInfo.catalogs && reserveDiningManageInfo.catalogs.length>0">
                         <!--  -->
                         <li class="list-group-item node-orgTree " v-for="(item,index) in reserveDiningManageInfo.catalogs" @click="swatchReserveCatalog(item)" :class="{'vc-node-selected':reserveDiningManageInfo.conditions.catalogId==item.catalogId}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'reserveDiningManage')}}
                         </li>
                     </ul>
                     <ul class="list-group text-center border-radius" v-else>
                         <!--  -->
                         <li class="list-group-item node-orgTree " @click="_addCatalog()">
-                            添加目录
+                            {{vc.i18n('添加目录', 'reserveDiningManage')}}
                         </li>
                     </ul>
                 </div>

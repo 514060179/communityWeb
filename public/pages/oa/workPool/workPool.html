@@ -7,7 +7,7 @@
                         <li class="list-group-item node-orgTree " v-for="(item,index) in workPoolInfo.states"
                             :key="index" @click="swatchWorkState(item)"
                             :class="{'vc-node-selected':workPoolInfo.conditions.state == item.state}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, "workPool")}}
                         </li>
                     </ul>
                 </div>

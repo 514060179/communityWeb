@@ -10,37 +10,37 @@
                     </div>
                     <div class="col-md-3 margin-xs margin-bottom">
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_confirmCommunitySpace()">
-                            <vc:i18n name="核销"></vc:i18n>
+                            <vc:i18n name="核销" namespace="communitySpaceConfirm">></vc:i18n>
                         </button>
                     </div>
                 </div>
                 <div class="margin-xs-r bg-white treeview attendance-staff">
                     <div class="padding flex justify-between">
-                        <span class="font-1">核销结果</span>
+                        <span class="font-1">{{vc.i18n('核销结果','communitySpaceConfirm')}}</span>
                         <span>{{communitySpaceConfirmInfo.order.remark}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">核销时间</span>
+                        <span class="font-1">{{vc.i18n('核销时间','communitySpaceConfirm')}}</span>
                         <span>{{communitySpaceConfirmInfo.order.createTime}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">场地</span>
+                        <span class="font-1">{{vc.i18n('场地','communitySpaceConfirm')}}</span>
                         <span>{{communitySpaceConfirmInfo.order.spaceName}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约日期</span>
+                        <span class="font-1">{{vc.i18n('预约日期','communitySpaceConfirm')}}</span>
                         <span>{{communitySpaceConfirmInfo.order.appointmentTime}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约小时</span>
+                        <span class="font-1">{{vc.i18n('预约小时','communitySpaceConfirm')}}</span>
                         <span>{{communitySpaceConfirmInfo.order.hours}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约人</span>
+                        <span class="font-1">{{vc.i18n('预约人','communitySpaceConfirm')}}</span>
                         <span>{{communitySpaceConfirmInfo.order.personName}}</span>
                     </div>
                     <div class="padding flex justify-between">
-                        <span class="font-1">预约电话</span>
+                        <span class="font-1">{{vc.i18n('预约电话','communitySpaceConfirm')}}</span>
                         <span>{{communitySpaceConfirmInfo.order.personTel}}</span>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="ibox ">
                         <div class="ibox-title">
                             <h5>
-                                <span><vc:i18n name="查询条件"></vc:i18n></span>
+                                <span><vc:i18n name="查询条件" namespace="communitySpaceConfirm">></vc:i18n></span>
                             </h5>
                             <div class="ibox-tools" style="top:10px;"></div>
                         </div>
@@ -60,21 +60,21 @@
                             <div class="row">
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" :placeholder="vc.i18n('请选择预约人','communitySpaceManage')"
+                                        <input type="text" :placeholder="vc.i18n('请选择预约人','communitySpaceConfirm')"
                                                v-model="communitySpaceConfirmInfo.conditions.personName"
                                                class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <input type="text" :placeholder="vc.i18n('请选择预约电话','communitySpaceManage')"
+                                        <input type="text" :placeholder="vc.i18n('请选择预约电话','communitySpaceConfirm')"
                                                v-model="communitySpaceConfirmInfo.conditions.personTel"
                                                class=" form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="form-group">
-                                        <input type="text" :placeholder="vc.i18n('请选择预约时间','communitySpaceManage')"
+                                        <input type="text" :placeholder="vc.i18n('请选择预约时间','communitySpaceConfirm')"
                                                v-model="communitySpaceConfirmInfo.conditions.appointmentTime"
                                                class=" form-control appointmentTime">
                                     </div>
@@ -83,7 +83,7 @@
                                     <button type="button" class="btn btn-primary btn-sm"
                                             v-on:click="_queryCommunitySpaceConfirmMethod()">
                                         <i class="fa fa-search"></i>
-                                        <span><vc:i18n name="查询"></vc:i18n></span>
+                                        <span><vc:i18n name="查询" ></vc:i18n></span>
                                     </button>
                                     <button type="button" class="btn btn-primary btn-sm"
                                             v-on:click="_resetCommunitySpaceConfirmMethod()">

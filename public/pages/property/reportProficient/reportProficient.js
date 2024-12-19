@@ -239,12 +239,12 @@
             },
             _getReportProficientRoomName: function () {
                 if (vc.component.reportProficientInfo == undefined) {
-                    return '请填写房屋编号';
+                    return vc.i18n('请填写房屋编号', 'reportProficient');
                 }
                 if (vc.component.reportProficientInfo._currentTab == 'reportProficientRoomFee') {
-                    return '请填写房屋编号'
+                    return vc.i18n('请填写房屋编号', 'reportProficient')
                 }
-                return '请填写车牌号';
+                return vc.i18n('请填写车牌号', 'reportProficient');
             },
             _exportFee: function () {
                 /*let _objType = vc.component.reportProficientInfo._currentTab == 'reportProficientRoomFee' ? "3333" : "6666"

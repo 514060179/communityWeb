@@ -130,11 +130,11 @@
                         }
                     ],
                     'addVisitSpaceInfo.visitCase': [
-                        {
-                            limit: "required",
-                            param: "",
-                            errInfo: "拜访事由不能为空"
-                        },
+                        // {
+                        //     limit: "required",
+                        //     param: "",
+                        //     errInfo: "拜访事由不能为空"
+                        // },
                         {
                             limit: "maxLength",
                             param: "512",

@@ -9,7 +9,6 @@
         data: {
             orgManageInfo: {
                 staffs: [],
-                relCds:[],
                 orgName: '',
                 conditions: {
                     orgId: '',
@@ -17,22 +16,18 @@
                 }
             }
         },
-        _initMethod: function() {
-            vc.getDict('u_org_staff_rel', "rel_cd", function (_data) {
-                $that.orgManageInfo.relCds = _data;
-            });
-        },
+        _initMethod: function() {},
         _initEvent: function() {
             vc.on('org', 'switchOrg', function(_param) {
                 $that.orgManageInfo.conditions.orgId = _param.orgId;
                 $that.orgManageInfo.orgName = _param.orgName;
-                $that._listStaffs(DEFAULT_PAGE, DEFAULT_ROWS);
+                vc.component._listStaffs(DEFAULT_PAGE, DEFAULT_ROWS);
             });
             vc.on('orgManage', 'notice', function() {
-                $that._listStaffs(1, DEFAULT_ROWS);
+                vc.component._listStaffs(1, DEFAULT_ROWS);
             });
             vc.on('pagination', 'page_event', function(_currentPage) {
-                $that._listStaffs(_currentPage, DEFAULT_ROWS);
+                vc.component._listStaffs(_currentPage, DEFAULT_ROWS);
             });
         },
         methods: {
@@ -49,22 +44,13 @@
                 vc.http.apiGet('/query.staff.infos',
                     param,
                     function(json, res) {
-                        let _json = JSON.parse(json);
-                        $that.orgManageInfo.total = _json.total;
-                        $that.orgManageInfo.records = _json.records;
-                        let staffList = _json.staffs;
-                        let relCdsList = $that.orgManageInfo.relCds;
-                        staffList.forEach((staff) => {
-                            relCdsList.forEach((rel) => {
-                                if (staff.relCd == rel.statusCd) {
-                                    staff.relCdName = rel.name;
-                                }
-                            })
-                        })
-                        $that.orgManageInfo.staffs = staffList;
+                        var _orgManageInfo = JSON.parse(json);
+                        vc.component.orgManageInfo.total = _orgManageInfo.total;
+                        vc.component.orgManageInfo.records = _orgManageInfo.records;
+                        vc.component.orgManageInfo.staffs = _orgManageInfo.staffs;
                         vc.emit('pagination', 'init', {
-                            total: $that.orgManageInfo.records,
-                            dataCount: $that.orgManageInfo.total,
+                            total: vc.component.orgManageInfo.records,
+                            dataCount: vc.component.orgManageInfo.total,
                             currentPage: _page
                         });
                     },
@@ -75,18 +61,18 @@
             },
             //查询
             _queryOrgMethod: function() {
-                $that._listStaffs(DEFAULT_PAGE, DEFAULT_ROWS);
+                vc.component._listStaffs(DEFAULT_PAGE, DEFAULT_ROWS);
             },
             //重置
             _resetOrgMethod: function() {
-                $that.orgManageInfo.conditions.staffName = "";
-                $that._listStaffs(DEFAULT_PAGE, DEFAULT_ROWS);
+                vc.component.orgManageInfo.conditions.staffName = "";
+                vc.component._listStaffs(DEFAULT_PAGE, DEFAULT_ROWS);
             },
             _moreCondition: function() {
-                if ($that.orgManageInfo.moreCondition) {
-                    $that.orgManageInfo.moreCondition = false;
+                if (vc.component.orgManageInfo.moreCondition) {
+                    vc.component.orgManageInfo.moreCondition = false;
                 } else {
-                    $that.orgManageInfo.moreCondition = true;
+                    vc.component.orgManageInfo.moreCondition = true;
                 }
             },
             _openOrgRelStaff: function() {

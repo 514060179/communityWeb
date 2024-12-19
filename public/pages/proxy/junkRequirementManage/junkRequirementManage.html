@@ -7,7 +7,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{junkRequirementManageInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{junkRequirementManageInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -61,13 +61,13 @@
         <div class="col-lg-12">
             <div class="ibox">
                 <div class="ibox-title">
-                    <h5>{{junkRequirementManageInfo.pageName}}<span><vc:i18n name="信息" namespace="junkRequirementManage"></vc:i18n></span></h5>
+                    <h5>{{vc.i18n(junkRequirementManageInfo.pageName, 'junkRequirementManage')}}<span><vc:i18n name="信息" namespace="junkRequirementManage"></vc:i18n></span></h5>
                 </div>
                 <div class="ibox-content">
                     <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                         <thead>
                         <tr>
-                            <th class="text-center">{{junkRequirementManageInfo.pageName}}<span><vc:i18n name="编码" namespace="junkRequirementManage"></vc:i18n></span></th>
+                            <th class="text-center">{{vc.i18n(junkRequirementManageInfo.pageName, 'junkRequirementManage')}}<span><vc:i18n name="编码" namespace="junkRequirementManage"></vc:i18n></span></th>
                             <th class="text-center"><span><vc:i18n name="类别" namespace="junkRequirementManage"></vc:i18n></span></th>
                             <th class="text-center"><span><vc:i18n name="参考价格" namespace="junkRequirementManage"></vc:i18n></span></th>
                             <th class="text-center"><span><vc:i18n name="发布人" namespace="junkRequirementManage"></vc:i18n></span></th>

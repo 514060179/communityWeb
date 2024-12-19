@@ -78,7 +78,7 @@
                                 return;
                             }
                             let _roomInfo = _roomInfos.rooms[0];
-                            $that.repairDispatchManageInfo.conditions.roomName = _roomInfo.floorNum + "号楼 " + _roomInfo.unitNum + "单元 " + _roomInfo.roomNum + "室";
+                            $that.repairDispatchManageInfo.conditions.roomName = _roomInfo.floorNum + "号楼 " + _roomInfo.unitNum + "座 " + _roomInfo.roomNum + "室";
                             $that._listOwnerRepairs(DEFAULT_PAGE, DEFAULT_ROWS);
                         } else {
                             vc.toast("非法操作，未找到房屋信息");

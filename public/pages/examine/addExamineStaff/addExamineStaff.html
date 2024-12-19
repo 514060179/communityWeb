@@ -35,7 +35,7 @@
                              v-for="(item,index) in addExamineStaffInfo.projects">
                             <label style="line-height: 36px;">
                                 <input type="checkbox" v-model="addExamineStaffInfo.projectIds" :value="item.projectId">
-                                {{item.name}}
+                                {{vc.i18n(item.name, 'addExamineStaff')}}
                             </label>
                         </div>
                     </div>

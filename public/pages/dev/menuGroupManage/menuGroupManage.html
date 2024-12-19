@@ -8,7 +8,7 @@
                             v-for="(item,index) in menuGroupManageInfo.storeTYpes" :key="index"
                             @click="_swatchStoreType(item)"
                             :class="{'vc-node-selected':menuGroupManageInfo.conditions.storeType == item.storeType}">
-                            {{item.name}}
+                            {{vc.i18n(item.name, 'menuGroupManage')}}
                         </li>
                     </ul>
                 </div>

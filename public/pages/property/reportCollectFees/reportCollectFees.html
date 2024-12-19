@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{reportCollectFeesInfo.moreCondition == true?'隐藏':'更多'}}
+                            {{reportCollectFeesInfo.moreCondition == true?vc.i18n('隐藏'):vc.i18n('更多')}}
                         </button>
                     </div>
                 </div>
@@ -92,10 +92,10 @@
                             <div class="form-group">
                                 <select class="form-control-md form-control input-s-sm inline"
                                         v-model="reportCollectFeesInfo.conditions.unitId">
-                                    <option selected value="">{{vc.i18n('请选择单元','reportCollectFees')}}</option>
+                                    <option selected value="">{{vc.i18n('请选择座','reportCollectFees')}}</option>
                                     <option v-for="(unit,index) in reportCollectFeesInfo.roomUnits" :key="index"
                                             v-bind:value="unit.unitId">
-                                        {{unit.unitNum}}{{vc.i18n('单元','reportCollectFees')}}
+                                        {{unit.unitNum}}{{vc.i18n('座','reportCollectFees')}}
                                     </option>
                                 </select>
                             </div>
@@ -198,37 +198,37 @@
                                 <span><vc:i18n name="费用类型" namespace="reportCollectFees"></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="应缴金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="应缴金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="应收金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="应收金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="未收金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="未收金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="实收金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="实收金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="欠费金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="欠费金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="优惠金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="优惠金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="减免金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="减免金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="赠送金额" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="赠送金额" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="滞纳金" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="滞纳金" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="空置房打折" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="空置房打折" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="空置房减免" namespace="reportCollectFees"></vc:i18n></span>(元)
+                                <span><vc:i18n name="空置房减免" namespace="reportCollectFees"></vc:i18n></span>(MOP)
                             </th>
                             <th class="text-center">
                                 <span><vc:i18n name="收费率" namespace="reportCollectFees"></vc:i18n></span>
@@ -285,101 +285,101 @@
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="应缴" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalPayableAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="应缴" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allPayableAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="应收" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalReceivableAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="应收" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allReceivableAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="实收" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="实收" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allReceivedAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalOweAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="欠费" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allOweAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="优惠" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalPreferentialAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="优惠" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allPreferentialAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="减免" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalDeductionAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="减免" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allDeductionAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="赠送" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalGiftAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="赠送" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allGiftAmount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="滞纳金" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalLateFee}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="滞纳金" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allLateFee}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="空置房打折" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalVacantHousingDiscount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="空置房打折" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allVacantHousingDiscount}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                         <span class="col-md-1">
                             <div class="row">
                                 <span><vc:i18n name="空置房减免" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.totalVacantHousingReduction}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                             <div class="row">
                                 <span><vc:i18n name="空置房减免" namespace="reportCollectFees"></vc:i18n></span>: {{reportCollectFeesInfo.allVacantHousingReduction}}
-                                <span><vc:i18n name="元" namespace="reportCollectFees"></vc:i18n></span>
+                                <span><vc:i18n name="MOP" namespace="reportCollectFees"></vc:i18n></span>
                             </div>
                         </span>
                     </div>

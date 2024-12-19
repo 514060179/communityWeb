@@ -29,6 +29,9 @@
             vc.on('dataPrivilegeUnitInfo', 'paginationPlus', 'page_event', function (_currentPage) {
                 vc.component._listDataPrivilegeUnits(_currentPage, DEFAULT_ROWS);
             });
+            vc.on('dataPrivilegeUnitInfo', 'removeUnit', function (_currentPage) {
+                vc.component.dataPrivilegeUnitInfo.dataPrivilegeUnits = [];
+            });
         },
         methods: {
             _listDataPrivilegeUnits: function (_page, _rows) {

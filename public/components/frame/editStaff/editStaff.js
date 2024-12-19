@@ -51,37 +51,48 @@
                 return vc.validate.validate({
                     editStaffInfo: vc.component.editStaffInfo
                 }, {
-                    'editStaffInfo.username': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "用户名不能为空"
-                    },
+                    'editStaffInfo.username': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "用户名不能为空"
+                        },
                         {
                             limit: "maxin",
                             param: "2,10",
                             errInfo: "用户名长度必须在2位至10位"
-                        },
+                        }
                     ],
-                    'editStaffInfo.tel': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "手机号不能为空"
-                    }],
-                    'editStaffInfo.sex': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "性别不能为空"
-                    }],
-                    'editStaffInfo.address': [{
-                        limit: "required",
-                        param: "",
-                        errInfo: "地址不能为空"
-                    },
+                    'editStaffInfo.tel': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "手机号不能为空"
+                        },
+                        {
+                            limit: "phone",
+                            param: "",
+                            errInfo: "不是有效的手机号"
+                        }
+                    ],
+                    'editStaffInfo.sex': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "性别不能为空"
+                        }
+                    ],
+                    'editStaffInfo.address': [
+                        {
+                            limit: "required",
+                            param: "",
+                            errInfo: "地址不能为空"
+                        },
                         {
                             limit: "maxLength",
                             param: "200",
                             errInfo: "地址长度不能超过200位"
-                        },
+                        }
                     ]
                 });
             },

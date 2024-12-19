@@ -9,7 +9,7 @@
                     <div class="ibox-tools" style="top:10px;">
                         <!--<button type="button" class="btn btn-link btn-sm" style="margin-right:10px;"
                                 v-on:click="_moreCondition()">
-                            {{reportNoFeeRoomInfo.moreCondition == true ? '隐藏' : '更多'}}
+                            {{reportNoFeeRoomInfo.moreCondition == true ? vc.i18n('隐藏' ):vc.i18n('更多' )}}
                         </button>-->
                     </div>
                 </div>
@@ -32,11 +32,11 @@
                                 <select class="custom-select" v-model="reportNoFeeRoomInfo.conditions.unitId"
                                         @change="_selectReportNoFeeRoomRoom()">
                                     <option selected value="">
-                                        {{vc.i18n('请选择单元','reportNoFeeRoom')}}
+                                        {{vc.i18n('请选择座','reportNoFeeRoom')}}
                                     </option>
                                     <option v-for="(item,index) in reportNoFeeRoomInfo.units"
                                             :value="item.unitId">
-                                        {{item.unitNum}}{{vc.i18n('单元','reportNoFeeRoom')}}
+                                        {{item.unitNum}}{{vc.i18n('座','reportNoFeeRoom')}}
                                     </option>
                                 </select>
                             </div>
@@ -109,7 +109,7 @@
                                 <span><vc:i18n name="楼栋" namespace="reportNoFeeRoom"></vc:i18n></span>
                             </th>
                             <th class="text-center">
-                                <span><vc:i18n name="单元" namespace="reportNoFeeRoom"></vc:i18n></span>
+                                <span><vc:i18n name="座" namespace="reportNoFeeRoom"></vc:i18n></span>
                             </th>
                             <th class="text-center">
                                 <span><vc:i18n name="房屋" namespace="reportNoFeeRoom"></vc:i18n></span>

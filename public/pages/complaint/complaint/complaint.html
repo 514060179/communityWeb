@@ -7,7 +7,7 @@
                         <li class="list-group-item node-orgTree " v-for="(item,index) in complaintInfo.states"
                             :key="index" @click="swatchComplaintState(item)"
                             :class="{'vc-node-selected':complaintInfo.conditions.state == item.statusCd}">
-                            {{item.name}}
+                            {{vc.i18n(item.name,'complaint')}}
                         </li>
                     </ul>
                 </div>
@@ -32,7 +32,7 @@
                         </div>
                         <div class="col-sm-2">
                             <div class="form-group">
-                                <input type="text" :placeholder="vc.i18n('楼栋-单元-房屋 如1-1-1','complaint')"
+                                <input type="text" :placeholder="vc.i18n('楼栋-座-房屋 如1-1-1','complaint')"
                                     v-model="complaintInfo.conditions.roomName" class=" form-control">
                             </div>
                         </div>
@@ -84,6 +84,12 @@
                     <div class="ibox-tools" style="top:10px;">
                         <button type="button" class="btn btn-primary btn-sm" v-on:click="_openAddComplaintModal()">
                             <i class="fa fa-plus"></i>{{vc.i18n('投诉','complaint')}}
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" v-on:click="_exportComplaint()">
+                            <i class="fa fa-download"></i>
+                            <span>
+                                <vc:i18n name="导出" namespace="complaint"></vc:i18n>
+                            </span>
                         </button>
                     </div>
                 </div>

@@ -40,10 +40,10 @@ let opts = {
 }
 
 // todo 测试环境 测试使用，生产环境请用nginx带来
-app.use('/callComponent', proxy('http://127.0.0.1:8008', opts));
-app.use('/app', proxy('http://127.0.0.1:8008', opts));
+app.use('/callComponent', proxy('http://back.hoiba.tech', opts));
+app.use('/app', proxy('http://back.hoiba.tech', opts));
 app.use('/ws', createProxyMiddleware({
-    target: 'http://127.0.0.1:8008',
+    target: 'http://back.hoiba.tech',
     changeOrigin: true,
     ws: true
 }));

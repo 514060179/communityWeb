@@ -1045,7 +1045,7 @@
                     try {
 
                         successCallback(res.bodyText, res);
-                        if (vcFramework.constant.GET_CACHE_URL.includes(_getPath) && res.status == 200) {
+                        if (vcFramework.constant.GET_CACHE_URL.includes(_getPath) && res.status == 200 && JSON.parse(res.bodyText).code != 1996) {
                             vcFramework.saveData('/nav/getUserInfo', JSON.parse(res.bodyText));
                         }
                     } catch (e) {
@@ -1178,8 +1178,10 @@
 
                         successCallback(res.bodyText, res);
 
-                        if (vcFramework.constant.GET_CACHE_URL.includes(_getPath) && res.status == 200) {
+                        if (vcFramework.constant.GET_CACHE_URL.includes(_getPath) && res.status == 200  && JSON.parse(res.bodyText).code != 1996) {
                             vcFramework.saveData('/nav/getUserInfo', JSON.parse(res.bodyText));
+                        }else if(res.status == 200  && JSON.parse(res.bodyText).code == 1996){
+                            window.location.href = '/user.html#/pages/frame/login';
                         }
                     } catch (e) {
                         console.error(e);

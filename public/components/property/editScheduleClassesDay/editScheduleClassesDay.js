@@ -26,6 +26,24 @@
         },
         methods: {
             _changeScheduleClassesDayState: function() {
+                if (!$that.editScheduleClassesDayInfo.scheduleClassesPage) {
+                    $that.editScheduleClassesDayInfo.times.splice(0, $that.editScheduleClassesDayInfo.times.length);
+                    if ($that.editScheduleClassesDayInfo.workday == '2002') {
+                        $that.editScheduleClassesDayInfo.workdayName = '休息';
+                        return;
+                    }
+                    let _classes = $that.editScheduleClassesDayInfo.classess;
+                    _classes.forEach(item => {
+                        if ($that.editScheduleClassesDayInfo.workday == item.classesId) {
+                            $that.editScheduleClassesDayInfo.workdayName = item.name;
+                            item.times.forEach(time => {
+                                $that.editScheduleClassesDayInfo.times.push(time);
+                            })
+                        }
+                    });
+                } 
+            },
+            _changeScheduleClassesDayStateNew: function() {
                 $that.editScheduleClassesDayInfo.times.splice(0, $that.editScheduleClassesDayInfo.times.length);
                 if ($that.editScheduleClassesDayInfo.workday == '2002') {
                     $that.editScheduleClassesDayInfo.workdayName = '休息';
@@ -59,6 +77,7 @@
                         let _json = JSON.parse(json);
                         if (_json.code == 0) {
                             //关闭model
+                            $that._changeScheduleClassesDayStateNew();
                             vc.toast('修改成功');
                             return;
                         } else {

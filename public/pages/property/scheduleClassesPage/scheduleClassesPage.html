@@ -114,7 +114,7 @@
                                 </td>
                                 <td class="text-center" v-for="(day,index) in staff.days">
                                     <div class=" text-center border padding-lg labeling-strip"
-                                         style="border-radius: 5px;cursor:pointer">
+                                         style="border-radius: 5px;cursor:pointer" v-on:click="_openUpdateSchedule(day, staff, scheduleClassesPageInfo.conditions.curDate)">
                                         <div>{{day.workdayName?day.workdayName:'休息'}}</div>
                                         <div v-for="(time,index) in day.times">
                                             {{time.startTime}}-{{time.endTime}}
@@ -146,4 +146,5 @@
         </div>
     </div>
     <vc:create path="frame/chooseOrgTree" callBackListener="scheduleClassesPage"></vc:create>
+    <vc:create path="property/editScheduleClassesDay"></vc:create>
 </div>

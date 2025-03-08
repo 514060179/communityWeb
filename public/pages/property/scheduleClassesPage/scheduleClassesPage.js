@@ -149,10 +149,18 @@
             _computeTableDivWidth:function(){
                 let mainWidth = document.getElementsByTagName('body')[0].clientWidth - document.getElementById('menu-nav').offsetWidth;
                 //let treeWidth = document.getElementsByClassName('room-floor-unit-tree')[0].offsetWidth;
-                mainWidth = mainWidth - 20 -15 - 20;
+                mainWidth = mainWidth - 55;
                 //document.getElementsByClassName('hc-table-div')[0].style.width=mainWidth+'px';
                 return mainWidth+'px';
             },
+            // 专门为修改排班处理, 拼接需要的参数.
+            _openUpdateSchedule: function(item, staff, curDate) {
+                item.scheduleClassesPage = true;
+                item.scheduleId = staff.scheduleId;
+                item.staffId = staff.staffId;
+                item.curDate = curDate;
+                vc.emit('editScheduleClassesDay', 'notify', item);
+            }
         }
     });
 })(window.vc);
